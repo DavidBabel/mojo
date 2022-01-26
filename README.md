@@ -31,8 +31,12 @@ I will not add git hooks yet ^^
 - `@types` contains custom and enhanced types
 - `src` contains front / server and iso libs & confs
 
-## deploy 🚧
+## deploy
 
 Serverless with Google Cloud Platform
 
-Deploy doc : https://www.youtube.com/watch?v=GhSAQ19f4HA
+### endpoints
+
+- prod (on tag) : https://mojo-prod-nujin2hbiq-ew.a.run.app/
+- staging (main) : https://mojo-staging-nujin2hbiq-ew.a.run.app/
+- dev (develop) : https://mojo-dev-nujin2hbiq-ew.a.run.app/

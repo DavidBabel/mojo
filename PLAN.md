@@ -21,12 +21,12 @@ Status:
   - prisma with a db 🚧
 - main goal on dev experience here, to save time later
 
-## Step 2 : CI / CD / Platform
+## Step 2 : CI / CD / Platform 🚧
 
-- setup and deploy to Google Cloud Platform
+- setup and deploy to Google Cloud Platform ✅
   - enable CI / CD, maybe with Github actions or google deploy tool
-- manage simple video upload to GCP as POC
-- draft basic front layout
+- manage simple video upload to GCP as POC 🚧
+- draft basic front layout 🚧
 
 ## Step 3 : Model / GraphQl
 
