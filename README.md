@@ -4,6 +4,8 @@
 
 It may evolve, but [the current plan is like so](./PLAN.md)
 
+And here is an [architecture proposal](./tools/ressources/images/archi-proposal.drawio.png).
+
 ## Getting Started
 
 ```bash
