@@ -1,0 +1,31 @@
+// https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb/creating-the-prisma-schema-typescript-mongodb
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "sqlite"
+}
+
+model User {
+  id       String  @id @default(cuid())
+  // createdAt DateTime @default(now())
+  email    String  @unique
+  password String?
+  name     String?
+  role     String  @default("USER")
+  videos   Video[]
+}
+
+model Video {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  published   Boolean  @default(false)
+  author      User?    @relation(fields: [authorId], references: [id])
+  authorId    String?
+}
