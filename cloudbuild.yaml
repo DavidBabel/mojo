@@ -1,0 +1,19 @@
+# https://github.com/kevinsimper/kevin-awesome-project
+# https://www.youtube.com/watch?v=GhSAQ19f4HA
+
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/mojo/mojo:$SHORT_SHA", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/mojo/mojo:$SHORT_SHA"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "mojo",
+        "--region=europe-west1",
+        "--platform=managed",
+        "--image=gcr.io/mojo/mojo:$SHORT_SHA",
+      ]
