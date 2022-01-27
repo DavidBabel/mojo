@@ -21,21 +21,20 @@ Status:
   - prisma with a db ✅
 - main goal on dev experience here, to save time later
 
-## Step 2 : CI / CD / Platform 🚧
+## Step 2 : CI / CD / Platform ✅
 
 - setup and deploy to Google Cloud Platform ✅
   - enable CI / CD, maybe with Github actions or google deploy tool ✅
-- draft basic front layout 🚧
-- manage simple video upload to GCP as POC 🚧
+- draft basic front layout ✅
+- manage simple video upload to GCP as POC
 
 ## Step 3 : Model / GraphQl
 
-- build database model
+- build database model 🚧
   - generate models and entites
     (- manage migrations (only if timing is good))
 - add a GraphQl Schema
-- enable upload thru GraphQl Schema
-- enable video upload thru graphql
+- enable video upload thru GraphQl Schema
 
 ## Step 4 : Auth
 

@@ -30,5 +30,8 @@ prisma db seed
 echo -e "${info} disabling nextjs telemetry"
 next telemetry disable
 
+echo -e "${info} mute annoying react-dom module warnings"
+find node_modules/react-dom/*.js -exec sed -i.bak "s/error('useLayoutEffect does nothing/\/\/error(' useLayoutEffect does nothing/g" {} \; &>/dev/null
+
 echo -e "${success} you are all set"
 
