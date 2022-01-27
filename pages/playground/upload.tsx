@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import React from "react";
 
 const PlaygroundUploadPage: NextPage = () => {
-  const handleChange = (e: React.ChangeEventHandler<HTMLInputElement>) => {
+  const handleChange = (e: any) => {
     let formData = new FormData();
     formData.append("video", e.target.files[0]);
     fetch("/api/playground/fileUpload", { method: "PUT", body: formData })

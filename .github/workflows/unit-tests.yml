@@ -16,5 +16,9 @@ jobs:
           cache: "yarn"
       - name: Install dependencies
         run: SKIP_POSTINSTALL=1 yarn install --frozen-lockfile
+      - name: Checking lint
+        run: yarn lint
+      - name: Checking build
+        run: yarn build
       - name: Running tests
         run: yarn test
