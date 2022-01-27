@@ -13,20 +13,20 @@ Status:
 - 🚧 : wip
 - 🚫 : we don't want to talk about this one
 
-## Step 1 : bootstrap 🚧
+## Step 1 : bootstrap ✅
 
 - bootstrap a satisfying project with various tools
   - nextjs ✅
   - good practice tooling and env ✅
-  - prisma with a db 🚧
+  - prisma with a db ✅
 - main goal on dev experience here, to save time later
 
-## Step 2 : CI / CD / Platform
+## Step 2 : CI / CD / Platform 🚧
 
-- setup and deploy to Google Cloud Platform
-  - enable CI / CD, maybe with Github actions or google deploy tool
-- manage simple video upload to GCP as POC
-- draft basic front layout
+- setup and deploy to Google Cloud Platform ✅
+  - enable CI / CD, maybe with Github actions or google deploy tool ✅
+- draft basic front layout 🚧
+- manage simple video upload to GCP as POC 🚧
 
 ## Step 3 : Model / GraphQl
 

@@ -19,13 +19,13 @@ else
   exit 1
 fi
 
-if hash docker 2>/dev/null; then
-  echo -e "${info} Docker found"
-else
-  echo -e "${error} Docker not found, first install binaries : "
-  echo -e "${error} - https://www.docker.com/products/docker-desktop"
-  exit 1
-fi
+# if hash docker 2>/dev/null; then
+#   echo -e "${info} Docker found"
+# else
+#   echo -e "${error} Docker not found, first install binaries : "
+#   echo -e "${error} - https://www.docker.com/products/docker-desktop"
+#   exit 1
+# fi
 
 EXPECTED_NODE_VERSION=`head -1 .nvmrc`
 CURRENT_NODE_VERSION="$(node -v | cut -d. -f1).$(node -v | cut -d. -f2)"

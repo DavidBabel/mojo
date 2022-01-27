@@ -15,7 +15,9 @@
     "lint": "next lint",
     "test": "jest --config=./tools/jest.config.js",
     "studio": "source .env && source .env.local && prisma studio --browser=none",
-    "postinstall": "skip-postinstall || prisma generate"
+    "postinstall": "skip-postinstall || prisma generate",
+    "docker:build": "docker build . -t mojo-app:latest -f ./Dockerfile",
+    "docker:start": "docker run -p 3000:3000 mojo-app"
   },
   "prisma": {
     "schema": "src/server/prisma/schema.prisma",
