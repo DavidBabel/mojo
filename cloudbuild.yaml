@@ -2,8 +2,17 @@
 # https://www.youtube.com/watch?v=GhSAQ19f4HA
 
 steps:
+  - name: node
+    entrypoint: yarn
+    args: ["install"]
+  - name: node
+    entrypoint: yarn
+    args: ["test"]
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/mojo/mojo:$SHORT_SHA", "."]
+  # - name: "gcr.io/cloud-builders/docker"
+  #   args:
+  #     ["exec", "-e", "CI=true", "gcr.io/mojo/mojo:$SHORT_SHA", "yarn", "test"]
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/mojo/mojo:$SHORT_SHA"]
   - name: "gcr.io/cloud-builders/gcloud"
