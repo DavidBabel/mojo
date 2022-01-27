@@ -41,6 +41,16 @@ I will not add git hooks yet ^^
 
 Serverless with Google Cloud Platform
 
+### Setup link (private)
+
+CI : https://console.cloud.google.com/cloud-build/dashboard?hl=fr&project=mojo-339419
+
+Run : https://console.cloud.google.com/run?hl=fr&project=mojo-339419
+
+### Following on Notion
+
+https://www.notion.so/Following-Mojo-Web-3ae7435c8f904b3d81bc5a911913dd1a
+
 ### Endpoints
 
 - ✅ dev (develop) : https://mojo-dev-nujin2hbiq-ew.a.run.app/
