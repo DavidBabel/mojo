@@ -24,15 +24,25 @@ yarn dev
 **Note:** we use prettier & eslint here, please adapt your editor
 I will not add git hooks yet ^^
 
-## structure
+## Structure
 
-- `pages` contains all front endpoints (nexjs)
-- `pages/api` contains api endpoints (nexjs)
 - `@types` contains custom and enhanced types
-- `src` contains front / server and iso libs & confs
+- `pages/` contains all front endpoints (nextjs)
+  - `api` contains api endpoints (nextjs)
+- `public` contains public assets like images (nextjs)
+- `src/`
+  - `front` : contains components and front-end logic
+  - `server` : contains backend logic
+  - `iso` : contains iso (back/front) libs & configs
+- `tools/` : contains development tools and configs
+  - `scripts` : typescript or bash script to generate project state
 
-## deploy 🚧
+## Deploy
 
 Serverless with Google Cloud Platform
 
-Deploy doc : https://www.youtube.com/watch?v=GhSAQ19f4HA
+### Endpoints
+
+- ✅ dev (develop) : https://mojo-dev-nujin2hbiq-ew.a.run.app/
+- ✅ staging (main) : https://mojo-staging-nujin2hbiq-ew.a.run.app/
+- 🚧 prod (on tag) : https://mojo-prod-nujin2hbiq-ew.a.run.app/ (fail for now, wrong GCP settings)
