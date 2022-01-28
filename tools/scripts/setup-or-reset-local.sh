@@ -16,7 +16,7 @@ source ./.env.local
 
 echo -e "${info} current DB : ${DATABASE_URL}"
 echo -e "${info} deleting previous DB"
-rm src/server/${DATABASE_URL/file:./prisma} 2>/dev/null  | true
+rm src/server/${DATABASE_URL/file:./prisma} 2>/dev/null | true
 
 echo -e "${info} generating prisma client"
 prisma generate
@@ -27,11 +27,17 @@ prisma db push
 echo -e "${info} seeding db model"
 prisma db seed
 
+echo -e "${info} generating the GraphQl Schema"
+yarn script src/server/graphql/buildSchema.ts
+
+echo -e "${info} Generating GraphQL types from GraphQl Schema"
+graphql-codegen --config ./tools/graphql-gen-types-config.yml
+
 echo -e "${info} disabling nextjs telemetry"
 next telemetry disable
 
 echo -e "${info} mute annoying react-dom module warnings"
-find node_modules/react-dom/*.js -exec sed -i.bak "s/error('useLayoutEffect does nothing/\/\/error(' useLayoutEffect does nothing/g" {} \; &>/dev/null
+find node_modules/react-dom/**/*.js -exec sed -i.bak "s/error('useLayoutEffect does nothing/\/\/error(' useLayoutEffect does nothing/g" {} \; &>/dev/null
 
 echo -e "${success} you are all set"
 

@@ -15,26 +15,25 @@ Status:
 
 ## Step 1 : bootstrap ✅
 
-- bootstrap a satisfying project with various tools
+- bootstrap a satisfying project with various tools ✅
   - nextjs ✅
   - good practice tooling and env ✅
   - prisma with a db ✅
-- main goal on dev experience here, to save time later
+- main goal on dev experience here, to save time later ✅
 
 ## Step 2 : CI / CD / Platform ✅
 
 - setup and deploy to Google Cloud Platform ✅
   - enable CI / CD, maybe with Github actions or google deploy tool ✅
 - draft basic front layout ✅
-- manage simple video upload to GCP as POC
+- manage simple video upload to GCP as POC ✅
 
-## Step 3 : Model / GraphQl
+## Step 3 : Model / GraphQl 🚧
 
 - build database model 🚧
-  - generate models and entites
-    (- manage migrations (only if timing is good))
-- add a GraphQl Schema
-- enable video upload thru GraphQl Schema
+  - generate models and entites 🚧
+- add a basic GraphQl Schema ✅
+- enable video upload thru GraphQl Schema ✅
 
 ## Step 4 : Auth
 
@@ -53,11 +52,11 @@ Status:
 
 - Add test stack
 - Add monitoring stack
-- setup in CI/DC
 
 ## Step 7 : Compatibility check
 
 - Check browser compatibility
+- Check project & scripts : WSL / Linux compatibility
 
 ## Step 8 : Hofstadter
 
@@ -67,3 +66,8 @@ Status:
 
 - cleanup
 - docker setup
+- manage migrations
+
+## Step 10
+
+- sign mojo contract

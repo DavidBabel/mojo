@@ -14,30 +14,54 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --config=./tools/jest.config.js",
+    "script": "ts-node -r tsconfig-paths/register",
     "studio": "source .env && source .env.local && prisma studio --browser=none",
+    "gql": "source .env && source .env.local && open https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:3000/$GRAPHQL_ENDPOINT",
     "postinstall": "skip-postinstall || prisma generate",
     "docker:build": "docker build . -t mojo-app:latest -f ./Dockerfile",
     "docker:start": "docker run -p 3000:3000 mojo-app"
   },
   "prisma": {
     "schema": "src/server/prisma/schema.prisma",
-    "seed": "ts-node -r tsconfig-paths/register src/server/prisma/seeds/seed.ts"
+    "seed": "yarn script src/server/prisma/seeds/seed.ts"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@google-cloud/storage": "^5.18.1",
     "@prisma/client": "^3.8.1",
     "antd": "^4.18.5",
+    "apollo-server-micro": "^3.6.2",
+    "apollo-upload-client": "^17.0.0",
+    "graphql": "^15.3.0",
+    "graphql-upload": "^13.0.0",
     "md5": "^2.3.0",
+    "micro": "^9.3.4",
+    "micro-cors": "^0.1.1",
     "next": "12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "^1.49.0"
+    "reflect-metadata": "^0.1.13",
+    "sass": "^1.49.0",
+    "type-graphql": "^1.1.1",
+    "uuidv4": "^6.2.12"
+  },
+  "resolutions": {
+    "graphql": "^15.3.0",
+    "**/graphql": "^15.3.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.0.0-alpha.5",
+    "@graphql-codegen/cli": "^2.4.0",
+    "@graphql-codegen/introspection": "^2.1.1",
+    "@graphql-codegen/typescript": "^2.4.2",
+    "@graphql-codegen/typescript-operations": "^2.2.2",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.4",
+    "@types/apollo-upload-client": "^17.0.0",
+    "@types/graphql-upload": "^8.0.10",
     "@types/jest": "^27.4.0",
     "@types/md5": "^2.3.1",
+    "@types/micro": "^7.3.6",
+    "@types/micro-cors": "^0.1.2",
     "@types/node": "16",
     "@types/react": "17.0.38",
     "eslint": "8.7.0",
