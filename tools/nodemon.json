@@ -1,0 +1,5 @@
+{
+  "watch": ["src/server/", "src/iso"],
+  "ext": ".ts",
+  "exec": "yarn script ./src/server/server.boot.ts"
+}

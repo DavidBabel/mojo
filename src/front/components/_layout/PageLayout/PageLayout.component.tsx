@@ -7,6 +7,7 @@ import { Footer } from "@/_layout/Footer";
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";
 
 import { useToggle } from "~/front/hooks/useToggle.hook";
+import Head from "next/head";
 
 const { Header, Content, Sider } = Layout;
 
@@ -19,6 +20,11 @@ export function PageLayout({ children }: Props) {
 
   return (
     <>
+      <Head>
+        <title>Mojo Web</title>
+        <meta name="description" content="A badass app" />
+        <link rel="icon" type="image/png" href="/mojo.png" />
+      </Head>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider
           collapsible

@@ -9,7 +9,7 @@ const bucketPrefix = `https://storage.googleapis.com/${bucketName}/`;
 export async function saveToBucket(video: FileUpload) {
   const { createReadStream, filename } = video;
 
-  return await new Promise<string>((resolve, reject) =>
+  return new Promise<string>((resolve, reject) =>
     createReadStream()
       .pipe(
         uploadBucket.file(filename).createWriteStream({
@@ -18,6 +18,9 @@ export async function saveToBucket(video: FileUpload) {
         }),
       )
       .on("finish", () => resolve(bucketPrefix + filename))
-      .on("error", () => reject("error")),
+      .on("error", error => {
+        console.error(error);
+        reject(error);
+      }),
   );
 }
