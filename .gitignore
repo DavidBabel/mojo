@@ -42,3 +42,10 @@ yarn-error.log*
 
 # sqlite
 sqlite.db
+
+# public
+public/localBucket/*
+!public/localBucket/.gitkeep
+
+# gcp
+google-auth.json

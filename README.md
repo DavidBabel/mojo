@@ -21,6 +21,13 @@ yarn setup
 yarn dev
 ```
 
+We use 2 endpoints for livereload front/back performances:
+
+- access http://localhost:4000 for nextjs server
+- access the graphql API at http://localhost:3000
+
+In production the server uses only one port
+
 **Note:** we use prettier & eslint here, please adapt your editor
 I will not add git hooks yet ^^
 
@@ -56,3 +63,7 @@ https://www.notion.so/Following-Mojo-Web-3ae7435c8f904b3d81bc5a911913dd1a
 - ✅ dev (develop) : https://mojo-dev-nujin2hbiq-ew.a.run.app/
 - ✅ staging (main) : https://mojo-staging-nujin2hbiq-ew.a.run.app/
 - 🚧 prod (on tag) : https://mojo-prod-nujin2hbiq-ew.a.run.app/ (fail for now, wrong GCP settings)
+
+## Issues
+
+A list of known issues [can be found here](./ISSUES.md)
