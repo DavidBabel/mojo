@@ -31,6 +31,9 @@ export function useKeyPress(
     (event: KeyboardEvent) => {
       if (event.key === key) {
         if (!modifier || event[modifier] === true) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          event.stopPropagation();
           callback?.();
           togglePressed();
         }

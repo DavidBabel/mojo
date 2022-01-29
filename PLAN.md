@@ -35,7 +35,7 @@ Status:
 - add a basic GraphQl Schema ✅
 - enable video upload thru GraphQl Schema ✅
 
-## Step 4 : Auth
+## Step 4 : Auth 🚧
 
 - find a smart way to manage auth
 - manage auth & jwt
