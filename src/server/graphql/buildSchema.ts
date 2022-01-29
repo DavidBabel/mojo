@@ -5,11 +5,11 @@ import {
   VideoUploadResolver,
   DummyQueryResolver,
 } from "~/server/graphql/resolvers";
-import { ErrorInterceptorMiddleware } from "~/server/graphql/middlewares";
+// import { ErrorInterceptorMiddleware } from "~/server/graphql/middlewares";
 
 export const schema = buildSchemaSync({
   resolvers: [VideoUploadResolver, DummyQueryResolver],
-  globalMiddlewares: [ErrorInterceptorMiddleware],
+  // globalMiddlewares: [ErrorInterceptorMiddleware],
   validate: false,
   emitSchemaFile: "src/server/graphql/generated/schema.gql",
 });

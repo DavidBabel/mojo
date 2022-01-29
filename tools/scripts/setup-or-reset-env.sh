@@ -14,9 +14,9 @@ touch .env.local
 source ./.env
 source ./.env.local
 
-echo -e "${info} current DB : ${DATABASE_URL}"
+echo -e "${info} current DB : ${PRISMA_DATABASE_URL}"
 echo -e "${info} deleting previous DB"
-rm src/server/${DATABASE_URL/file:./prisma} 2>/dev/null | true
+rm src/server/${PRISMA_DATABASE_URL/file:./prisma} 2>/dev/null || true
 
 echo -e "${info} generating prisma client"
 prisma generate
@@ -36,8 +36,7 @@ graphql-codegen --config ./tools/graphql-gen-types-config.yml
 echo -e "${info} disabling nextjs telemetry"
 next telemetry disable
 
-echo -e "${info} mute annoying react-dom module warnings"
-find node_modules/react-dom/**/*.js -exec sed -i.bak "s/error('useLayoutEffect does nothing/\/\/error(' useLayoutEffect does nothing/g" {} \; &>/dev/null
+bash ./tools/scripts/utils/mute-react-dom.sh
 
 echo -e "${success} you are all set"
 

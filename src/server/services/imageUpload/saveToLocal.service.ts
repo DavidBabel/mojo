@@ -7,10 +7,13 @@ export async function saveToLocal(video: FileUpload) {
 
   const filePath = path.join("public/localBucket", filename);
 
-  return await new Promise<string>((resolve, reject) =>
+  return new Promise<string>((resolve, reject) =>
     createReadStream()
       .pipe(createWriteStream(filePath))
       .on("close", () => resolve(`/localBucket/${filename}`))
-      .on("error", () => reject("error")),
+      .on("error", error => {
+        console.error(error);
+        reject(error);
+      }),
   );
 }

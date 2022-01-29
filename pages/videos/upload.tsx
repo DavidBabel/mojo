@@ -7,11 +7,14 @@ import type {
   MutationVideoUploadArgs,
 } from "~/@types/generated/graphqlTypes";
 import { LinkNewTab } from "@/LinkNewTab";
-import { Switch } from "antd";
+import { Spin, Switch } from "antd";
 import { useToggle } from "~/front/hooks/useToggle.hook";
+import { isDev } from "~/iso/env";
 
 const UploadVideoPage: NextPage = () => {
   const [uploadedUrl, setUploadedUrl] = useState<string>();
+  const [uploadError, setUploadError] = useState<string>();
+  const [uploadLoading, setUploadLoading] = useState(false);
   const [forceBucketUpload, toggleForceBucketUpload] = useToggle(false);
   const [uploadFile] = useMutation<Mutation, MutationVideoUploadArgs>(
     FILE_UPLOAD_MUTATION,
@@ -22,12 +25,16 @@ const UploadVideoPage: NextPage = () => {
       const { validity, files } = e.target;
       if (validity.valid && files?.[0]) {
         const file = files[0];
+        setUploadLoading(true);
         uploadFile({ variables: { video: file, forceBucketUpload } })
           .then(({ data }) => {
             setUploadedUrl(data?.videoUpload);
           })
           .catch(error => {
-            window.alert(error);
+            setUploadError(error);
+          })
+          .finally(() => {
+            setUploadLoading(false);
           });
       }
     },
@@ -41,14 +48,26 @@ const UploadVideoPage: NextPage = () => {
           Download a sample video
         </LinkNewTab>
       </p>
+      {isDev() && (
+        <p>
+          <Switch onChange={() => toggleForceBucketUpload()} /> Force upload to
+          Cloud Storage
+        </p>
+      )}
+
       <p>
-        <Switch onChange={() => toggleForceBucketUpload()} /> Force upload to
-        Cloud Storage
-      </p>
-      <p>
-        <input type="file" onChange={handleFileChange} />
+        <input type="file" onChange={handleFileChange} />{" "}
+        {uploadLoading && <Spin size="large" />}
       </p>
 
+      {uploadError && (
+        <p>
+          Something Went Wrong :{" "}
+          <pre>
+            <code>{JSON.stringify(uploadError, null, 2)}</code>
+          </pre>
+        </p>
+      )}
       {uploadedUrl && (
         <p>
           <LinkNewTab href={uploadedUrl}>Check your uploaded video</LinkNewTab>

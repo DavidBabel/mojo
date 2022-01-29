@@ -5,12 +5,16 @@ import type { AppProps } from "next/app";
 import { PageLayout } from "@/_layout/PageLayout";
 import { CONFIG } from "~/iso/config";
 
-import "~/front/styles/globals.css";
-import "antd/dist/antd.css";
+import { isProd } from "~/iso/env";
 
-const link = createUploadLink({
-  uri: CONFIG.GRAPHQL_ENDPOINT,
-});
+import "antd/dist/antd.css";
+import "~/front/styles/globals.css";
+
+const uri = isProd()
+  ? CONFIG.GRAPHQL_ENDPOINT
+  : "http://localhost:3000" + CONFIG.GRAPHQL_ENDPOINT;
+
+const link = createUploadLink({ uri });
 
 const client = new ApolloClient({
   link,

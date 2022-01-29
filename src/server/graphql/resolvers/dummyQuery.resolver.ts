@@ -7,6 +7,6 @@ import { Query, Resolver } from "type-graphql";
 export class DummyQueryResolver {
   @Query(() => Boolean)
   async dummyQuery() {
-    return true;
+    throw new Error("CRASH");
   }
 }

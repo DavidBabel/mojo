@@ -4,3 +4,11 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+google-auth.json
+.git
+.vscode
+.github
+david
+public/localBucket/*
+.DS_Store
+.env.local
