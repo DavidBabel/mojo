@@ -6,6 +6,6 @@ const expressServer = express();
 expressServer.use(cors());
 expressServer.use(compression());
 expressServer.use(express.json());
-// server.use(express.urlencoded({ extended: true }));
+expressServer.use(express.urlencoded({ extended: true }));
 
 export { expressServer };

@@ -3,6 +3,8 @@ import { ENV } from "~/iso/env";
 export const CONFIG = {
   PASSWORD_SALT: "this is a salted mojo",
   GRAPHQL_ENDPOINT: toString(ENV("GRAPHQL_ENDPOINT")),
+  NEXTAUTH_URL: toString(ENV("NEXTAUTH_URL")),
+  NEXT_AUTH_SECRET: toString(ENV("NEXT_AUTH_SECRET")),
   PORT: toNumber(ENV("PORT")),
 } as const;
 

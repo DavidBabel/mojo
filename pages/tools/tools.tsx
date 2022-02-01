@@ -102,7 +102,7 @@ const ToolsPage: NextPage = () => {
         </Col>
         <PrismaCard {...colProps} />
         <Col {...colProps}>
-          <LinkNewTab href="https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:3000/api/graphql">
+          <LinkNewTab href="https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:3000/graphql">
             <Card
               hoverable
               cover={

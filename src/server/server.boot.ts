@@ -20,10 +20,8 @@ async function bootstrapApp() {
   // only launch nextjs on same port in production
   if (isProd()) {
     const nextRequestHandler = await startNextJs();
-
-    expressServer.get("*", (req, res) => {
-      return nextRequestHandler(req, res);
-    });
+    expressServer.get("*", nextRequestHandler);
+    expressServer.post("*", nextRequestHandler);
   } else {
     expressServer.get("*", (req, res) => {
       return res.send(
