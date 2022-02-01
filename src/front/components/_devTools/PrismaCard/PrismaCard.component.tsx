@@ -4,19 +4,22 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { LinkNewTab } from "@/LinkNewTab";
+import { isDev } from "~/iso/env";
 import { sec } from "~/iso/numbers/timeMs";
 
 export function PrismaCard(props: any) {
   const [isPrismaStudioStarted, setIsPrismaStudioStarted] = useState(false);
   useEffect(() => {
-    const intervalId = setInterval(async () => {
-      fetch("http://localhost:4000/api/devTools/checkPrismaStudioStatus")
-        .then(result => result.json())
-        .then(result => {
-          setIsPrismaStudioStarted(result.isPrismaStudioStarted);
-        });
-    }, 3 * sec);
-    return () => clearInterval(intervalId);
+    if (isDev()) {
+      const intervalId = setInterval(async () => {
+        fetch("/api/devTools/checkPrismaStudioStatus")
+          .then(result => result.json())
+          .then(result => {
+            setIsPrismaStudioStarted(result.isPrismaStudioStarted);
+          });
+      }, 3 * sec);
+      return () => clearInterval(intervalId);
+    }
   }, []);
 
   const PrismaLink = isPrismaStudioStarted ? LinkNewTab : Link;
@@ -47,6 +50,7 @@ export function PrismaCard(props: any) {
             description={
               <>
                 Requires to run <code>`yarn studio`</code> in separate shell
+                (local only)
               </>
             }
           />

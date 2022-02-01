@@ -9,6 +9,8 @@ import {
 } from "next-auth/react";
 import React from "react";
 
+import { CONFIG } from "~/iso/config";
+
 // export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 export const getServerSideProps = async ({ req }: NextPageContext) => {
   const session = await getSession({ req });
@@ -24,6 +26,8 @@ export const getServerSideProps = async ({ req }: NextPageContext) => {
   const csrfToken = await getCsrfToken();
 
   console.log(csrfToken);
+  console.log("CONFIG.NEXTAUTH_URL");
+  console.log(CONFIG.NEXTAUTH_URL);
 
   return {
     props: { providers, csrfToken },
@@ -33,6 +37,16 @@ export const getServerSideProps = async ({ req }: NextPageContext) => {
 type PageProps = InferSSRProps<typeof getServerSideProps>;
 
 const SignIn: NextPage<PageProps> = ({ providers /* , csrfToken */ }) => {
+  async function handleSignIn(providerId: any) {
+    await signIn(providerId)
+      .then(result => {
+        console.log("signIn success", result);
+      })
+      .catch(error => {
+        console.log("signIn error", error);
+      });
+  }
+
   return (
     <div>
       <Typography.Title level={2}>Custom Auth Page</Typography.Title>
@@ -58,7 +72,7 @@ const SignIn: NextPage<PageProps> = ({ providers /* , csrfToken */ }) => {
                 }
                 return (
                   <div key={provider.name}>
-                    <button onClick={() => signIn(provider.id)}>
+                    <button onClick={() => handleSignIn(provider.id)}>
                       <Image
                         width={20}
                         height={20}
