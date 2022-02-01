@@ -11,7 +11,9 @@ touch ./node_modules/.metadata_never_index || true
 touch ./.git/.metadata_never_index || true
 
 echo -e "${info} install dependencies"
+export NPM_CONFIG_PRODUCTION=false
 SKIP_POSTINSTALL=1 yarn install
+export NPM_CONFIG_PRODUCTION=true
 
 touch .env.local
 source ./.env

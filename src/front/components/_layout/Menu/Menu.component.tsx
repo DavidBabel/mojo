@@ -12,7 +12,6 @@ import { useTranslation } from "react-i18next";
 
 import { LinkNewTab } from "@/LinkNewTab";
 import { useKeyPress } from "~/front/hooks/useKeyPress.hook";
-import { isDev } from "~/iso/env";
 
 const { Item, SubMenu } = AntMenu;
 

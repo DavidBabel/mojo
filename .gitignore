@@ -50,3 +50,4 @@ public/localBucket/*
 
 # gcp
 google-auth.json
+google-credentials.json

@@ -6,9 +6,9 @@ import React from "react";
 import { capitalize } from "~/iso/string";
 
 export function AutoBreadcrumb(props: BreadcrumbProps) {
-  const router = useRouter();
+  const { pathname } = useRouter();
 
-  const pathParts = router.pathname.split("/");
+  const pathParts = pathname.split("/");
   pathParts.shift();
 
   if (pathParts[0] === "[...page404]") {

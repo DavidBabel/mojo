@@ -9,6 +9,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
+import { CONFIG } from "~/iso/config";
 import { UserRole } from "~/server/prisma/enums";
 import { checkPassword } from "~/server/services/password/hash-password.service";
 
@@ -17,10 +18,10 @@ const prisma = new PrismaClient();
 // NOTE: this code is very in progress
 
 export default NextAuth({
-  secret: process.env.NEXT_AUTH_SECRET,
+  secret: CONFIG.NEXT_AUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   jwt: {
-    secret: "any", // TODO: put a more complexe code
+    secret: CONFIG.NEXT_AUTH_SECRET,
     maxAge: 60 * 60 * 24 * 30,
   },
   pages: {
