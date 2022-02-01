@@ -5,9 +5,12 @@ set -e
 . ./tools/scripts/utils/echo-utils.sh
 . ./tools/scripts/utils/prerequesite.sh
 
-echo -e "${info} install dependencies"
+echo -e "${info} remove macos indexing"
 mkdir node_modules 2>/dev/null || true
-touch ./node_modules/.metadata_never_index
+touch ./node_modules/.metadata_never_index || true
+touch ./.git/.metadata_never_index || true
+
+echo -e "${info} install dependencies"
 SKIP_POSTINSTALL=1 yarn install
 
 touch .env.local
@@ -31,7 +34,7 @@ echo -e "${info} generating the GraphQl Schema"
 yarn script src/server/graphql/buildSchema.ts
 
 echo -e "${info} Generating GraphQL types from GraphQl Schema"
-graphql-codegen --config ./tools/graphql-gen-types-config.yml
+yarn types
 
 echo -e "${info} disabling nextjs telemetry"
 next telemetry disable

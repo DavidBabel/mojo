@@ -1,13 +1,14 @@
 import { ApolloServer } from "apollo-server-express";
-import { CONFIG } from "~/iso/config";
-import { graphqlUploadExpress } from "graphql-upload";
 import { Express } from "express";
+import { graphqlUploadExpress } from "graphql-upload";
 
+import { CONFIG } from "~/iso/config";
+import { Mo } from "~/iso/numbers/size";
 import { schema } from "~/server/graphql/buildSchema";
-import { Mo } from "~/iso/number";
+import { context } from "~/server/prisma/context";
 
 const apolloServer = new ApolloServer({
-  // context,
+  context,
   schema,
   logger: console,
   formatError: error => {

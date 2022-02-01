@@ -1,17 +1,25 @@
-import React from "react";
-import { PlayCircleOutlined, SettingOutlined } from "@ant-design/icons";
+import {
+  PlayCircleOutlined,
+  SettingOutlined,
+  ToolOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Menu as AntMenu } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import React from "react";
+import { useTranslation } from "react-i18next";
 
-import { useKeyPress } from "~/front/hooks/useKeyPress.hook";
 import { LinkNewTab } from "@/LinkNewTab";
+import { useKeyPress } from "~/front/hooks/useKeyPress.hook";
+import { isDev } from "~/iso/env";
 
 const { Item, SubMenu } = AntMenu;
 
 export function Menu() {
+  const { t } = useTranslation();
   const { pathname } = useRouter();
-  const isDevMode = useKeyPress({ modifier: "ctrlKey", key: "d" });
+  const isDevToolsEnabled = useKeyPress({ modifier: "ctrlKey", key: "d" });
 
   const subPath = pathname.split("/").slice(1);
 
@@ -19,15 +27,26 @@ export function Menu() {
     <>
       <AntMenu theme="dark" selectedKeys={subPath} mode="inline">
         <Item key="videos" icon={<PlayCircleOutlined />}>
-          <Link href="/videos">Videos</Link>
+          <Link href="/videos">{t("layout.menu.videos")}</Link>
         </Item>
         <Item key="account" icon={<SettingOutlined />}>
-          <Link href="/account">Account</Link>
+          <Link href="/account">{t("layout.menu.account")}</Link>
         </Item>
-        <Item key="db" icon={<SettingOutlined />}>
-          <Link href="/db">Check DB</Link>
+        <Item key="db" icon={<UserOutlined />}>
+          <Link href="/db">DB test</Link>
         </Item>
-        {isDevMode && (
+        <Item key="gql" icon={<UserOutlined />}>
+          <Link href="/gql">GQL test</Link>
+        </Item>
+        <Item key="admin/users" icon={<UserOutlined />}>
+          <Link href="/admin/users">{t("layout.menu.manage-users")}</Link>
+        </Item>
+
+        <Item key="tools" icon={<ToolOutlined />}>
+          <Link href="/tools">{t("layout.menu.demo-tools")}</Link>
+        </Item>
+
+        {isDevToolsEnabled && (
           <>
             <SubMenu
               key="envjumper"
@@ -35,15 +54,15 @@ export function Menu() {
               title="Env Jumper"
             >
               <Item key="local" icon={<SettingOutlined />}>
-                <Link href="http://localhost:3000">Local</Link>
+                <Link href="http://localhost:4000">Local</Link>
               </Item>
               <Item key="devenv" icon={<SettingOutlined />}>
-                <Link href="https://mojo-dev-nujin2hbiq-ew.a.run.app/">
+                <Link href="https://mojo-develop-nujin2hbiq-ew.a.run.app/">
                   Dev env
                 </Link>
               </Item>
               <Item key="stagingenv" icon={<SettingOutlined />}>
-                <Link href="https://mojo-staging-nujin2hbiq-ew.a.run.app/">
+                <Link href="https://mojo-main-nujin2hbiq-ew.a.run.app">
                   Staging env
                 </Link>
               </Item>
@@ -64,7 +83,7 @@ export function Menu() {
                 </LinkNewTab>
               </Item>
               <Item key="builds" icon={<SettingOutlined />}>
-                <LinkNewTab href="https://console.cloud.google.com/cloud-build/builds?project=mojo-339419">
+                <LinkNewTab href="https://github.com/DavidBabel/mojo/actions">
                   Builds
                 </LinkNewTab>
               </Item>

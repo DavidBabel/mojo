@@ -1,13 +1,15 @@
 import { useMutation } from "@apollo/client";
+import { Spin, Switch } from "antd";
 import type { NextPage } from "next";
-import React, { useCallback, useState, type ChangeEvent } from "react";
-import { FILE_UPLOAD_MUTATION } from "~/front/gql/mutation/fileUpload.mutation";
+import Link from "next/link";
+import React, { type ChangeEvent, useCallback, useState } from "react";
+
+import { LinkNewTab } from "@/LinkNewTab";
 import type {
   Mutation,
   MutationVideoUploadArgs,
 } from "~/@types/generated/graphqlTypes";
-import { LinkNewTab } from "@/LinkNewTab";
-import { Spin, Switch } from "antd";
+import { FILE_UPLOAD_MUTATION } from "~/front/gql/mutation/fileUpload.mutation";
 import { useToggle } from "~/front/hooks/useToggle.hook";
 import { isDev } from "~/iso/env";
 
@@ -41,6 +43,12 @@ const UploadVideoPage: NextPage = () => {
     [uploadFile, forceBucketUpload],
   );
 
+  const videoId = uploadedUrl?.split("/").pop()?.replace(".mp4", "");
+  let options = "";
+  if (!uploadedUrl?.includes("storage.googleapis.com")) {
+    options = "?option=local";
+  }
+
   return (
     <>
       <p>
@@ -70,7 +78,9 @@ const UploadVideoPage: NextPage = () => {
       )}
       {uploadedUrl && (
         <p>
-          <LinkNewTab href={uploadedUrl}>Check your uploaded video</LinkNewTab>
+          <Link href={`/videos/${videoId}${options}`}>
+            Check your uploaded video
+          </Link>
         </p>
       )}
     </>

@@ -1,8 +1,8 @@
-import { Prisma } from "@prisma/client";
 import faker from "@faker-js/faker";
+import { Prisma } from "@prisma/client";
 
-import { hashPassword } from "~/server/services/password/hash-password.service";
 import { UserRole } from "~/server/prisma/enums";
+import { hashPassword } from "~/server/services/password/hash-password.service";
 
 const getFakeVideos = () =>
   Array(faker.datatype.number({ min: 2, max: 6 }))

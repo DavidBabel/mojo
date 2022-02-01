@@ -28,24 +28,24 @@ Status:
 - draft basic front layout ✅
 - manage simple video upload to GCP as POC ✅
 
-## Step 3 : Model / GraphQl 🚧
+## Step 3 : Model / GraphQl ✅
 
-- build database model 🚧
-  - generate models and entites 🚧
-- add a basic GraphQl Schema ✅
+- build database model ✅
+  - generate models and entites ✅ => auto generated
+- add a basic GraphQl Schema ✅ => auto generated
 - enable video upload thru GraphQl Schema ✅
 
 ## Step 4 : Auth 🚧
 
-- find a smart way to manage auth
-- manage auth & jwt
-- add login / register
-- enable authenticated video upload
+- find a smart way to manage auth ✅
+- manage auth & jwt 🚧
+- add login / register => ✅ (oauth)/ 🚧 / 🚧
+- enable authenticated video upload 🚧
 
-## Step 5 : UI
+## Step 5 : UI / UX 🚧
 
 - draft a modern UI with antd
-- enhance video upload experience with advanced components
+- enhance video upload experience with advanced components 🚧
 - develop admin / user experiences
 
 ## Step 6 : Non-regression

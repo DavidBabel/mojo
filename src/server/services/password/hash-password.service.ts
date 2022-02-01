@@ -1,4 +1,5 @@
 import md5 from "md5";
+
 import { CONFIG } from "~/iso/config";
 
 export function hashPassword(password: string): string {
