@@ -1,9 +1,10 @@
-import { FileUpload } from "graphql-upload";
 import { Storage } from "@google-cloud/storage";
+import { FileUpload } from "graphql-upload";
 
 const gcStorage = new Storage();
 const bucketName = "mojo-dev";
 const uploadBucket = gcStorage.bucket(bucketName);
+// TODO => config variable
 const bucketPrefix = `https://storage.googleapis.com/${bucketName}/`;
 
 export async function saveToBucket(video: FileUpload) {

@@ -12,3 +12,6 @@ david
 public/localBucket/*
 .DS_Store
 .env.local
+.next
+dist
+

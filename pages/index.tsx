@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+
 import styles from "~/front/styles/Home.module.css";
 
 const Home: NextPage = () => {

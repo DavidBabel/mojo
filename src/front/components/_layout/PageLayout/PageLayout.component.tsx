@@ -1,15 +1,14 @@
-import React from "react";
 import { Layout } from "antd";
+import React from "react";
 
-import { Logo } from "@/_layout/Logo";
-import { Menu } from "@/_layout/Menu";
-import { Footer } from "@/_layout/Footer";
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";
-
+import { Header } from "@/_layout/Header";
+import { Footer } from "~/front/components/_layout/Footer";
+import { Logo } from "~/front/components/_layout/Logo";
+import { Menu } from "~/front/components/_layout/Menu";
 import { useToggle } from "~/front/hooks/useToggle.hook";
-import Head from "next/head";
 
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 interface Props {
   children: React.ReactNode;
@@ -20,11 +19,6 @@ export function PageLayout({ children }: Props) {
 
   return (
     <>
-      <Head>
-        <title>Mojo Web</title>
-        <meta name="description" content="A badass app" />
-        <link rel="icon" type="image/png" href="/mojo.png" />
-      </Head>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider
           collapsible
