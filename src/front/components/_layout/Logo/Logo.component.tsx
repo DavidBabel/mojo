@@ -1,7 +1,7 @@
-import React from "react";
-
-import Image from "next/image";
 import { Typography } from "antd";
+import Image from "next/image";
+import React from "react";
+import { Trans } from "react-i18next";
 
 interface Props {
   small: boolean;
@@ -30,7 +30,7 @@ export function Logo({ small = false }: Props) {
             transition: "all ease 0.3s",
           }}
         >
-          Mojo web
+          <Trans>app-name</Trans>
         </Typography>
       </div>
     </>

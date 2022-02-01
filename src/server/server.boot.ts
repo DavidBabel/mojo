@@ -1,12 +1,12 @@
 import "reflect-metadata";
-import { loadEnvConfig } from "@next/env";
 
-import { expressServer } from "~/server/boot/express.boot";
-import { startApolloServer } from "~/server/boot/apolloServer.boot";
-import { startNextJs } from "~/server/boot/nextjs.boot";
+import { loadEnvConfig } from "@next/env";
 
 import { CONFIG } from "~/iso/config";
 import { ENV, isProd } from "~/iso/env";
+import { startApolloServer } from "~/server/boot/apolloServer.boot";
+import { expressServer } from "~/server/boot/express.boot";
+import { startNextJs } from "~/server/boot/nextjs.boot";
 
 const port = CONFIG.PORT;
 const env = ENV("NODE_ENV");
@@ -27,7 +27,7 @@ async function bootstrapApp() {
   } else {
     expressServer.get("*", (req, res) => {
       return res.send(
-        "<p>use : <a href='http://localhost:4000'>http://localhost:4000</p>",
+        "<p>for dev env, use : <a href='http://localhost:4000'>http://localhost:4000</p>",
       );
     });
   }

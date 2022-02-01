@@ -1,6 +1,8 @@
-import { checkPassword, hashPassword } from "./hash-password.service";
 import md5 from "md5";
+
 import { CONFIG } from "~/iso/config";
+
+import { checkPassword, hashPassword } from "./hash-password.service";
 
 describe("HashPasswordService", () => {
   it("should correctly hashPassword", () => {

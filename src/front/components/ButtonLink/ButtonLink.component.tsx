@@ -1,7 +1,6 @@
-import React from "react";
-
+import { type ButtonProps, Button } from "antd";
 import Link from "next/link";
-import { Button, ButtonProps } from "antd";
+import React from "react";
 
 interface Props extends ButtonProps {
   href: string;

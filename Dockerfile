@@ -1,19 +1,29 @@
-FROM node:16.13-buster-slim
+FROM node:16.13-buster-slim AS build
 RUN apt-get update && apt-get install libssl-dev ca-certificates -y
 WORKDIR /app
 RUN export NODE_ENV=production
 
 COPY package.json yarn.lock ./
-RUN SKIP_POSTINSTALL=1 yarn install --frozen-lockfile && yarn cache clean
+RUN SKIP_POSTINSTALL=1 yarn install --frozen-lockfile
 
 COPY . .
 RUN yarn setup
 RUN yarn build
 
-RUN yarn remove ts-jest prisma nodemon jest eslint eslint-config-next \
-  @graphql-codegen/cli @graphql-codegen/introspection @graphql-codegen/typescript \
-  @graphql-codegen/typescript-operations @graphql-codegen/typescript-react-apollo \
-  @faker-js/faker
+RUN cp -R node_modules prisma_node_modules
+RUN SKIP_POSTINSTALL=1 npm prune --production
+
+RUN rm -rf node_modules/@generated
+RUN cp -R prisma_node_modules/@generated node_modules
+RUN cp -R node_modules prod_node_modules
+
+FROM build as deploy
+
+COPY --from=build /app/prod_node_modules /app/node_modules
+COPY --from=build /app/.env /app/.env
+COPY --from=build /app/.next /app/.next
+COPY --from=build /app/dist /app/dist
+COPY --from=build /app/public /app/public
 
 EXPOSE 8080
 CMD ["yarn", "start"]

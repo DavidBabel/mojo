@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, User } from "@prisma/client";
 import type { NextPage } from "next";
 
 export const getServerSideProps = async () => {
@@ -17,13 +17,13 @@ export const getServerSideProps = async () => {
 
 type PageProps = InferSSRProps<typeof getServerSideProps>;
 
-const Home: NextPage<PageProps> = ({ users }) => {
+const DbPage: NextPage<PageProps> = ({ users }) => {
   return (
     <>
-      <p>List of users in database :</p>
+      <p>List of users in database thru prisma :</p>
 
       <div>
-        {users.map(user => (
+        {users.map((user: User) => (
           <div key={`${user.id}`}>{user.name}</div>
         ))}
       </div>
@@ -31,4 +31,4 @@ const Home: NextPage<PageProps> = ({ users }) => {
   );
 };
 
-export default Home;
+export default DbPage;

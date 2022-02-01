@@ -18,6 +18,8 @@ const VideosPage: NextPage = () => {
           <PlusCircleOutlined /> Upload new video
         </ButtonLink>
       </p>
+
+      <p>More to come ... (click above button to upload video)</p>
     </>
   );
 };

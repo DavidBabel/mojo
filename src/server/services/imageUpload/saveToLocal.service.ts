@@ -1,6 +1,6 @@
 import { createWriteStream } from "fs";
-import path from "path";
 import { FileUpload } from "graphql-upload";
+import path from "path";
 
 export async function saveToLocal(video: FileUpload) {
   const { createReadStream, filename } = video;

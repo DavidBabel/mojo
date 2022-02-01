@@ -1,3 +1,4 @@
+import { FileUpload,GraphQLUpload } from "graphql-upload";
 import {
   Arg,
   MiddlewareFn,
@@ -5,11 +6,11 @@ import {
   Resolver,
   UseMiddleware,
 } from "type-graphql";
-import { GraphQLUpload, FileUpload } from "graphql-upload";
-import { saveToLocal, saveToBucket } from "~/server/services/imageUpload";
+import { v4 as uuidv4 } from "uuid";
+
 import { isProd } from "~/iso/env";
 import { getExtension } from "~/iso/string";
-import { v4 as uuidv4 } from "uuid";
+import { saveToBucket,saveToLocal } from "~/server/services/imageUpload";
 
 const allowedMimeTypes = ["video/mp4"];
 

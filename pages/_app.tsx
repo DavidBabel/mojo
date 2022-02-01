@@ -1,34 +1,34 @@
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-import type { AppProps } from "next/app";
-
-import { PageLayout } from "@/_layout/PageLayout";
-import { CONFIG } from "~/iso/config";
-
-import { isProd } from "~/iso/env";
-
+import "~/front/i18n/init-i18n";
 import "antd/dist/antd.css";
 import "~/front/styles/globals.css";
 
-const uri = isProd()
-  ? CONFIG.GRAPHQL_ENDPOINT
-  : "http://localhost:3000" + CONFIG.GRAPHQL_ENDPOINT;
+import { ApolloProvider } from "@apollo/client";
+import type { GetServerSideProps } from "next";
+import type { AppProps } from "next/app";
+import { getSession, SessionProvider } from "next-auth/react";
 
-const link = createUploadLink({ uri });
+import { PageLayout } from "@/_layout/PageLayout";
+import { apolloClient } from "~/front/lib/apollo.init";
 
-const client = new ApolloClient({
-  link,
-  cache: new InMemoryCache(),
-});
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  return {
+    props: {
+      session: await getSession(ctx),
+    },
+  };
+};
 
-function MojoApp({ Component, pageProps }: AppProps) {
+export default function MojoApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
-    <ApolloProvider client={client}>
-      <PageLayout>
-        <Component {...pageProps} />
-      </PageLayout>
-    </ApolloProvider>
+    <SessionProvider session={session}>
+      <ApolloProvider client={apolloClient}>
+        <PageLayout>
+          <Component {...pageProps} />
+        </PageLayout>
+      </ApolloProvider>
+    </SessionProvider>
   );
 }
-
-export default MojoApp;

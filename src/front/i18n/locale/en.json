@@ -1,0 +1,36 @@
+{
+  "app-name": "Mojo Web",
+  "pages": {
+    "404": {
+      "title": "Page not found",
+      "description": "404, not yet added, sorry sorry !"
+    }
+  },
+  "layout": {
+    "menu": {
+      "videos": "Videos",
+      "account": "Account",
+      "manage-users": "Users",
+      "demo-tools": "< Demo Tools />"
+    },
+    "breadcrumb": {
+      "Home": "Home",
+      "videos": "Videos",
+      "account": "Account",
+      "manage-users": "Users",
+      "demo-tools": "< Demo Tools />"
+    },
+    "header": {
+      "connexion": {
+        "sign-in": "Sign in",
+        "register": "Register"
+      }
+    },
+    "footer": {
+      "credit": {
+        "by": "By",
+        "for": "for"
+      }
+    }
+  }
+}

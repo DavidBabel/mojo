@@ -26,12 +26,18 @@ jobs:
           cache: "yarn"
       - name: Install dependencies
         run: SKIP_POSTINSTALL=1 yarn install --frozen-lockfile
-      - name: Build nextjs
-        run: yarn build
+      - name: Setup build
+        run: yarn setup
       - name: Checking lint
         run: yarn lint
+      - name: Build nextjs
+        run: yarn build
       - name: Running tests
         run: yarn test
+      - name: Check circular deps
+        run: madge .
+      - name: Check outdated packages
+        run: yarn outdated
 
   deploy:
     runs-on: ubuntu-latest
@@ -45,6 +51,8 @@ jobs:
         with:
           node-version: "16.x"
           cache: "yarn"
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
       - id: auth
         uses: google-github-actions/auth@v0
         with:

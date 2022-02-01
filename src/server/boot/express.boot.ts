@@ -1,7 +1,6 @@
-import express from "express";
-
-import cors from "cors";
 import compression from "compression";
+import cors from "cors";
+import express from "express";
 
 const expressServer = express();
 expressServer.use(cors());
