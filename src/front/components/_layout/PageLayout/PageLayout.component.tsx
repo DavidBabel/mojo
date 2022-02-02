@@ -1,5 +1,7 @@
 import { Layout } from "antd";
+import Head from "next/head";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";
 import { Header } from "@/_layout/Header";
@@ -15,6 +17,7 @@ interface Props {
 }
 
 export function PageLayout({ children }: Props) {
+  const { t } = useTranslation();
   const [collapsed, toggleCollapsed, setCollapsed] = useToggle(false);
 
   useEffect(() => {
@@ -25,6 +28,10 @@ export function PageLayout({ children }: Props) {
 
   return (
     <>
+      <Head>
+        <title>{t("app-name")}</title>
+        <link rel="icon" type="image/png" href="/mojo.png" />
+      </Head>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider
           collapsible

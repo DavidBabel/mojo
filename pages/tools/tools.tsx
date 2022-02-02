@@ -8,9 +8,11 @@ import { Card, Col, Row, Typography } from "antd";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { PrismaCard } from "@/_devTools/PrismaCard";
 import { LinkNewTab } from "~/front/components/LinkNewTab";
+import { CONFIG } from "~/iso/config";
 
 const { Title } = Typography;
 
@@ -28,6 +30,11 @@ const iconStyle = {
 };
 
 const ToolsPage: NextPage = () => {
+  const router = useRouter();
+
+  console.log("router :");
+  console.log(router);
+
   return (
     <>
       <Title level={2}>Tools for demo only</Title>
@@ -102,7 +109,9 @@ const ToolsPage: NextPage = () => {
         </Col>
         <PrismaCard {...colProps} />
         <Col {...colProps}>
-          <LinkNewTab href="https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:3000/graphql">
+          <LinkNewTab
+            href={`https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:3000/${CONFIG.GRAPHQL_ENDPOINT}`}
+          >
             <Card
               hoverable
               cover={
