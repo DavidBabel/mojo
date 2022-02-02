@@ -34,22 +34,22 @@ I will not add git hooks yet ^^
 ## Structure
 
 - `@types` custom and enhanced types
-  - `generated` contains generated typescripts types from schema.gql
-- `pages/` all front endpoints (nextjs path)
-  - `api` api endpoints (nextjs path)
-- `public` public assets like images (nextjs path)
+  - `generated` contains [generated](https://www.graphql-code-generator.com/) typescripts types from schema.gql
+- `pages/` all front endpoints ([nextjs path](https://nextjs.org/docs/basic-features/pages))
+  - `api` api endpoints ([nextjs path](https://nextjs.org/docs/api-routes/introduction))
+- `public` public assets like images ([nextjs path](https://nextjs.org/docs/basic-features/static-file-serving))
 - `src/`
   - `front` : components and front-end logic
     - `components` : reactjs components based on [Antd](https://ant.design/)
-    - `gql` : gql mutation and queries
-    - `hooks` : reactjs hooks
+    - `gql` : gql [mutation](https://www.apollographql.com/docs/react/data/mutations/#executing-a-mutation) and [queries](https://www.apollographql.com/docs/react/data/queries/#executing-a-query)
+    - `hooks` : [reactjs hooks](https://reactjs.org/docs/hooks-intro.html)
     - `i18n` : [translations](https://react.i18next.com/)
     - `styles` : [scss](https://sass-lang.com/documentation)/css styles
     - `lib` : every other utils
   - `server` : backend logic
     - `boot` : boot configs of the servers ([express](https://expressjs.com/fr/4x/api.html)/[apollo](https://www.apollographql.com/docs/apollo-server/)/[nextjs](https://nextjs.org/))
-    - `graphql` : type-graphql and gql endpoint config
-      - `generated` : contains the generated schema.gql
+    - `graphql` : [generated](https://prisma.typegraphql.com/docs/intro) resolvers setup, type-graphql resolvers/middleware and gql endpoint config
+      - `generated` : contains the [generated](https://typegraphql.com/docs/emit-schema.html) schema.gql
       - `accessRight` : 🚧 [Apply typegraphql decorators](https://prisma.typegraphql.com/docs/advanced/additional-decorators/#additional-decorators-for-prisma-schema-resolvers) to generated resolvers
       - `auth` : 🚧 [custom auth management](https://typegraphql.com/docs/authorization.html)
       - `guards` : type-graphql [guards](https://typegraphql.com/docs/next/middlewares.html)
