@@ -5,13 +5,14 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Card, Col, Row, Typography } from "antd";
-import type { NextPage } from "next";
+import type { NextPage, NextPageContext } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { PrismaCard } from "@/_devTools/PrismaCard";
 import { LinkNewTab } from "~/front/components/LinkNewTab";
+import { useBaseUrl } from "~/front/hooks/useBaseUrl.hook";
 import { CONFIG } from "~/iso/config";
 
 const { Title } = Typography;
@@ -30,10 +31,7 @@ const iconStyle = {
 };
 
 const ToolsPage: NextPage = () => {
-  const router = useRouter();
-
-  console.log("router :");
-  console.log(router);
+  const serverBaseUrl = useBaseUrl().replace("4000", "3000");
 
   return (
     <>
@@ -74,7 +72,7 @@ const ToolsPage: NextPage = () => {
           </Link>
         </Col>
         <Col {...colProps}>
-          <LinkNewTab href="./cat-example.mp4" download="cat-example.mp4">
+          <LinkNewTab href="/cat-example.mp4" download="cat-example.mp4">
             <Card
               hoverable
               cover={
@@ -110,7 +108,7 @@ const ToolsPage: NextPage = () => {
         <PrismaCard {...colProps} />
         <Col {...colProps}>
           <LinkNewTab
-            href={`https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:3000/${CONFIG.GRAPHQL_ENDPOINT}`}
+            href={`https://studio.apollographql.com/sandbox/explorer?endpoint=${serverBaseUrl}${CONFIG.GRAPHQL_ENDPOINT}`}
           >
             <Card
               hoverable

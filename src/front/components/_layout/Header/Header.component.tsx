@@ -35,6 +35,7 @@ export function Header() {
             alignItems: "center",
             gap: 10,
             height: "100%",
+            userSelect: "none",
           }}
         >
           {status === "authenticated" ? (

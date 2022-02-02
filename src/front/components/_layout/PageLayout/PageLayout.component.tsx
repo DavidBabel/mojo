@@ -1,6 +1,6 @@
 import { Layout } from "antd";
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";
@@ -8,6 +8,7 @@ import { Header } from "@/_layout/Header";
 import { Footer } from "~/front/components/_layout/Footer";
 import { Logo } from "~/front/components/_layout/Logo";
 import { Menu } from "~/front/components/_layout/Menu";
+import { useOnMobile } from "~/front/hooks/useOnMobile.hook";
 import { useToggle } from "~/front/hooks/useToggle.hook";
 
 const { Content, Sider } = Layout;
@@ -19,12 +20,7 @@ interface Props {
 export function PageLayout({ children }: Props) {
   const { t } = useTranslation();
   const [collapsed, toggleCollapsed, setCollapsed] = useToggle(false);
-
-  useEffect(() => {
-    if (window?.innerWidth < 768) {
-      setCollapsed(true);
-    }
-  }, [setCollapsed]);
+  useOnMobile(useCallback(() => setCollapsed(true), [setCollapsed]));
 
   return (
     <>
@@ -44,6 +40,7 @@ export function PageLayout({ children }: Props) {
             left: 0,
             top: 0,
             bottom: 0,
+            userSelect: "none",
           }}
         >
           <Logo small={collapsed} />
