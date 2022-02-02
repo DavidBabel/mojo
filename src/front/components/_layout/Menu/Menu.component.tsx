@@ -56,17 +56,17 @@ export function Menu() {
                 <Link href="http://localhost:4000">Local</Link>
               </Item>
               <Item key="devenv" icon={<SettingOutlined />}>
-                <Link href="https://mojo-develop-nujin2hbiq-ew.a.run.app/">
+                <Link href="https://dashboard.heroku.com/pipelines/6041acc2-fe63-4add-a8c3-51a9ce622ca9">
                   Dev env
                 </Link>
               </Item>
               <Item key="stagingenv" icon={<SettingOutlined />}>
-                <Link href="https://mojo-main-nujin2hbiq-ew.a.run.app">
+                <Link href="https://mojo-video-staging.herokuapp.com/">
                   Staging env
                 </Link>
               </Item>
               <Item key="prodenv" icon={<SettingOutlined />}>
-                <Link href="https://mojo-prod-nujin2hbiq-ew.a.run.app/">
+                <Link href="https://mojo-video-prod.herokuapp.com/">
                   Prod env
                 </Link>
               </Item>
@@ -83,17 +83,22 @@ export function Menu() {
               </Item>
               <Item key="builds" icon={<SettingOutlined />}>
                 <LinkNewTab href="https://github.com/DavidBabel/mojo/actions">
-                  Builds
+                  CI
                 </LinkNewTab>
               </Item>
               <Item key="run" icon={<SettingOutlined />}>
-                <LinkNewTab href="https://console.cloud.google.com/run?project=mojo-339419">
-                  Cloud run
+                <LinkNewTab href="https://dashboard.heroku.com/pipelines/6041acc2-fe63-4add-a8c3-51a9ce622ca9">
+                  CD
                 </LinkNewTab>
               </Item>
               <Item key="notion" icon={<SettingOutlined />}>
                 <Link href="https://www.notion.so/Following-Mojo-Web-3ae7435c8f904b3d81bc5a911913dd1a">
                   Notion
+                </Link>
+              </Item>
+              <Item key="notion" icon={<SettingOutlined />}>
+                <Link href="https://www.notion.so/archery/Technical-Test-d5033edf044f45aaa8c13adce9076c82">
+                  Test Subject
                 </Link>
               </Item>
             </SubMenu>

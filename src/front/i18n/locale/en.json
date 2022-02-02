@@ -1,6 +1,15 @@
 {
   "app-name": "Mojo Web",
   "pages": {
+    "home": {
+      "welcome-to": "Welcome to"
+    },
+    "register": {
+      "title": "Register",
+      "name": "User name",
+      "email": "Email address",
+      "password": "Password"
+    },
     "404": {
       "title": "Page not found",
       "description": "404, not yet added, sorry sorry !"

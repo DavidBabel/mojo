@@ -1,9 +1,9 @@
 import { ApolloError } from "@apollo/client";
-import { Button, Spin } from "antd";
-import Link from "next/link";
-import { useState } from "react";
+import { Button, Row, Spin } from "antd";
 
 import { Title } from "@/_layout/Title";
+import { ButtonLink } from "@/ButtonLink";
+import { useToggle } from "~/front/hooks/useToggle.hook";
 
 interface Props {
   loading: boolean;
@@ -11,36 +11,31 @@ interface Props {
 }
 
 export function LoadingOrError({ loading, error }: Props) {
-  const [showError, setShowError] = useState(false);
+  const [showError, toggleShowError] = useToggle(false);
 
   if (loading) {
-    return <Spin size="large" />;
+    return (
+      <Row justify="center" align="middle" style={{ height: "40vh" }}>
+        <Spin size="large" />
+      </Row>
+    );
   }
   if (error) {
     return (
       <div
         style={{
-          padding: 2,
-          width: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
           alignItems: "center",
-          height: "calc(100vh - 150px)",
         }}
       >
         <Title>
           An error occured, are you{" "}
-          <Link href="/login">
-            <a>
-              <Button color="primary">logged in</Button>
-            </a>
-          </Link>{" "}
-          ?
+          <ButtonLink href="/login">logged in</ButtonLink> ?
         </Title>
         <br />
-        <Button color="secondary" onClick={() => setShowError(!showError)}>
-          {showError ? "Hide" : "Show"} error
+        <Button color="secondary" onClick={toggleShowError}>
+          {showError ? "Hide error" : "Show error"}
         </Button>
         {showError && (
           <div>

@@ -4,16 +4,16 @@
 // import { JWT } from "next-auth/jwt";
 // https://next-auth.js.org/adapters/prisma
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
 import { CONFIG } from "~/iso/config";
 import { UserRole } from "~/server/prisma/enums";
+import { PrismaClient } from "~/server/prisma/singleton";
 import { checkPassword } from "~/server/services/password/hash-password.service";
 
-const prisma = new PrismaClient();
+const prisma = PrismaClient.instance;
 
 // NOTE: this code is very in progress
 
@@ -72,7 +72,7 @@ export default NextAuth({
         if (!email || !password) {
           throw new Error("Credentials not found");
         }
-        const prisma = new PrismaClient();
+        const prisma = PrismaClient.instance;
 
         const user = await prisma.user.findFirst({
           where: { email },

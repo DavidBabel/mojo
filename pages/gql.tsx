@@ -4,16 +4,16 @@ import type { NextPage } from "next";
 import { LoadingOrError } from "@/LoadingOrError";
 import { Query } from "~/@types/generated/graphqlTypes";
 
-const GqlDbPage: NextPage = () => {
-  const query = gql`
-    query Users {
-      users {
-        id
-        name
-      }
+const query = gql`
+  query Users {
+    users {
+      id
+      name
     }
-  `;
+  }
+`;
 
+const GqlDbPage: NextPage = () => {
   const { data: usersData, loading, error } = useQuery<Query>(query);
 
   if (loading || error) {

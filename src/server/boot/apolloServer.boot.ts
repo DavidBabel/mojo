@@ -3,7 +3,7 @@ import { Express } from "express";
 import { graphqlUploadExpress } from "graphql-upload";
 
 import { CONFIG } from "~/iso/config";
-import { Mo } from "~/iso/numbers/size";
+import { Mb } from "~/iso/numbers/size";
 import { schema } from "~/server/graphql/buildSchema";
 import { context } from "~/server/prisma/context";
 
@@ -19,7 +19,10 @@ const apolloServer = new ApolloServer({
 
 export async function startApolloServer(expressServer: Express) {
   expressServer.use(
-    graphqlUploadExpress({ maxFileSize: 10 * Mo, maxFiles: 10 }),
+    graphqlUploadExpress({
+      maxFileSize: CONFIG.MAX_FILE_SIZE_MB * Mb,
+      maxFiles: 1,
+    }),
   );
 
   await apolloServer.start();

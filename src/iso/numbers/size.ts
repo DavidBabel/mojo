@@ -1,5 +1,5 @@
-const Ko = 1024;
-const Mo = 1024 * Ko;
-const Go = 1024 * Mo;
+const Kb = 1024;
+const Mb = 1024 * Kb;
+const Gb = 1024 * Mb;
 
-export { Go, Ko, Mo };
+export { Gb, Kb, Mb };

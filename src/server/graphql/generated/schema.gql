@@ -600,6 +600,7 @@ type Mutation {
   deleteUser(where: UserWhereUniqueInput!): User
   deleteVerificationToken(where: VerificationTokenWhereUniqueInput!): VerificationToken
   deleteVideo(where: VideoWhereUniqueInput!): Video
+  registerNewUser(email: String!, name: String!, password: String!): String!
   updateAccount(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
   updateManyAccount(data: AccountUpdateManyMutationInput!, where: AccountWhereInput): AffectedRowsOutput!
   updateManySession(data: SessionUpdateManyMutationInput!, where: SessionWhereInput): AffectedRowsOutput!
