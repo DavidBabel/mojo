@@ -3,6 +3,7 @@ const defaultEnv = {
   GRAPHQL_ENDPOINT: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "/graphql",
   NEXTAUTH_URL: process.env.NEXTAUTH_URL ?? "",
   NEXT_AUTH_SECRET: process.env.NEXT_AUTH_SECRET ?? "",
+  MAX_FILE_SIZE_MB: process.env.MAX_FILE_SIZE_MB ?? 5,
   PORT: process.env.PORT ?? 3000,
 } as const;
 

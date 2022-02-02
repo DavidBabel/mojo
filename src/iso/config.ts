@@ -5,6 +5,7 @@ export const CONFIG = {
   GRAPHQL_ENDPOINT: toString(ENV("GRAPHQL_ENDPOINT")),
   NEXTAUTH_URL: toString(ENV("NEXTAUTH_URL")),
   NEXT_AUTH_SECRET: toString(ENV("NEXT_AUTH_SECRET")),
+  MAX_FILE_SIZE_MB: toNumber(ENV("MAX_FILE_SIZE_MB")),
   PORT: toNumber(ENV("PORT")),
 } as const;
 

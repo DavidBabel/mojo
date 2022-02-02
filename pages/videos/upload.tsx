@@ -9,7 +9,7 @@ import type {
   Mutation,
   MutationVideoUploadArgs,
 } from "~/@types/generated/graphqlTypes";
-import { FILE_UPLOAD_MUTATION } from "~/front/gql/mutation/fileUpload.mutation";
+import { VIDEO_UPLOAD_MUTATION } from "~/front/gql/mutation/videoUpload.mutation";
 import { useToggle } from "~/front/hooks/useToggle.hook";
 import { isDev } from "~/iso/env";
 
@@ -19,7 +19,7 @@ const UploadVideoPage: NextPage = () => {
   const [uploadLoading, setUploadLoading] = useState(false);
   const [forceBucketUpload, toggleForceBucketUpload] = useToggle(false);
   const [uploadFile] = useMutation<Mutation, MutationVideoUploadArgs>(
-    FILE_UPLOAD_MUTATION,
+    VIDEO_UPLOAD_MUTATION,
   );
 
   const handleFileChange = useCallback(

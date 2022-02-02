@@ -1,5 +1,5 @@
 import { Layout } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";
 import { Header } from "@/_layout/Header";
@@ -15,7 +15,13 @@ interface Props {
 }
 
 export function PageLayout({ children }: Props) {
-  const [collapsed, toggleCollapsed] = useToggle(false);
+  const [collapsed, toggleCollapsed, setCollapsed] = useToggle(false);
+
+  useEffect(() => {
+    if (window?.innerWidth < 768) {
+      setCollapsed(true);
+    }
+  }, [setCollapsed]);
 
   return (
     <>
@@ -26,7 +32,7 @@ export function PageLayout({ children }: Props) {
           onCollapse={toggleCollapsed}
           style={{
             overflow: "auto",
-            height: "100vh",
+            height: "100%",
             position: "fixed",
             left: 0,
             top: 0,
