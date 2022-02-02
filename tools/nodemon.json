@@ -1,5 +1,5 @@
 {
   "watch": ["src/server/", "src/iso", ".env", ".env.local"],
   "ext": ".ts",
-  "exec": "yarn script ./src/server/server.boot.ts & yarn types"
+  "exec": "yarn script ./src/server/boot/server.boot.ts & yarn types"
 }

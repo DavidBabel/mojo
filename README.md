@@ -26,33 +26,50 @@ We use 2 endpoints for livereload front/back performances:
 - access http://localhost:4000 for nextjs server
 - access the graphql API at http://localhost:3000
 
-In production the server uses only one port
+In production the server uses only one port, but in dev env it's way much faster
 
 **Note:** we use prettier & eslint here, please adapt your editor
 I will not add git hooks yet ^^
 
 ## Structure
 
-- `@types` contains custom and enhanced types
-- `pages/` contains all front endpoints (nextjs)
-  - `api` contains api endpoints (nextjs)
-- `public` contains public assets like images (nextjs)
+- `@types` custom and enhanced types
+  - `generated` contains generated typescripts types from schema.gql
+- `pages/` all front endpoints (nextjs path)
+  - `api` api endpoints (nextjs path)
+- `public` public assets like images (nextjs path)
 - `src/`
-  - `front` : contains components and front-end logic
-  - `server` : contains backend logic
-  - `iso` : contains iso (back/front) libs & configs
-- `tools/` : contains development tools and configs
-  - `scripts` : typescript or bash script to generate project state
+  - `front` : components and front-end logic
+    - `components` : reactjs components based on [Antd](https://ant.design/)
+    - `gql` : gql mutation and queries
+    - `hooks` : reactjs hooks
+    - `i18n` : [translations](https://react.i18next.com/)
+    - `styles` : [scss](https://sass-lang.com/documentation)/css styles
+    - `lib` : every other utils
+  - `server` : backend logic
+    - `boot` : boot configs of the servers ([express](https://expressjs.com/fr/4x/api.html)/[apollo](https://www.apollographql.com/docs/apollo-server/)/[nextjs](https://nextjs.org/))
+    - `graphql` : type-graphql and gql endpoint config
+      - `generated` : contains the generated schema.gql
+      - `accessRight` : 🚧 [Apply typegraphql decorators](https://prisma.typegraphql.com/docs/advanced/additional-decorators/#additional-decorators-for-prisma-schema-resolvers) to generated resolvers
+      - `auth` : 🚧 [custom auth management](https://typegraphql.com/docs/authorization.html)
+      - `guards` : type-graphql [guards](https://typegraphql.com/docs/next/middlewares.html)
+      - `middlewares` : type-graphql [middlewares](https://typegraphql.com/docs/next/middlewares.html)
+      - `resolvers` : graphql [resolvers](https://typegraphql.com/docs/next/resolvers.html)
+    - `prisma` : [db schema](https://www.prisma.io/) and management
+    - `services` : isolated backend services
+  - `iso` : iso (back/front) libs, configs and consts
+- `tools/` : development tools and configs
+  - `scripts` : TS or bash scripts to generate project state
 
 ## Deploy
 
-Serverless with Google Cloud Platform
+Serverless with [Heroku](https://dashboard.heroku.com/pipelines/6041acc2-fe63-4add-a8c3-51a9ce622ca9)
 
 ### Setup link (private)
 
-CI : https://console.cloud.google.com/cloud-build/dashboard?hl=fr&project=mojo-339419
+CI : https://github.com/DavidBabel/mojo/actions
 
-Run : https://console.cloud.google.com/run?hl=fr&project=mojo-339419
+CD/Run : https://dashboard.heroku.com/pipelines/6041acc2-fe63-4add-a8c3-51a9ce622ca9
 
 ### Following on Notion
 
@@ -60,9 +77,9 @@ https://www.notion.so/Following-Mojo-Web-3ae7435c8f904b3d81bc5a911913dd1a
 
 ### Endpoints
 
-- ✅ dev (develop) : https://mojo-dev-nujin2hbiq-ew.a.run.app/
-- ✅ staging (main) : https://mojo-staging-nujin2hbiq-ew.a.run.app/
-- 🚧 prod (on tag) : https://mojo-prod-nujin2hbiq-ew.a.run.app/ (fail for now, wrong GCP settings)
+- ✅ dev (PR) : review app on PR or on demand
+- ✅ staging (develop) : https://mojo-video-staging.herokuapp.com/
+- ✅ prod (main) : https://mojo-video-prod.herokuapp.com/
 
 ## Issues
 
