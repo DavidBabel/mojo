@@ -38,15 +38,16 @@ Status:
 ## Step 4 : Auth 🚧
 
 - find a smart way to manage auth ✅
-- manage auth & jwt 🚧
-- add login / register => ✅ (oauth)/ 🚧 / 🚧
+- manage auth & jwt ✅
+- add register ✅
+- add login 🚧
 - enable authenticated video upload 🚧
 
 ## Step 5 : UI / UX 🚧
 
-- draft a modern UI with antd
+- draft a modern UI with antd 🚧
 - enhance video upload experience with advanced components 🚧
-- develop admin / user experiences
+- develop admin / user experiences 🚧
 
 ## Step 6 : Non-regression
 

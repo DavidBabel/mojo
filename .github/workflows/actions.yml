@@ -32,7 +32,7 @@ jobs:
       - name: Running tests
         run: yarn test
       - name: Check outdated packages
-        run: yarn outdated
+        run: yarn outdated | true
       - name: Check circular deps
         run: yarn run madge ./.next && yarn run madge ./dist
 
