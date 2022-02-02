@@ -9,11 +9,11 @@ export async function saveToLocal(video: FileUpload) {
 
   return new Promise<string>((resolve, reject) =>
     createReadStream()
-      .pipe(createWriteStream(filePath))
       .on("close", () => resolve(`/localBucket/${filename}`))
       .on("error", error => {
         console.error(error);
         reject(error);
-      }),
+      })
+      .pipe(createWriteStream(filePath)),
   );
 }

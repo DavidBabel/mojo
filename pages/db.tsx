@@ -1,12 +1,14 @@
-import { PrismaClient, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import type { NextPage } from "next";
 
+import { PrismaClient } from "~/server/prisma/singleton";
+
 export const getServerSideProps = async () => {
-  const prisma = new PrismaClient();
+  const prisma = PrismaClient.instance;
 
   const users = await prisma.user.findMany();
 
-  await prisma.$disconnect();
+  // await prisma.$disconnect();
 
   return {
     props: {

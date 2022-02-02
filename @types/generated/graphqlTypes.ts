@@ -623,6 +623,7 @@ export type Mutation = {
   deleteUser?: Maybe<User>;
   deleteVerificationToken?: Maybe<VerificationToken>;
   deleteVideo?: Maybe<Video>;
+  registerNewUser: Scalars['String'];
   updateAccount?: Maybe<Account>;
   updateManyAccount: AffectedRowsOutput;
   updateManySession: AffectedRowsOutput;
@@ -714,6 +715,13 @@ export type MutationDeleteVerificationTokenArgs = {
 
 export type MutationDeleteVideoArgs = {
   where: VideoWhereUniqueInput;
+};
+
+
+export type MutationRegisterNewUserArgs = {
+  email: Scalars['String'];
+  name: Scalars['String'];
+  password: Scalars['String'];
 };
 
 

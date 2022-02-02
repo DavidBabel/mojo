@@ -4,11 +4,11 @@ import "react-i18next";
 
 import en from "~/front/i18n/locale/en.json";
 
-type Locale = "en" | "fr";
+export type AvailableLocale = "en" | "fr";
 
 declare module "react-i18next" {
   interface CustomTypeOptions {
     // defaultNS: "translations";
-    resources: Record<Locale, typeof en>;
+    resources: Record<AvailableLocale, typeof en>;
   }
 }

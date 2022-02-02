@@ -1,10 +1,10 @@
 // https://daily-dev-tips.com/posts/seeding-a-prisma-database-in-nextjs/
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "~/server/prisma/singleton";
 
 import { users } from "./User.seeds";
 
-const prisma = new PrismaClient();
+const prisma = PrismaClient.instance;
 
 async function main() {
   for (const user of users) {

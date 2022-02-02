@@ -1,12 +1,12 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "~/server/prisma/singleton";
 
 export type Context = {
-  prisma: PrismaClient;
+  prisma: typeof PrismaClient.instance;
   // req: Request;
   // res: Response;
 };
 
-const prisma = new PrismaClient();
+const prisma = PrismaClient.instance;
 export const context: Context = {
   prisma,
 };
