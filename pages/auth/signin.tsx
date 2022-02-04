@@ -44,7 +44,7 @@ const SignInPage: NextPage = () => {
       >
         <EmailInput />
         <PasswordInput />
-        <SubmitButton loading={false} type="default">
+        <SubmitButton loading={loading} type="default">
           {t("pages.signin.signin-with-credentials")}
         </SubmitButton>
       </Form>

@@ -16,7 +16,6 @@ export class RegisterResolver {
     @Arg("password", () => String) password: string,
     @Arg("name", () => String) name: string,
   ) {
-    const coucou: Maybe<string> = "coucou";
     let existingUser: MaybeNull<User> = null;
     try {
       existingUser = await prisma.user.findFirst({ where: { email } });

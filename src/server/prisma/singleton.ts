@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports -- only exception in the project
 import { PrismaClient as PrismaClientBase } from "@prisma/client";
 
 if (!(global as any).PrismaClient) {
