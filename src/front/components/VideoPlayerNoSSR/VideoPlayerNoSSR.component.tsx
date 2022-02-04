@@ -1,9 +1,9 @@
 import { DefaultUi, Player, Video } from "@vime/react";
 
 export interface VideoPlayerProps {
-  videoUrl: string;
   mimetype?: string;
   posterUrl?: string;
+  videoUrl: string;
 }
 
 export function VideoPlayerNoSSR({

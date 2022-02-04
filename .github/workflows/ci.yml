@@ -14,7 +14,9 @@ jobs:
           node-version: "16.x"
           cache: "yarn"
       - name: Install dependencies
-        run: SKIP_POSTINSTALL=1 yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
+      - name: Check translation keys
+        run: yarn i18n
       - name: Setup build
         run: yarn setup
       - name: Checking lint

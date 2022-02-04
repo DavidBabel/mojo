@@ -17,14 +17,14 @@ const GqlDbPage: NextPage = () => {
   const { data: usersData, loading, error } = useQuery<Query>(query);
 
   if (loading || error) {
-    return <LoadingOrError loading={loading} error={error} />;
+    return <LoadingOrError error={error} loading={loading} />;
   }
 
   const users = usersData?.users;
 
   return (
     <>
-      <p>List of users in database thru graphql :</p>
+      <p>List of users in database through graphql :</p>
 
       <div>
         {users?.map(user => (

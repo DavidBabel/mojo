@@ -3,17 +3,34 @@ import React from "react";
 
 interface LinkNewTabProps extends React.PropsWithChildren<LinkProps> {
   download?: string;
+  href: string;
 }
 
 export function LinkNewTab({ children, download, ...props }: LinkNewTabProps) {
-  const preventBlank = props.href.toString().startsWith("javascript");
+  const { href } = props;
+  const external = href.includes("http://") || href.includes("https://");
+  const preventBlank = href.startsWith("javascript");
+  if (external) {
+    return (
+      <>
+        <a
+          download={download}
+          href={href}
+          rel="noreferrer"
+          target={preventBlank ? "_self" : "_blank"}
+        >
+          {children}
+        </a>
+      </>
+    );
+  }
   return (
     <>
-      <Link passHref {...props}>
+      <Link {...props} passHref>
         <a
-          target={preventBlank ? "_self" : "_blank"}
-          rel="noreferrer"
           download={download}
+          rel="noreferrer"
+          target={preventBlank ? "_self" : "_blank"}
         >
           {children}
         </a>

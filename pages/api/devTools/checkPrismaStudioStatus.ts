@@ -7,7 +7,7 @@ type Result = {
 };
 
 export default async function handler(
-  req: NextApiRequest,
+  _: NextApiRequest,
   res: NextApiResponse<Result>,
 ) {
   let isPrismaStudioStarted = true;

@@ -8,7 +8,7 @@ const VideosPage: NextPage = () => {
   return (
     <>
       <p>
-        <LinkNewTab href={"/cat-example.mp4"} download={"cat-example.mp4"}>
+        <LinkNewTab download={"cat-example.mp4"} href={"/cat-example.mp4"}>
           Download a sample video
         </LinkNewTab>
       </p>

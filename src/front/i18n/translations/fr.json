@@ -1,0 +1,77 @@
+{
+  "app-name": "Mojo Web Fr",
+  "pages": {
+    "home": {
+      "welcome-to": "Bienvenue chez"
+    },
+    "signin": {
+      "title": "Se connecter",
+      "signin-with-credentials": "Se connecter avec login / mot de passe"
+    },
+    "register": {
+      "title": "S'enregistrer"
+    },
+    "auth-error": {
+      "title": "Oh non ...",
+      "description": "Une erreur s'est produite lors de la connexion.",
+      "please-retry": "Veuillez réessayer.",
+      "error": "Erreur:"
+    },
+    "404": {
+      "title": "Page non trouvée",
+      "description": "404, pas ajoutée encore, désolé !"
+    }
+  },
+  "forms": {
+    "signin": {
+      "email": "Adresse email",
+      "password": "Mot de passe"
+    },
+    "register": {
+      "name": "Nom d'utilisateur",
+      "email": "Adresse email",
+      "password": "Mot de passe"
+    }
+  },
+  "common": { "submit": "Envoyer", "cancel": "Annuler" },
+  "components": {
+    "GitHubSignIn": {
+      "description": {
+        "signin": "Connexion avec GitHub",
+        "register": "S'enregistrer avec GitHub"
+      }
+    }
+  },
+  "layout": {
+    "avatar": {
+      "logged-as": "Connecté: {{name}}",
+      "logged-with-provider": "Connecté: {{name}} depuis {{provider}}"
+    },
+    "menu": {
+      "videos": "Videos",
+      "account": "Compte",
+      "manage-users": "Utilisateurs",
+      "demo-tools": "< Demo Tools />"
+    },
+    "breadcrumb": {
+      "Home": "Acceuil",
+      "videos": "Videos",
+      "account": "Compte",
+      "manage-users": "Utilisateurs",
+      "demo-tools": "< Demo Tools />"
+    },
+    "header": {
+      "connexion": {
+        "sign-in": "Connexion",
+        "sign-out": "Déconnexion",
+        "register": "S'enregistrer"
+      }
+    },
+    "footer": {
+      "credit": {
+        "by": "Par",
+        "for": "pour"
+      }
+    }
+  }
+}

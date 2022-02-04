@@ -14,9 +14,9 @@ import {
 applyResolversEnhanceMap(accessRightEnhancement);
 
 export const schema = buildSchemaSync({
-  resolvers: [...resolvers, RegisterResolver, VideoUploadResolver],
-  validate: false,
-  globalMiddlewares: [ErrorInterceptorMiddleware],
   authChecker: customAuthChecker,
   emitSchemaFile: "src/server/graphql/generated/schema.gql",
+  globalMiddlewares: [ErrorInterceptorMiddleware],
+  resolvers: [...resolvers, RegisterResolver, VideoUploadResolver],
+  validate: false,
 });

@@ -11,8 +11,8 @@ const uri = isProd()
 const link = createUploadLink({ uri });
 
 const apolloClient = new ApolloClient({
-  link,
   cache: new InMemoryCache(),
+  link,
 });
 
 export { apolloClient };

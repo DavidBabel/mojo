@@ -1,6 +1,6 @@
 import { Layout } from "antd";
 import Head from "next/head";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";
@@ -8,8 +8,7 @@ import { Header } from "@/_layout/Header";
 import { Footer } from "~/front/components/_layout/Footer";
 import { Logo } from "~/front/components/_layout/Logo";
 import { Menu } from "~/front/components/_layout/Menu";
-import { useOnMobile } from "~/front/hooks/useOnMobile.hook";
-import { useToggle } from "~/front/hooks/useToggle.hook";
+import { useOnMobile, useSession, useToggle } from "~/front/hooks";
 
 const { Content, Sider } = Layout;
 
@@ -19,6 +18,8 @@ interface Props {
 
 export function PageLayout({ children }: Props) {
   const { t } = useTranslation();
+  const { isAdmin } = useSession();
+
   const [collapsed, toggleCollapsed, setCollapsed] = useToggle(false);
   useOnMobile(useCallback(() => setCollapsed(true), [setCollapsed]));
 
@@ -26,20 +27,21 @@ export function PageLayout({ children }: Props) {
     <>
       <Head>
         <title>{t("app-name")}</title>
-        <link rel="icon" type="image/png" href="/mojo.png" />
+        <link href="/mojo.png" rel="icon" type="image/png" />
       </Head>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider
-          collapsible
           collapsed={collapsed}
+          collapsible
           onCollapse={toggleCollapsed}
           style={{
-            overflow: "auto",
-            height: "100%",
-            position: "fixed",
-            left: 0,
-            top: 0,
             bottom: 0,
+            height: "100%",
+            left: 0,
+            overflow: "auto",
+            paddingTop: collapsed && isAdmin() ? 30 : 0,
+            position: "fixed",
+            top: 0,
             userSelect: "none",
           }}
         >
@@ -49,8 +51,8 @@ export function PageLayout({ children }: Props) {
         <Layout
           className="site-layout"
           style={{
-            transition: "margin ease 0.2s",
             marginLeft: collapsed ? 80 : 200,
+            transition: "margin ease 0.2s",
           }}
         >
           <Header />
@@ -58,7 +60,7 @@ export function PageLayout({ children }: Props) {
             <AutoBreadcrumb />
             <div
               className="site-layout-background"
-              style={{ padding: 24, minHeight: 360 }}
+              style={{ minHeight: 360, padding: 24 }}
             >
               {children}
             </div>

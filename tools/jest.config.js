@@ -4,12 +4,12 @@ const { compilerOptions } = require("../tsconfig.json");
 
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 const jestConfig = {
-  preset: "ts-jest",
-  testEnvironment: "node",
-  rootDir: "..",
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/",
   }),
+  preset: "ts-jest",
+  rootDir: "..",
+  testEnvironment: "node",
 };
 
 module.exports = jestConfig;

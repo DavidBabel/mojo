@@ -2,13 +2,13 @@
 
 import "react-i18next";
 
-import en from "~/front/i18n/locale/en.json";
+import en from "~/front/i18n/translations/en.json";
 
+export type LanguageJSON = typeof en;
 export type AvailableLocale = "en" | "fr";
 
 declare module "react-i18next" {
   interface CustomTypeOptions {
-    // defaultNS: "translations";
-    resources: Record<AvailableLocale, typeof en>;
+    resources: Record<AvailableLocale, LanguageJSON>;
   }
 }

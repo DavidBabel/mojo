@@ -1,8 +1,11 @@
 // @ts-check
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["avatars.githubusercontent.com", "www.gravatar.com"],
+  },
+
   reactStrictMode: true,
-  // swcMinify: true,
 };
 
 module.exports = nextConfig;
