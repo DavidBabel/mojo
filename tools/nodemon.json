@@ -1,5 +1,14 @@
 {
-  "watch": ["src/server/", "src/iso", ".env", ".env.local"],
+  "watch": [
+    "src/server/",
+    "src/iso",
+    ".env",
+    ".env.local",
+    "tools/nodemon.json"
+  ],
   "ext": ".ts",
-  "exec": "yarn script ./src/server/server.boot.ts & yarn types"
+  "exec": "yarn script ./src/server/boot/server.boot.ts & yarn types",
+  "events": {
+    "restart": "kill -9 `lsof -i :3000 | grep LISTEN | awk '{print $2}'`"
+  }
 }

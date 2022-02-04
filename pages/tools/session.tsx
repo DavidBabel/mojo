@@ -1,8 +1,9 @@
 import { RollbackOutlined } from "@ant-design/icons";
 import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
 
+import { DebugJson } from "@/_devTools/DebugJson";
 import { ButtonLink } from "@/ButtonLink";
+import { useSession } from "~/front/hooks";
 
 const ToolsPage: NextPage = () => {
   const session = useSession();
@@ -13,9 +14,7 @@ const ToolsPage: NextPage = () => {
         <RollbackOutlined /> Back
       </ButtonLink>
 
-      <pre>
-        <code lang="json">{JSON.stringify(session, null, 2)}</code>
-      </pre>
+      <DebugJson object={session} />
     </>
   );
 };

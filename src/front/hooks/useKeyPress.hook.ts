@@ -1,10 +1,11 @@
 import { useCallback, useEffect } from "react";
 
-import { useToggle } from "~/front/hooks/useToggle.hook";
+import { useToggle } from "~/front/hooks";
 
+type KeyModifier = "altKey" | "ctrlKey" | "metaKey" | "shiftKey" | undefined;
 interface KeyPress {
   key: string;
-  modifier: "altKey" | "ctrlKey" | "metaKey" | "shiftKey" | undefined;
+  modifier: KeyModifier;
 }
 
 /* Exposed overloads */

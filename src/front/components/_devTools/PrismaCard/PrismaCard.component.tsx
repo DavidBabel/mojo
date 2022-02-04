@@ -11,13 +11,15 @@ export function PrismaCard(props: any) {
   const [isPrismaStudioStarted, setIsPrismaStudioStarted] = useState(false);
   useEffect(() => {
     if (isDev()) {
-      const intervalId = setInterval(async () => {
+      async function checkPrismaStudioStatus() {
         fetch("/api/devTools/checkPrismaStudioStatus")
           .then(result => result.json())
           .then(result => {
             setIsPrismaStudioStarted(result.isPrismaStudioStarted);
           });
-      }, 3 * sec);
+      }
+      const intervalId = setInterval(checkPrismaStudioStatus, 3 * sec);
+      checkPrismaStudioStatus();
       return () => clearInterval(intervalId);
     }
   }, []);
@@ -33,26 +35,26 @@ export function PrismaCard(props: any) {
         href={isPrismaStudioStarted ? "http://localhost:5555" : "/tools"}
       >
         <Card
-          hoverable
           cover={
             <div style={{ padding: 20 }}>
               <Image
-                width={400}
-                height={200}
                 alt="prisma studio"
+                height={200}
                 src="/tools/prisma.svg"
+                width={400}
               />
             </div>
           }
+          hoverable
         >
           <Card.Meta
-            title="Launch Prisma Studio"
             description={
               <>
                 Requires to run <code>`yarn studio`</code> in separate shell
                 (local only)
               </>
             }
+            title="Launch Prisma Studio"
           />
         </Card>
       </PrismaLink>

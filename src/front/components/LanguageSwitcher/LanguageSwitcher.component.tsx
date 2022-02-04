@@ -12,18 +12,18 @@ export function LanguageSwitcher() {
   return (
     <>
       <Image
-        width={20}
-        height={20}
         alt="Afficher en français"
-        src="/flags/fr.svg"
+        height={20}
         onClick={() => changeLanguageHandler("fr")}
+        src="/flags/fr.svg"
+        width={20}
       />
       <Image
-        width={20}
-        height={20}
         alt="Switch to english"
-        src="/flags/gb.svg"
+        height={20}
         onClick={() => changeLanguageHandler("en")}
+        src="/flags/gb.svg"
+        width={20}
       />
     </>
   );

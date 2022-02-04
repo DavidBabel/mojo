@@ -3,48 +3,49 @@ import {
   UserDeleteOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Layout } from "antd";
-import { signOut, useSession } from "next-auth/react";
+import { Badge, Button, Layout } from "antd";
+import { signOut } from "next-auth/react";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { AvatarProps } from "@/Avatar";
+import { Avatar } from "@/Avatar";
 import { ButtonLink } from "@/ButtonLink";
 import { LanguageSwitcher } from "@/LanguageSwitcher";
+import { useSession } from "~/front/hooks";
 
 const { Header: HeaderAntd } = Layout;
 
 export function Header() {
   const { t } = useTranslation();
 
-  const { data: session, status } = useSession();
+  const { isAuthenticated, isAdmin } = useSession();
 
-  const avatarSrc = session?.user?.image;
-
-  let avatarProps: AvatarProps = { email: session?.user.address };
-  if (avatarSrc) {
-    avatarProps = { src: avatarSrc };
-  }
   return (
     <>
       <HeaderAntd className="site-layout-background">
+        {isAdmin() && (
+          <div style={{ float: "left", marginLeft: -50, marginTop: -5 }}>
+            <Badge.Ribbon color="volcano" text="Admin"></Badge.Ribbon>
+          </div>
+        )}
         <div
           style={{
-            display: "flex",
-            justifyContent: "flex-end",
             alignItems: "center",
+            display: "flex",
             gap: 10,
             height: "100%",
+            justifyContent: "flex-end",
+            userSelect: "none",
           }}
         >
-          {status === "authenticated" ? (
+          {isAuthenticated() ? (
             <>
               <Button onClick={() => signOut()}>
                 <>
-                  <UserDeleteOutlined /> SignOut
+                  <UserDeleteOutlined /> {t("layout.header.connexion.sign-out")}
                 </>
               </Button>
-              <Avatar {...avatarProps} />
+              <Avatar />
             </>
           ) : (
             <>
@@ -54,7 +55,6 @@ export function Header() {
               <ButtonLink href="/auth/register">
                 <UserAddOutlined /> {t("layout.header.connexion.register")}
               </ButtonLink>
-              {/* </Button> */}
             </>
           )}
           <LanguageSwitcher />

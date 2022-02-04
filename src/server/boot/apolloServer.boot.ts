@@ -9,12 +9,12 @@ import { context } from "~/server/prisma/context";
 
 const apolloServer = new ApolloServer({
   context,
-  schema,
-  logger: console,
   formatError: error => {
     console.log(JSON.stringify(error.message, null, 2));
     return error;
   },
+  logger: console,
+  schema,
 });
 
 export async function startApolloServer(expressServer: Express) {
