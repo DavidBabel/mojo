@@ -2,7 +2,7 @@ import EN from "antd/lib/locale/en_GB";
 import FR from "antd/lib/locale/fr_FR";
 import { Locale } from "antd/lib/locale-provider";
 
-import { AvailableLocale } from "~/iso/enums";
+import { AvailableLocale } from "~/@types/react-i18next";
 
 export const locales: Record<AvailableLocale, Locale> = {
   en: EN,
