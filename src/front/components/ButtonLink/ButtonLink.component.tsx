@@ -7,12 +7,17 @@ interface Props extends ButtonProps {
 }
 
 export function ButtonLink({ children, href, ...buttonProps }: Props) {
+  const external = href.includes("http://") || href.includes("https://");
   return (
     <>
       <Button {...buttonProps}>
-        <Link href={href}>
-          <a>{children}</a>
-        </Link>
+        {external ? (
+          <a href={href}>{children}</a>
+        ) : (
+          <Link href={href}>
+            <a>{children}</a>
+          </Link>
+        )}
       </Button>
     </>
   );

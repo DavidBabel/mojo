@@ -1,9 +1,9 @@
 import { PrismaClient as PrismaClientBase } from "@prisma/client";
 
-const PrismaClient = {
-  instance: new PrismaClientBase(),
-};
+if (!(global as any).PrismaClient) {
+  (global as any).PrismaClient = new PrismaClientBase();
+}
 
-Object.freeze(PrismaClient);
+const PrismaClient: PrismaClientBase = (global as any).PrismaClient;
 
 export { PrismaClient };

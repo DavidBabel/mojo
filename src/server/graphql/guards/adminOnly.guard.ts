@@ -1,6 +1,6 @@
 import { MiddlewareFn } from "type-graphql";
 
-import { UserRole } from "~/server/prisma/enums";
+import { UserRole } from "~/iso/enums";
 
 export const adminOnlyGuard: MiddlewareFn = async ({ root }, next) => {
   if (root?.role !== UserRole.ADMIN) {

@@ -15,15 +15,15 @@ export function Logo({ small = false }: Props) {
       <div
         className="logo"
         style={{
-          padding: 10,
-          marginLeft: small ? 0 : -20,
-          display: "flex",
-          justifyContent: "center",
           alignItems: "center",
+          display: "flex",
           gap: 10,
+          justifyContent: "center",
+          marginLeft: small ? 0 : -20,
+          padding: 10,
         }}
       >
-        <Image src="/mojo.png" alt="badass logo" width={35} height={35} />
+        <Image alt="badass logo" height={35} src="/mojo.png" width={35} />
 
         <Typography
           style={{

@@ -9,8 +9,8 @@ import type {
   Mutation,
   MutationVideoUploadArgs,
 } from "~/@types/generated/graphqlTypes";
-import { VIDEO_UPLOAD_MUTATION } from "~/front/gql/mutation/videoUpload.mutation";
-import { useToggle } from "~/front/hooks/useToggle.hook";
+import { VIDEO_UPLOAD_MUTATION } from "~/front/gql/mutations";
+import { useToggle } from "~/front/hooks";
 import { isDev } from "~/iso/env";
 
 const UploadVideoPage: NextPage = () => {
@@ -28,7 +28,7 @@ const UploadVideoPage: NextPage = () => {
       if (validity.valid && files?.[0]) {
         const file = files[0];
         setUploadLoading(true);
-        uploadFile({ variables: { video: file, forceBucketUpload } })
+        uploadFile({ variables: { forceBucketUpload, video: file } })
           .then(({ data }) => {
             setUploadedUrl(data?.videoUpload);
           })
@@ -52,7 +52,7 @@ const UploadVideoPage: NextPage = () => {
   return (
     <>
       <p>
-        <LinkNewTab href={"/cat-example.mp4"} download={"cat-example.mp4"}>
+        <LinkNewTab download={"cat-example.mp4"} href={"/cat-example.mp4"}>
           Download a sample video
         </LinkNewTab>
       </p>
@@ -64,7 +64,7 @@ const UploadVideoPage: NextPage = () => {
       )}
 
       <p>
-        <input type="file" onChange={handleFileChange} />{" "}
+        <input onChange={handleFileChange} type="file" />{" "}
         {uploadLoading && <Spin size="large" />}
       </p>
 

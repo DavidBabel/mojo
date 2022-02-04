@@ -3,476 +3,14 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type Account {
-  access_token: String
-  expires_at: Int
-  id: String!
-  id_token: String
-  oauth_token: String
-  oauth_token_secret: String
-  provider: String!
-  providerAccountId: String!
-  refresh_token: String
-  refresh_token_expires_in: Int
-  scope: String
-  session_state: String
-  token_type: String
-  type: String!
-  user: User!
-  userId: String!
-}
-
-type AccountAvgAggregate {
-  expires_at: Float
-  refresh_token_expires_in: Float
-}
-
-input AccountAvgOrderByAggregateInput {
-  expires_at: SortOrder
-  refresh_token_expires_in: SortOrder
-}
-
-type AccountCountAggregate {
-  _all: Int!
-  access_token: Int!
-  expires_at: Int!
-  id: Int!
-  id_token: Int!
-  oauth_token: Int!
-  oauth_token_secret: Int!
-  provider: Int!
-  providerAccountId: Int!
-  refresh_token: Int!
-  refresh_token_expires_in: Int!
-  scope: Int!
-  session_state: Int!
-  token_type: Int!
-  type: Int!
-  userId: Int!
-}
-
-input AccountCountOrderByAggregateInput {
-  access_token: SortOrder
-  expires_at: SortOrder
-  id: SortOrder
-  id_token: SortOrder
-  oauth_token: SortOrder
-  oauth_token_secret: SortOrder
-  provider: SortOrder
-  providerAccountId: SortOrder
-  refresh_token: SortOrder
-  refresh_token_expires_in: SortOrder
-  scope: SortOrder
-  session_state: SortOrder
-  token_type: SortOrder
-  type: SortOrder
-  userId: SortOrder
-}
-
-input AccountCreateInput {
-  access_token: String
-  expires_at: Int
-  id: String
-  id_token: String
-  oauth_token: String
-  oauth_token_secret: String
-  provider: String!
-  providerAccountId: String!
-  refresh_token: String
-  refresh_token_expires_in: Int
-  scope: String
-  session_state: String
-  token_type: String
-  type: String!
-  user: UserCreateNestedOneWithoutAccountsInput!
-}
-
-input AccountCreateNestedManyWithoutUserInput {
-  connect: [AccountWhereUniqueInput!]
-  connectOrCreate: [AccountCreateOrConnectWithoutUserInput!]
-  create: [AccountCreateWithoutUserInput!]
-}
-
-input AccountCreateOrConnectWithoutUserInput {
-  create: AccountCreateWithoutUserInput!
-  where: AccountWhereUniqueInput!
-}
-
-input AccountCreateWithoutUserInput {
-  access_token: String
-  expires_at: Int
-  id: String
-  id_token: String
-  oauth_token: String
-  oauth_token_secret: String
-  provider: String!
-  providerAccountId: String!
-  refresh_token: String
-  refresh_token_expires_in: Int
-  scope: String
-  session_state: String
-  token_type: String
-  type: String!
-}
-
-type AccountGroupBy {
-  _avg: AccountAvgAggregate
-  _count: AccountCountAggregate
-  _max: AccountMaxAggregate
-  _min: AccountMinAggregate
-  _sum: AccountSumAggregate
-  access_token: String
-  expires_at: Int
-  id: String!
-  id_token: String
-  oauth_token: String
-  oauth_token_secret: String
-  provider: String!
-  providerAccountId: String!
-  refresh_token: String
-  refresh_token_expires_in: Int
-  scope: String
-  session_state: String
-  token_type: String
-  type: String!
-  userId: String!
-}
-
-input AccountListRelationFilter {
-  every: AccountWhereInput
-  none: AccountWhereInput
-  some: AccountWhereInput
-}
-
-type AccountMaxAggregate {
-  access_token: String
-  expires_at: Int
-  id: String
-  id_token: String
-  oauth_token: String
-  oauth_token_secret: String
-  provider: String
-  providerAccountId: String
-  refresh_token: String
-  refresh_token_expires_in: Int
-  scope: String
-  session_state: String
-  token_type: String
-  type: String
-  userId: String
-}
-
-input AccountMaxOrderByAggregateInput {
-  access_token: SortOrder
-  expires_at: SortOrder
-  id: SortOrder
-  id_token: SortOrder
-  oauth_token: SortOrder
-  oauth_token_secret: SortOrder
-  provider: SortOrder
-  providerAccountId: SortOrder
-  refresh_token: SortOrder
-  refresh_token_expires_in: SortOrder
-  scope: SortOrder
-  session_state: SortOrder
-  token_type: SortOrder
-  type: SortOrder
-  userId: SortOrder
-}
-
-type AccountMinAggregate {
-  access_token: String
-  expires_at: Int
-  id: String
-  id_token: String
-  oauth_token: String
-  oauth_token_secret: String
-  provider: String
-  providerAccountId: String
-  refresh_token: String
-  refresh_token_expires_in: Int
-  scope: String
-  session_state: String
-  token_type: String
-  type: String
-  userId: String
-}
-
-input AccountMinOrderByAggregateInput {
-  access_token: SortOrder
-  expires_at: SortOrder
-  id: SortOrder
-  id_token: SortOrder
-  oauth_token: SortOrder
-  oauth_token_secret: SortOrder
-  provider: SortOrder
-  providerAccountId: SortOrder
-  refresh_token: SortOrder
-  refresh_token_expires_in: SortOrder
-  scope: SortOrder
-  session_state: SortOrder
-  token_type: SortOrder
-  type: SortOrder
-  userId: SortOrder
-}
-
-input AccountOrderByRelationAggregateInput {
-  _count: SortOrder
-}
-
-input AccountOrderByWithAggregationInput {
-  _avg: AccountAvgOrderByAggregateInput
-  _count: AccountCountOrderByAggregateInput
-  _max: AccountMaxOrderByAggregateInput
-  _min: AccountMinOrderByAggregateInput
-  _sum: AccountSumOrderByAggregateInput
-  access_token: SortOrder
-  expires_at: SortOrder
-  id: SortOrder
-  id_token: SortOrder
-  oauth_token: SortOrder
-  oauth_token_secret: SortOrder
-  provider: SortOrder
-  providerAccountId: SortOrder
-  refresh_token: SortOrder
-  refresh_token_expires_in: SortOrder
-  scope: SortOrder
-  session_state: SortOrder
-  token_type: SortOrder
-  type: SortOrder
-  userId: SortOrder
-}
-
-input AccountOrderByWithRelationInput {
-  access_token: SortOrder
-  expires_at: SortOrder
-  id: SortOrder
-  id_token: SortOrder
-  oauth_token: SortOrder
-  oauth_token_secret: SortOrder
-  provider: SortOrder
-  providerAccountId: SortOrder
-  refresh_token: SortOrder
-  refresh_token_expires_in: SortOrder
-  scope: SortOrder
-  session_state: SortOrder
-  token_type: SortOrder
-  type: SortOrder
-  user: UserOrderByWithRelationInput
-  userId: SortOrder
-}
-
-input AccountProviderProviderAccountIdCompoundUniqueInput {
-  provider: String!
-  providerAccountId: String!
-}
-
-enum AccountScalarFieldEnum {
-  access_token
-  expires_at
-  id
-  id_token
-  oauth_token
-  oauth_token_secret
-  provider
-  providerAccountId
-  refresh_token
-  refresh_token_expires_in
-  scope
-  session_state
-  token_type
-  type
-  userId
-}
-
-input AccountScalarWhereInput {
-  AND: [AccountScalarWhereInput!]
-  NOT: [AccountScalarWhereInput!]
-  OR: [AccountScalarWhereInput!]
-  access_token: StringNullableFilter
-  expires_at: IntNullableFilter
-  id: StringFilter
-  id_token: StringNullableFilter
-  oauth_token: StringNullableFilter
-  oauth_token_secret: StringNullableFilter
-  provider: StringFilter
-  providerAccountId: StringFilter
-  refresh_token: StringNullableFilter
-  refresh_token_expires_in: IntNullableFilter
-  scope: StringNullableFilter
-  session_state: StringNullableFilter
-  token_type: StringNullableFilter
-  type: StringFilter
-  userId: StringFilter
-}
-
-input AccountScalarWhereWithAggregatesInput {
-  AND: [AccountScalarWhereWithAggregatesInput!]
-  NOT: [AccountScalarWhereWithAggregatesInput!]
-  OR: [AccountScalarWhereWithAggregatesInput!]
-  access_token: StringNullableWithAggregatesFilter
-  expires_at: IntNullableWithAggregatesFilter
-  id: StringWithAggregatesFilter
-  id_token: StringNullableWithAggregatesFilter
-  oauth_token: StringNullableWithAggregatesFilter
-  oauth_token_secret: StringNullableWithAggregatesFilter
-  provider: StringWithAggregatesFilter
-  providerAccountId: StringWithAggregatesFilter
-  refresh_token: StringNullableWithAggregatesFilter
-  refresh_token_expires_in: IntNullableWithAggregatesFilter
-  scope: StringNullableWithAggregatesFilter
-  session_state: StringNullableWithAggregatesFilter
-  token_type: StringNullableWithAggregatesFilter
-  type: StringWithAggregatesFilter
-  userId: StringWithAggregatesFilter
-}
-
-type AccountSumAggregate {
-  expires_at: Int
-  refresh_token_expires_in: Int
-}
-
-input AccountSumOrderByAggregateInput {
-  expires_at: SortOrder
-  refresh_token_expires_in: SortOrder
-}
-
-input AccountUpdateInput {
-  access_token: NullableStringFieldUpdateOperationsInput
-  expires_at: NullableIntFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  id_token: NullableStringFieldUpdateOperationsInput
-  oauth_token: NullableStringFieldUpdateOperationsInput
-  oauth_token_secret: NullableStringFieldUpdateOperationsInput
-  provider: StringFieldUpdateOperationsInput
-  providerAccountId: StringFieldUpdateOperationsInput
-  refresh_token: NullableStringFieldUpdateOperationsInput
-  refresh_token_expires_in: NullableIntFieldUpdateOperationsInput
-  scope: NullableStringFieldUpdateOperationsInput
-  session_state: NullableStringFieldUpdateOperationsInput
-  token_type: NullableStringFieldUpdateOperationsInput
-  type: StringFieldUpdateOperationsInput
-  user: UserUpdateOneRequiredWithoutAccountsInput
-}
-
-input AccountUpdateManyMutationInput {
-  access_token: NullableStringFieldUpdateOperationsInput
-  expires_at: NullableIntFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  id_token: NullableStringFieldUpdateOperationsInput
-  oauth_token: NullableStringFieldUpdateOperationsInput
-  oauth_token_secret: NullableStringFieldUpdateOperationsInput
-  provider: StringFieldUpdateOperationsInput
-  providerAccountId: StringFieldUpdateOperationsInput
-  refresh_token: NullableStringFieldUpdateOperationsInput
-  refresh_token_expires_in: NullableIntFieldUpdateOperationsInput
-  scope: NullableStringFieldUpdateOperationsInput
-  session_state: NullableStringFieldUpdateOperationsInput
-  token_type: NullableStringFieldUpdateOperationsInput
-  type: StringFieldUpdateOperationsInput
-}
-
-input AccountUpdateManyWithWhereWithoutUserInput {
-  data: AccountUpdateManyMutationInput!
-  where: AccountScalarWhereInput!
-}
-
-input AccountUpdateManyWithoutUserInput {
-  connect: [AccountWhereUniqueInput!]
-  connectOrCreate: [AccountCreateOrConnectWithoutUserInput!]
-  create: [AccountCreateWithoutUserInput!]
-  delete: [AccountWhereUniqueInput!]
-  deleteMany: [AccountScalarWhereInput!]
-  disconnect: [AccountWhereUniqueInput!]
-  set: [AccountWhereUniqueInput!]
-  update: [AccountUpdateWithWhereUniqueWithoutUserInput!]
-  updateMany: [AccountUpdateManyWithWhereWithoutUserInput!]
-  upsert: [AccountUpsertWithWhereUniqueWithoutUserInput!]
-}
-
-input AccountUpdateWithWhereUniqueWithoutUserInput {
-  data: AccountUpdateWithoutUserInput!
-  where: AccountWhereUniqueInput!
-}
-
-input AccountUpdateWithoutUserInput {
-  access_token: NullableStringFieldUpdateOperationsInput
-  expires_at: NullableIntFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  id_token: NullableStringFieldUpdateOperationsInput
-  oauth_token: NullableStringFieldUpdateOperationsInput
-  oauth_token_secret: NullableStringFieldUpdateOperationsInput
-  provider: StringFieldUpdateOperationsInput
-  providerAccountId: StringFieldUpdateOperationsInput
-  refresh_token: NullableStringFieldUpdateOperationsInput
-  refresh_token_expires_in: NullableIntFieldUpdateOperationsInput
-  scope: NullableStringFieldUpdateOperationsInput
-  session_state: NullableStringFieldUpdateOperationsInput
-  token_type: NullableStringFieldUpdateOperationsInput
-  type: StringFieldUpdateOperationsInput
-}
-
-input AccountUpsertWithWhereUniqueWithoutUserInput {
-  create: AccountCreateWithoutUserInput!
-  update: AccountUpdateWithoutUserInput!
-  where: AccountWhereUniqueInput!
-}
-
-input AccountWhereInput {
-  AND: [AccountWhereInput!]
-  NOT: [AccountWhereInput!]
-  OR: [AccountWhereInput!]
-  access_token: StringNullableFilter
-  expires_at: IntNullableFilter
-  id: StringFilter
-  id_token: StringNullableFilter
-  oauth_token: StringNullableFilter
-  oauth_token_secret: StringNullableFilter
-  provider: StringFilter
-  providerAccountId: StringFilter
-  refresh_token: StringNullableFilter
-  refresh_token_expires_in: IntNullableFilter
-  scope: StringNullableFilter
-  session_state: StringNullableFilter
-  token_type: StringNullableFilter
-  type: StringFilter
-  user: UserRelationFilter
-  userId: StringFilter
-}
-
-input AccountWhereUniqueInput {
-  id: String
-  provider_providerAccountId: AccountProviderProviderAccountIdCompoundUniqueInput
-}
-
 type AffectedRowsOutput {
   count: Int!
-}
-
-type AggregateAccount {
-  _avg: AccountAvgAggregate
-  _count: AccountCountAggregate
-  _max: AccountMaxAggregate
-  _min: AccountMinAggregate
-  _sum: AccountSumAggregate
-}
-
-type AggregateSession {
-  _count: SessionCountAggregate
-  _max: SessionMaxAggregate
-  _min: SessionMinAggregate
 }
 
 type AggregateUser {
   _count: UserCountAggregate
   _max: UserMaxAggregate
   _min: UserMinAggregate
-}
-
-type AggregateVerificationToken {
-  _count: VerificationTokenCountAggregate
-  _max: VerificationTokenMaxAggregate
-  _min: VerificationTokenMinAggregate
 }
 
 type AggregateVideo {
@@ -518,31 +56,6 @@ input DateTimeFilter {
   notIn: [DateTime!]
 }
 
-input DateTimeNullableFilter {
-  equals: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  not: NestedDateTimeNullableFilter
-  notIn: [DateTime!]
-}
-
-input DateTimeNullableWithAggregatesFilter {
-  _count: NestedIntNullableFilter
-  _max: NestedDateTimeNullableFilter
-  _min: NestedDateTimeNullableFilter
-  equals: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  not: NestedDateTimeNullableWithAggregatesFilter
-  notIn: [DateTime!]
-}
-
 input DateTimeWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedDateTimeFilter
@@ -557,64 +70,19 @@ input DateTimeWithAggregatesFilter {
   notIn: [DateTime!]
 }
 
-input IntNullableFilter {
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntNullableFilter
-  notIn: [Int!]
-}
-
-input IntNullableWithAggregatesFilter {
-  _avg: NestedFloatNullableFilter
-  _count: NestedIntNullableFilter
-  _max: NestedIntNullableFilter
-  _min: NestedIntNullableFilter
-  _sum: NestedIntNullableFilter
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntNullableWithAggregatesFilter
-  notIn: [Int!]
-}
-
 type Mutation {
-  createAccount(data: AccountCreateInput!): Account!
-  createSession(data: SessionCreateInput!): Session!
   createUser(data: UserCreateInput!): User!
-  createVerificationToken(data: VerificationTokenCreateInput!): VerificationToken!
   createVideo(data: VideoCreateInput!): Video!
-  deleteAccount(where: AccountWhereUniqueInput!): Account
-  deleteManyAccount(where: AccountWhereInput): AffectedRowsOutput!
-  deleteManySession(where: SessionWhereInput): AffectedRowsOutput!
   deleteManyUser(where: UserWhereInput): AffectedRowsOutput!
-  deleteManyVerificationToken(where: VerificationTokenWhereInput): AffectedRowsOutput!
   deleteManyVideo(where: VideoWhereInput): AffectedRowsOutput!
-  deleteSession(where: SessionWhereUniqueInput!): Session
   deleteUser(where: UserWhereUniqueInput!): User
-  deleteVerificationToken(where: VerificationTokenWhereUniqueInput!): VerificationToken
   deleteVideo(where: VideoWhereUniqueInput!): Video
   registerNewUser(email: String!, name: String!, password: String!): String!
-  updateAccount(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
-  updateManyAccount(data: AccountUpdateManyMutationInput!, where: AccountWhereInput): AffectedRowsOutput!
-  updateManySession(data: SessionUpdateManyMutationInput!, where: SessionWhereInput): AffectedRowsOutput!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): AffectedRowsOutput!
-  updateManyVerificationToken(data: VerificationTokenUpdateManyMutationInput!, where: VerificationTokenWhereInput): AffectedRowsOutput!
   updateManyVideo(data: VideoUpdateManyMutationInput!, where: VideoWhereInput): AffectedRowsOutput!
-  updateSession(data: SessionUpdateInput!, where: SessionWhereUniqueInput!): Session
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateVerificationToken(data: VerificationTokenUpdateInput!, where: VerificationTokenWhereUniqueInput!): VerificationToken
   updateVideo(data: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video
-  upsertAccount(create: AccountCreateInput!, update: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account!
-  upsertSession(create: SessionCreateInput!, update: SessionUpdateInput!, where: SessionWhereUniqueInput!): Session!
   upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
-  upsertVerificationToken(create: VerificationTokenCreateInput!, update: VerificationTokenUpdateInput!, where: VerificationTokenWhereUniqueInput!): VerificationToken!
   upsertVideo(create: VideoCreateInput!, update: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video!
   videoUpload(forceBucketUpload: Boolean, video: Upload!): String!
 }
@@ -643,31 +111,6 @@ input NestedDateTimeFilter {
   notIn: [DateTime!]
 }
 
-input NestedDateTimeNullableFilter {
-  equals: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  not: NestedDateTimeNullableFilter
-  notIn: [DateTime!]
-}
-
-input NestedDateTimeNullableWithAggregatesFilter {
-  _count: NestedIntNullableFilter
-  _max: NestedDateTimeNullableFilter
-  _min: NestedDateTimeNullableFilter
-  equals: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  not: NestedDateTimeNullableWithAggregatesFilter
-  notIn: [DateTime!]
-}
-
 input NestedDateTimeWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedDateTimeFilter
@@ -680,17 +123,6 @@ input NestedDateTimeWithAggregatesFilter {
   lte: DateTime
   not: NestedDateTimeWithAggregatesFilter
   notIn: [DateTime!]
-}
-
-input NestedFloatNullableFilter {
-  equals: Float
-  gt: Float
-  gte: Float
-  in: [Float!]
-  lt: Float
-  lte: Float
-  not: NestedFloatNullableFilter
-  notIn: [Float!]
 }
 
 input NestedIntFilter {
@@ -712,22 +144,6 @@ input NestedIntNullableFilter {
   lt: Int
   lte: Int
   not: NestedIntNullableFilter
-  notIn: [Int!]
-}
-
-input NestedIntNullableWithAggregatesFilter {
-  _avg: NestedFloatNullableFilter
-  _count: NestedIntNullableFilter
-  _max: NestedIntNullableFilter
-  _min: NestedIntNullableFilter
-  _sum: NestedIntNullableFilter
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntNullableWithAggregatesFilter
   notIn: [Int!]
 }
 
@@ -793,252 +209,21 @@ input NestedStringWithAggregatesFilter {
   startsWith: String
 }
 
-input NullableDateTimeFieldUpdateOperationsInput {
-  set: DateTime
-}
-
-input NullableIntFieldUpdateOperationsInput {
-  decrement: Int
-  divide: Int
-  increment: Int
-  multiply: Int
-  set: Int
-}
-
 input NullableStringFieldUpdateOperationsInput {
   set: String
 }
 
 type Query {
-  account(where: AccountWhereUniqueInput!): Account
-  accounts(cursor: AccountWhereUniqueInput, distinct: [AccountScalarFieldEnum!], orderBy: [AccountOrderByWithRelationInput!], skip: Int, take: Int, where: AccountWhereInput): [Account!]!
-  aggregateAccount(cursor: AccountWhereUniqueInput, orderBy: [AccountOrderByWithRelationInput!], skip: Int, take: Int, where: AccountWhereInput): AggregateAccount!
-  aggregateSession(cursor: SessionWhereUniqueInput, orderBy: [SessionOrderByWithRelationInput!], skip: Int, take: Int, where: SessionWhereInput): AggregateSession!
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): AggregateUser!
-  aggregateVerificationToken(cursor: VerificationTokenWhereUniqueInput, orderBy: [VerificationTokenOrderByWithRelationInput!], skip: Int, take: Int, where: VerificationTokenWhereInput): AggregateVerificationToken!
   aggregateVideo(cursor: VideoWhereUniqueInput, orderBy: [VideoOrderByWithRelationInput!], skip: Int, take: Int, where: VideoWhereInput): AggregateVideo!
-  findFirstAccount(cursor: AccountWhereUniqueInput, distinct: [AccountScalarFieldEnum!], orderBy: [AccountOrderByWithRelationInput!], skip: Int, take: Int, where: AccountWhereInput): Account
-  findFirstSession(cursor: SessionWhereUniqueInput, distinct: [SessionScalarFieldEnum!], orderBy: [SessionOrderByWithRelationInput!], skip: Int, take: Int, where: SessionWhereInput): Session
   findFirstUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum!], orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): User
-  findFirstVerificationToken(cursor: VerificationTokenWhereUniqueInput, distinct: [VerificationTokenScalarFieldEnum!], orderBy: [VerificationTokenOrderByWithRelationInput!], skip: Int, take: Int, where: VerificationTokenWhereInput): VerificationToken
   findFirstVideo(cursor: VideoWhereUniqueInput, distinct: [VideoScalarFieldEnum!], orderBy: [VideoOrderByWithRelationInput!], skip: Int, take: Int, where: VideoWhereInput): Video
-  groupByAccount(by: [AccountScalarFieldEnum!]!, having: AccountScalarWhereWithAggregatesInput, orderBy: [AccountOrderByWithAggregationInput!], skip: Int, take: Int, where: AccountWhereInput): [AccountGroupBy!]!
-  groupBySession(by: [SessionScalarFieldEnum!]!, having: SessionScalarWhereWithAggregatesInput, orderBy: [SessionOrderByWithAggregationInput!], skip: Int, take: Int, where: SessionWhereInput): [SessionGroupBy!]!
   groupByUser(by: [UserScalarFieldEnum!]!, having: UserScalarWhereWithAggregatesInput, orderBy: [UserOrderByWithAggregationInput!], skip: Int, take: Int, where: UserWhereInput): [UserGroupBy!]!
-  groupByVerificationToken(by: [VerificationTokenScalarFieldEnum!]!, having: VerificationTokenScalarWhereWithAggregatesInput, orderBy: [VerificationTokenOrderByWithAggregationInput!], skip: Int, take: Int, where: VerificationTokenWhereInput): [VerificationTokenGroupBy!]!
   groupByVideo(by: [VideoScalarFieldEnum!]!, having: VideoScalarWhereWithAggregatesInput, orderBy: [VideoOrderByWithAggregationInput!], skip: Int, take: Int, where: VideoWhereInput): [VideoGroupBy!]!
-  session(where: SessionWhereUniqueInput!): Session
-  sessions(cursor: SessionWhereUniqueInput, distinct: [SessionScalarFieldEnum!], orderBy: [SessionOrderByWithRelationInput!], skip: Int, take: Int, where: SessionWhereInput): [Session!]!
   user(where: UserWhereUniqueInput!): User
   users(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum!], orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): [User!]!
-  verificationToken(where: VerificationTokenWhereUniqueInput!): VerificationToken
-  verificationTokens(cursor: VerificationTokenWhereUniqueInput, distinct: [VerificationTokenScalarFieldEnum!], orderBy: [VerificationTokenOrderByWithRelationInput!], skip: Int, take: Int, where: VerificationTokenWhereInput): [VerificationToken!]!
   video(where: VideoWhereUniqueInput!): Video
   videos(cursor: VideoWhereUniqueInput, distinct: [VideoScalarFieldEnum!], orderBy: [VideoOrderByWithRelationInput!], skip: Int, take: Int, where: VideoWhereInput): [Video!]!
-}
-
-type Session {
-  expires: DateTime!
-  id: String!
-  sessionToken: String!
-  user: User!
-  userId: String!
-}
-
-type SessionCountAggregate {
-  _all: Int!
-  expires: Int!
-  id: Int!
-  sessionToken: Int!
-  userId: Int!
-}
-
-input SessionCountOrderByAggregateInput {
-  expires: SortOrder
-  id: SortOrder
-  sessionToken: SortOrder
-  userId: SortOrder
-}
-
-input SessionCreateInput {
-  expires: DateTime!
-  id: String
-  sessionToken: String!
-  user: UserCreateNestedOneWithoutSessionsInput!
-}
-
-input SessionCreateNestedManyWithoutUserInput {
-  connect: [SessionWhereUniqueInput!]
-  connectOrCreate: [SessionCreateOrConnectWithoutUserInput!]
-  create: [SessionCreateWithoutUserInput!]
-}
-
-input SessionCreateOrConnectWithoutUserInput {
-  create: SessionCreateWithoutUserInput!
-  where: SessionWhereUniqueInput!
-}
-
-input SessionCreateWithoutUserInput {
-  expires: DateTime!
-  id: String
-  sessionToken: String!
-}
-
-type SessionGroupBy {
-  _count: SessionCountAggregate
-  _max: SessionMaxAggregate
-  _min: SessionMinAggregate
-  expires: DateTime!
-  id: String!
-  sessionToken: String!
-  userId: String!
-}
-
-input SessionListRelationFilter {
-  every: SessionWhereInput
-  none: SessionWhereInput
-  some: SessionWhereInput
-}
-
-type SessionMaxAggregate {
-  expires: DateTime
-  id: String
-  sessionToken: String
-  userId: String
-}
-
-input SessionMaxOrderByAggregateInput {
-  expires: SortOrder
-  id: SortOrder
-  sessionToken: SortOrder
-  userId: SortOrder
-}
-
-type SessionMinAggregate {
-  expires: DateTime
-  id: String
-  sessionToken: String
-  userId: String
-}
-
-input SessionMinOrderByAggregateInput {
-  expires: SortOrder
-  id: SortOrder
-  sessionToken: SortOrder
-  userId: SortOrder
-}
-
-input SessionOrderByRelationAggregateInput {
-  _count: SortOrder
-}
-
-input SessionOrderByWithAggregationInput {
-  _count: SessionCountOrderByAggregateInput
-  _max: SessionMaxOrderByAggregateInput
-  _min: SessionMinOrderByAggregateInput
-  expires: SortOrder
-  id: SortOrder
-  sessionToken: SortOrder
-  userId: SortOrder
-}
-
-input SessionOrderByWithRelationInput {
-  expires: SortOrder
-  id: SortOrder
-  sessionToken: SortOrder
-  user: UserOrderByWithRelationInput
-  userId: SortOrder
-}
-
-enum SessionScalarFieldEnum {
-  expires
-  id
-  sessionToken
-  userId
-}
-
-input SessionScalarWhereInput {
-  AND: [SessionScalarWhereInput!]
-  NOT: [SessionScalarWhereInput!]
-  OR: [SessionScalarWhereInput!]
-  expires: DateTimeFilter
-  id: StringFilter
-  sessionToken: StringFilter
-  userId: StringFilter
-}
-
-input SessionScalarWhereWithAggregatesInput {
-  AND: [SessionScalarWhereWithAggregatesInput!]
-  NOT: [SessionScalarWhereWithAggregatesInput!]
-  OR: [SessionScalarWhereWithAggregatesInput!]
-  expires: DateTimeWithAggregatesFilter
-  id: StringWithAggregatesFilter
-  sessionToken: StringWithAggregatesFilter
-  userId: StringWithAggregatesFilter
-}
-
-input SessionUpdateInput {
-  expires: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  sessionToken: StringFieldUpdateOperationsInput
-  user: UserUpdateOneRequiredWithoutSessionsInput
-}
-
-input SessionUpdateManyMutationInput {
-  expires: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  sessionToken: StringFieldUpdateOperationsInput
-}
-
-input SessionUpdateManyWithWhereWithoutUserInput {
-  data: SessionUpdateManyMutationInput!
-  where: SessionScalarWhereInput!
-}
-
-input SessionUpdateManyWithoutUserInput {
-  connect: [SessionWhereUniqueInput!]
-  connectOrCreate: [SessionCreateOrConnectWithoutUserInput!]
-  create: [SessionCreateWithoutUserInput!]
-  delete: [SessionWhereUniqueInput!]
-  deleteMany: [SessionScalarWhereInput!]
-  disconnect: [SessionWhereUniqueInput!]
-  set: [SessionWhereUniqueInput!]
-  update: [SessionUpdateWithWhereUniqueWithoutUserInput!]
-  updateMany: [SessionUpdateManyWithWhereWithoutUserInput!]
-  upsert: [SessionUpsertWithWhereUniqueWithoutUserInput!]
-}
-
-input SessionUpdateWithWhereUniqueWithoutUserInput {
-  data: SessionUpdateWithoutUserInput!
-  where: SessionWhereUniqueInput!
-}
-
-input SessionUpdateWithoutUserInput {
-  expires: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  sessionToken: StringFieldUpdateOperationsInput
-}
-
-input SessionUpsertWithWhereUniqueWithoutUserInput {
-  create: SessionCreateWithoutUserInput!
-  update: SessionUpdateWithoutUserInput!
-  where: SessionWhereUniqueInput!
-}
-
-input SessionWhereInput {
-  AND: [SessionWhereInput!]
-  NOT: [SessionWhereInput!]
-  OR: [SessionWhereInput!]
-  expires: DateTimeFilter
-  id: StringFilter
-  sessionToken: StringFilter
-  user: UserRelationFilter
-  userId: StringFilter
-}
-
-input SessionWhereUniqueInput {
-  id: String
-  sessionToken: String
 }
 
 enum SortOrder {
@@ -1117,67 +302,49 @@ scalar Upload
 
 type User {
   _count: UserCount
-  accounts(cursor: AccountWhereUniqueInput, distinct: [AccountScalarFieldEnum!], orderBy: [AccountOrderByWithRelationInput!], skip: Int, take: Int, where: AccountWhereInput): [Account!]!
   email: String
-  emailVerified: DateTime
   id: String!
   image: String
   name: String
+  oAuthId: String
   role: String!
-  sessions(cursor: SessionWhereUniqueInput, distinct: [SessionScalarFieldEnum!], orderBy: [SessionOrderByWithRelationInput!], skip: Int, take: Int, where: SessionWhereInput): [Session!]!
   videos(cursor: VideoWhereUniqueInput, distinct: [VideoScalarFieldEnum!], orderBy: [VideoOrderByWithRelationInput!], skip: Int, take: Int, where: VideoWhereInput): [Video!]!
 }
 
 type UserCount {
-  accounts: Int!
-  sessions: Int!
   videos: Int!
 }
 
 type UserCountAggregate {
   _all: Int!
   email: Int!
-  emailVerified: Int!
   id: Int!
   image: Int!
   name: Int!
+  oAuthId: Int!
   password: Int!
   role: Int!
 }
 
 input UserCountOrderByAggregateInput {
   email: SortOrder
-  emailVerified: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  oAuthId: SortOrder
   password: SortOrder
   role: SortOrder
 }
 
 input UserCreateInput {
-  accounts: AccountCreateNestedManyWithoutUserInput
   email: String
-  emailVerified: DateTime
   id: String
   image: String
   name: String
+  oAuthId: String
   password: String
   role: String
-  sessions: SessionCreateNestedManyWithoutUserInput
   videos: VideoCreateNestedManyWithoutAuthorInput
-}
-
-input UserCreateNestedOneWithoutAccountsInput {
-  connect: UserWhereUniqueInput
-  connectOrCreate: UserCreateOrConnectWithoutAccountsInput
-  create: UserCreateWithoutAccountsInput
-}
-
-input UserCreateNestedOneWithoutSessionsInput {
-  connect: UserWhereUniqueInput
-  connectOrCreate: UserCreateOrConnectWithoutSessionsInput
-  create: UserCreateWithoutSessionsInput
 }
 
 input UserCreateNestedOneWithoutVideosInput {
@@ -1186,55 +353,19 @@ input UserCreateNestedOneWithoutVideosInput {
   create: UserCreateWithoutVideosInput
 }
 
-input UserCreateOrConnectWithoutAccountsInput {
-  create: UserCreateWithoutAccountsInput!
-  where: UserWhereUniqueInput!
-}
-
-input UserCreateOrConnectWithoutSessionsInput {
-  create: UserCreateWithoutSessionsInput!
-  where: UserWhereUniqueInput!
-}
-
 input UserCreateOrConnectWithoutVideosInput {
   create: UserCreateWithoutVideosInput!
   where: UserWhereUniqueInput!
 }
 
-input UserCreateWithoutAccountsInput {
-  email: String
-  emailVerified: DateTime
-  id: String
-  image: String
-  name: String
-  password: String
-  role: String
-  sessions: SessionCreateNestedManyWithoutUserInput
-  videos: VideoCreateNestedManyWithoutAuthorInput
-}
-
-input UserCreateWithoutSessionsInput {
-  accounts: AccountCreateNestedManyWithoutUserInput
-  email: String
-  emailVerified: DateTime
-  id: String
-  image: String
-  name: String
-  password: String
-  role: String
-  videos: VideoCreateNestedManyWithoutAuthorInput
-}
-
 input UserCreateWithoutVideosInput {
-  accounts: AccountCreateNestedManyWithoutUserInput
   email: String
-  emailVerified: DateTime
   id: String
   image: String
   name: String
+  oAuthId: String
   password: String
   role: String
-  sessions: SessionCreateNestedManyWithoutUserInput
 }
 
 type UserGroupBy {
@@ -1242,50 +373,50 @@ type UserGroupBy {
   _max: UserMaxAggregate
   _min: UserMinAggregate
   email: String
-  emailVerified: DateTime
   id: String!
   image: String
   name: String
+  oAuthId: String
   password: String
   role: String!
 }
 
 type UserMaxAggregate {
   email: String
-  emailVerified: DateTime
   id: String
   image: String
   name: String
+  oAuthId: String
   password: String
   role: String
 }
 
 input UserMaxOrderByAggregateInput {
   email: SortOrder
-  emailVerified: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  oAuthId: SortOrder
   password: SortOrder
   role: SortOrder
 }
 
 type UserMinAggregate {
   email: String
-  emailVerified: DateTime
   id: String
   image: String
   name: String
+  oAuthId: String
   password: String
   role: String
 }
 
 input UserMinOrderByAggregateInput {
   email: SortOrder
-  emailVerified: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  oAuthId: SortOrder
   password: SortOrder
   role: SortOrder
 }
@@ -1295,24 +426,22 @@ input UserOrderByWithAggregationInput {
   _max: UserMaxOrderByAggregateInput
   _min: UserMinOrderByAggregateInput
   email: SortOrder
-  emailVerified: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  oAuthId: SortOrder
   password: SortOrder
   role: SortOrder
 }
 
 input UserOrderByWithRelationInput {
-  accounts: AccountOrderByRelationAggregateInput
   email: SortOrder
-  emailVerified: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  oAuthId: SortOrder
   password: SortOrder
   role: SortOrder
-  sessions: SessionOrderByRelationAggregateInput
   videos: VideoOrderByRelationAggregateInput
 }
 
@@ -1323,10 +452,10 @@ input UserRelationFilter {
 
 enum UserScalarFieldEnum {
   email
-  emailVerified
   id
   image
   name
+  oAuthId
   password
   role
 }
@@ -1336,51 +465,33 @@ input UserScalarWhereWithAggregatesInput {
   NOT: [UserScalarWhereWithAggregatesInput!]
   OR: [UserScalarWhereWithAggregatesInput!]
   email: StringNullableWithAggregatesFilter
-  emailVerified: DateTimeNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
   image: StringNullableWithAggregatesFilter
   name: StringNullableWithAggregatesFilter
+  oAuthId: StringNullableWithAggregatesFilter
   password: StringNullableWithAggregatesFilter
   role: StringWithAggregatesFilter
 }
 
 input UserUpdateInput {
-  accounts: AccountUpdateManyWithoutUserInput
   email: NullableStringFieldUpdateOperationsInput
-  emailVerified: NullableDateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  oAuthId: NullableStringFieldUpdateOperationsInput
   password: NullableStringFieldUpdateOperationsInput
   role: StringFieldUpdateOperationsInput
-  sessions: SessionUpdateManyWithoutUserInput
   videos: VideoUpdateManyWithoutAuthorInput
 }
 
 input UserUpdateManyMutationInput {
   email: NullableStringFieldUpdateOperationsInput
-  emailVerified: NullableDateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  oAuthId: NullableStringFieldUpdateOperationsInput
   password: NullableStringFieldUpdateOperationsInput
   role: StringFieldUpdateOperationsInput
-}
-
-input UserUpdateOneRequiredWithoutAccountsInput {
-  connect: UserWhereUniqueInput
-  connectOrCreate: UserCreateOrConnectWithoutAccountsInput
-  create: UserCreateWithoutAccountsInput
-  update: UserUpdateWithoutAccountsInput
-  upsert: UserUpsertWithoutAccountsInput
-}
-
-input UserUpdateOneRequiredWithoutSessionsInput {
-  connect: UserWhereUniqueInput
-  connectOrCreate: UserCreateOrConnectWithoutSessionsInput
-  create: UserCreateWithoutSessionsInput
-  update: UserUpdateWithoutSessionsInput
-  upsert: UserUpsertWithoutSessionsInput
 }
 
 input UserUpdateOneRequiredWithoutVideosInput {
@@ -1391,50 +502,14 @@ input UserUpdateOneRequiredWithoutVideosInput {
   upsert: UserUpsertWithoutVideosInput
 }
 
-input UserUpdateWithoutAccountsInput {
-  email: NullableStringFieldUpdateOperationsInput
-  emailVerified: NullableDateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  image: NullableStringFieldUpdateOperationsInput
-  name: NullableStringFieldUpdateOperationsInput
-  password: NullableStringFieldUpdateOperationsInput
-  role: StringFieldUpdateOperationsInput
-  sessions: SessionUpdateManyWithoutUserInput
-  videos: VideoUpdateManyWithoutAuthorInput
-}
-
-input UserUpdateWithoutSessionsInput {
-  accounts: AccountUpdateManyWithoutUserInput
-  email: NullableStringFieldUpdateOperationsInput
-  emailVerified: NullableDateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  image: NullableStringFieldUpdateOperationsInput
-  name: NullableStringFieldUpdateOperationsInput
-  password: NullableStringFieldUpdateOperationsInput
-  role: StringFieldUpdateOperationsInput
-  videos: VideoUpdateManyWithoutAuthorInput
-}
-
 input UserUpdateWithoutVideosInput {
-  accounts: AccountUpdateManyWithoutUserInput
   email: NullableStringFieldUpdateOperationsInput
-  emailVerified: NullableDateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  oAuthId: NullableStringFieldUpdateOperationsInput
   password: NullableStringFieldUpdateOperationsInput
   role: StringFieldUpdateOperationsInput
-  sessions: SessionUpdateManyWithoutUserInput
-}
-
-input UserUpsertWithoutAccountsInput {
-  create: UserCreateWithoutAccountsInput!
-  update: UserUpdateWithoutAccountsInput!
-}
-
-input UserUpsertWithoutSessionsInput {
-  create: UserCreateWithoutSessionsInput!
-  update: UserUpdateWithoutSessionsInput!
 }
 
 input UserUpsertWithoutVideosInput {
@@ -1446,140 +521,19 @@ input UserWhereInput {
   AND: [UserWhereInput!]
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
-  accounts: AccountListRelationFilter
   email: StringNullableFilter
-  emailVerified: DateTimeNullableFilter
   id: StringFilter
   image: StringNullableFilter
   name: StringNullableFilter
+  oAuthId: StringNullableFilter
   password: StringNullableFilter
   role: StringFilter
-  sessions: SessionListRelationFilter
   videos: VideoListRelationFilter
 }
 
 input UserWhereUniqueInput {
   email: String
   id: String
-}
-
-type VerificationToken {
-  expires: DateTime!
-  identifier: String!
-  token: String!
-}
-
-type VerificationTokenCountAggregate {
-  _all: Int!
-  expires: Int!
-  identifier: Int!
-  token: Int!
-}
-
-input VerificationTokenCountOrderByAggregateInput {
-  expires: SortOrder
-  identifier: SortOrder
-  token: SortOrder
-}
-
-input VerificationTokenCreateInput {
-  expires: DateTime!
-  identifier: String!
-  token: String!
-}
-
-type VerificationTokenGroupBy {
-  _count: VerificationTokenCountAggregate
-  _max: VerificationTokenMaxAggregate
-  _min: VerificationTokenMinAggregate
-  expires: DateTime!
-  identifier: String!
-  token: String!
-}
-
-input VerificationTokenIdentifierTokenCompoundUniqueInput {
-  identifier: String!
-  token: String!
-}
-
-type VerificationTokenMaxAggregate {
-  expires: DateTime
-  identifier: String
-  token: String
-}
-
-input VerificationTokenMaxOrderByAggregateInput {
-  expires: SortOrder
-  identifier: SortOrder
-  token: SortOrder
-}
-
-type VerificationTokenMinAggregate {
-  expires: DateTime
-  identifier: String
-  token: String
-}
-
-input VerificationTokenMinOrderByAggregateInput {
-  expires: SortOrder
-  identifier: SortOrder
-  token: SortOrder
-}
-
-input VerificationTokenOrderByWithAggregationInput {
-  _count: VerificationTokenCountOrderByAggregateInput
-  _max: VerificationTokenMaxOrderByAggregateInput
-  _min: VerificationTokenMinOrderByAggregateInput
-  expires: SortOrder
-  identifier: SortOrder
-  token: SortOrder
-}
-
-input VerificationTokenOrderByWithRelationInput {
-  expires: SortOrder
-  identifier: SortOrder
-  token: SortOrder
-}
-
-enum VerificationTokenScalarFieldEnum {
-  expires
-  identifier
-  token
-}
-
-input VerificationTokenScalarWhereWithAggregatesInput {
-  AND: [VerificationTokenScalarWhereWithAggregatesInput!]
-  NOT: [VerificationTokenScalarWhereWithAggregatesInput!]
-  OR: [VerificationTokenScalarWhereWithAggregatesInput!]
-  expires: DateTimeWithAggregatesFilter
-  identifier: StringWithAggregatesFilter
-  token: StringWithAggregatesFilter
-}
-
-input VerificationTokenUpdateInput {
-  expires: DateTimeFieldUpdateOperationsInput
-  identifier: StringFieldUpdateOperationsInput
-  token: StringFieldUpdateOperationsInput
-}
-
-input VerificationTokenUpdateManyMutationInput {
-  expires: DateTimeFieldUpdateOperationsInput
-  identifier: StringFieldUpdateOperationsInput
-  token: StringFieldUpdateOperationsInput
-}
-
-input VerificationTokenWhereInput {
-  AND: [VerificationTokenWhereInput!]
-  NOT: [VerificationTokenWhereInput!]
-  OR: [VerificationTokenWhereInput!]
-  expires: DateTimeFilter
-  identifier: StringFilter
-  token: StringFilter
-}
-
-input VerificationTokenWhereUniqueInput {
-  identifier_token: VerificationTokenIdentifierTokenCompoundUniqueInput
-  token: String
 }
 
 type Video {

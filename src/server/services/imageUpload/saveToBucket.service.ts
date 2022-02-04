@@ -17,8 +17,8 @@ export async function saveToBucket(video: FileUpload) {
       })
       .pipe(
         uploadBucket.file(filename).createWriteStream({
-          resumable: false,
           gzip: true,
+          resumable: false,
         }),
       )
       .on("finish", () => resolve(bucketPrefix + filename)),

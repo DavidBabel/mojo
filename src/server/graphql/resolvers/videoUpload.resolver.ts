@@ -1,19 +1,27 @@
 import { FileUpload, GraphQLUpload } from "graphql-upload";
-import { Arg, Mutation, Resolver, UseMiddleware } from "type-graphql";
+import {
+  Arg,
+  Authorized,
+  Mutation,
+  Resolver,
+  UseMiddleware,
+} from "type-graphql";
 import { v4 as uuidv4 } from "uuid";
 
+import { UserRole } from "~/iso/enums";
 import { isProd } from "~/iso/env";
 import { getExtension } from "~/iso/string";
-import { mimeTypeGuard } from "~/server/graphql/guards/mimeType.guard";
+import { mimeTypeGuard } from "~/server/graphql/guards";
 import { saveToBucket, saveToLocal } from "~/server/services/imageUpload";
 
 @Resolver()
 export class VideoUploadResolver {
-  @Mutation(type => String)
+  @Authorized([UserRole.ADMIN, UserRole.USER])
+  @Mutation(() => String)
   @UseMiddleware(mimeTypeGuard)
   async videoUpload(
-    @Arg("video", type => GraphQLUpload) video: FileUpload,
-    @Arg("forceBucketUpload", type => Boolean, { nullable: true })
+    @Arg("video", () => GraphQLUpload) video: FileUpload,
+    @Arg("forceBucketUpload", () => Boolean, { nullable: true })
     forceBucketUpload: boolean,
   ) {
     video.filename = `${uuidv4()}.${getExtension(video.filename)}`;

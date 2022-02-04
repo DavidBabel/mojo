@@ -1,0 +1,77 @@
+{
+  "app-name": "Mojo Web",
+  "pages": {
+    "home": {
+      "welcome-to": "Welcome to"
+    },
+    "signin": {
+      "title": "Sign-in",
+      "signin-with-credentials": "Sign-in with Credentials"
+    },
+    "register": {
+      "title": "Register"
+    },
+    "auth-error": {
+      "title": "Oh no ...",
+      "description": "An error occurred while trying to sign you in.",
+      "please-retry": "Please try again.",
+      "error": "Error:"
+    },
+    "404": {
+      "title": "Page not found",
+      "description": "404, not yet added, sorry sorry !"
+    }
+  },
+  "forms": {
+    "signin": {
+      "email": "Email address",
+      "password": "Password"
+    },
+    "register": {
+      "name": "User name",
+      "email": "Email address",
+      "password": "Password"
+    }
+  },
+  "common": { "submit": "Submit", "cancel": "Cancel" },
+  "components": {
+    "GitHubSignIn": {
+      "description": {
+        "signin": "Sign-in with GitHub account",
+        "register": "Register with GitHub account"
+      }
+    }
+  },
+  "layout": {
+    "avatar": {
+      "logged-as": "Logged as {{name}}",
+      "logged-with-provider": "Logged as {{name}} from {{provider}}"
+    },
+    "menu": {
+      "videos": "Videos",
+      "account": "Account",
+      "manage-users": "Users",
+      "demo-tools": "< Demo Tools />"
+    },
+    "breadcrumb": {
+      "Home": "Home",
+      "videos": "Videos",
+      "account": "Account",
+      "manage-users": "Users",
+      "demo-tools": "< Demo Tools />"
+    },
+    "header": {
+      "connexion": {
+        "sign-in": "Sign in",
+        "sign-out": "Sign out",
+        "register": "Register"
+      }
+    },
+    "footer": {
+      "credit": {
+        "by": "By",
+        "for": "for"
+      }
+    }
+  }
+}
