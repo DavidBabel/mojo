@@ -1,5 +1,3 @@
-import "@vime/core/themes/default.css";
-
 import type { NextPage } from "next";
 import dynamicImport from "next/dynamic";
 import { useRouter } from "next/router";

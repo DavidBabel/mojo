@@ -1,7 +1,5 @@
 import "reflect-metadata";
 
-import { loadEnvConfig } from "@next/env";
-
 import { CONFIG } from "~/iso/config";
 import { isProd } from "~/iso/env";
 import { startApolloServer } from "~/server/boot/apolloServer.boot";
@@ -11,10 +9,7 @@ import { startNextJs } from "~/server/boot/nextjs.boot";
 const port = CONFIG.PORT;
 const env = CONFIG.NODE_ENV;
 
-async function bootstrapApp() {
-  const projectDir = process.cwd();
-  loadEnvConfig(projectDir);
-
+export async function bootstrapApp() {
   await startApolloServer(expressServer);
 
   // only launch nextjs on same port in production
@@ -41,5 +36,3 @@ async function bootstrapApp() {
     );
   });
 }
-
-bootstrapApp();

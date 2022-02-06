@@ -14,6 +14,7 @@ export default i18n
     interpolation: {
       escapeValue: false,
     },
+
     parseMissingKeyHandler: key => {
       console.warn(`i18n key "${key}" not found.`);
       return key;

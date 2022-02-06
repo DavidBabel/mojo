@@ -49,30 +49,6 @@ export function Menu() {
           <>
             <SubMenu
               icon={<SettingOutlined />}
-              key="envjumper"
-              title="Env Jumper"
-            >
-              <Item icon={<SettingOutlined />} key="local">
-                <Link href="http://localhost:4000">Local</Link>
-              </Item>
-              <Item icon={<SettingOutlined />} key="devenv">
-                <Link href="https://dashboard.heroku.com/pipelines/6041acc2-fe63-4add-a8c3-51a9ce622ca9">
-                  Dev env
-                </Link>
-              </Item>
-              <Item icon={<SettingOutlined />} key="stagingenv">
-                <Link href="https://mojo-video-staging.herokuapp.com/">
-                  Staging env
-                </Link>
-              </Item>
-              <Item icon={<SettingOutlined />} key="prodenv">
-                <Link href="https://mojo-video-prod.herokuapp.com/">
-                  Prod env
-                </Link>
-              </Item>
-            </SubMenu>
-            <SubMenu
-              icon={<SettingOutlined />}
               key="quicklinks"
               title="Quick links"
             >
@@ -99,6 +75,30 @@ export function Menu() {
               <Item icon={<SettingOutlined />} key="notion">
                 <Link href="https://www.notion.so/archery/Technical-Test-d5033edf044f45aaa8c13adce9076c82">
                   Test Subject
+                </Link>
+              </Item>
+            </SubMenu>
+            <SubMenu
+              icon={<SettingOutlined />}
+              key="envjumper"
+              title="Env Jumper"
+            >
+              <Item icon={<SettingOutlined />} key="local">
+                <Link href="http://localhost:4000">Local</Link>
+              </Item>
+              <Item icon={<SettingOutlined />} key="devenv">
+                <Link href="https://dashboard.heroku.com/pipelines/6041acc2-fe63-4add-a8c3-51a9ce622ca9">
+                  Dev env
+                </Link>
+              </Item>
+              <Item icon={<SettingOutlined />} key="stagingenv">
+                <Link href="https://mojo-video-staging.herokuapp.com/">
+                  Staging env
+                </Link>
+              </Item>
+              <Item icon={<SettingOutlined />} key="prodenv">
+                <Link href="https://mojo-video-prod.herokuapp.com/">
+                  Prod env
                 </Link>
               </Item>
             </SubMenu>

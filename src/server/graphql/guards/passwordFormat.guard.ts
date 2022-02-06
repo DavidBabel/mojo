@@ -1,8 +1,12 @@
 import { MiddlewareFn } from "type-graphql";
 
 import { passwordMaxLength, passwordMinLength } from "~/iso/constant";
+import { Context } from "~/server/graphql/graphql-context";
 
-export const passwordFormatGuard: MiddlewareFn = async ({ args }, next) => {
+export const passwordFormatGuard: MiddlewareFn<Context> = async (
+  { args },
+  next,
+) => {
   if (!args.password) {
     throw new Error("No password provided");
   }
