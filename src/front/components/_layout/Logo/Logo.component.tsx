@@ -19,7 +19,9 @@ export function Logo({ small = false }: Props) {
           display: "flex",
           gap: 10,
           justifyContent: "center",
+          marginBottom: 12,
           marginLeft: small ? 0 : -20,
+          marginTop: 16,
           padding: 10,
         }}
       >

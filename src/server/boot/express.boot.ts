@@ -4,9 +4,13 @@ import cors from "cors";
 import express from "express";
 
 import { CONFIG } from "~/iso/config";
+import { getCors } from "~/iso/cors";
+import { isDev } from "~/iso/env";
 
 const expressServer = express();
-expressServer.use(cors());
+if (isDev()) {
+  expressServer.use(cors(getCors("expressServerCors")));
+}
 expressServer.use(compression());
 expressServer.use(cookieParser());
 expressServer.use(

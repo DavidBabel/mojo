@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { Spin, Switch } from "antd";
+import { Spin, Switch, Typography } from "antd";
 import type { NextPage } from "next";
 import Link from "next/link";
 import React, { type ChangeEvent, useCallback, useState } from "react";
@@ -12,6 +12,8 @@ import type {
 import { VIDEO_UPLOAD_MUTATION } from "~/front/gql/mutations";
 import { useToggle } from "~/front/hooks";
 import { isDev } from "~/iso/env";
+
+const { Paragraph } = Typography;
 
 const UploadVideoPage: NextPage = () => {
   const [uploadedUrl, setUploadedUrl] = useState<string>();
@@ -51,37 +53,37 @@ const UploadVideoPage: NextPage = () => {
 
   return (
     <>
-      <p>
+      <Paragraph>
         <LinkNewTab download={"cat-example.mp4"} href={"/cat-example.mp4"}>
           Download a sample video
         </LinkNewTab>
-      </p>
+      </Paragraph>
       {isDev() && (
-        <p>
+        <Paragraph>
           <Switch onChange={() => toggleForceBucketUpload()} /> Force upload to
           Cloud Storage
-        </p>
+        </Paragraph>
       )}
 
-      <p>
+      <Paragraph>
         <input onChange={handleFileChange} type="file" />{" "}
         {uploadLoading && <Spin size="large" />}
-      </p>
+      </Paragraph>
 
       {uploadError && (
-        <p>
+        <Paragraph>
           Something Went Wrong :{" "}
           <pre>
             <code>{JSON.stringify(uploadError, null, 2)}</code>
           </pre>
-        </p>
+        </Paragraph>
       )}
       {uploadedUrl && (
-        <p>
+        <Paragraph>
           <Link href={`/videos/${videoId}${options}`}>
             Check your uploaded video
           </Link>
-        </p>
+        </Paragraph>
       )}
     </>
   );

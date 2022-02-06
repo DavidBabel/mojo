@@ -9,10 +9,8 @@ import { AuthProviders } from "~/iso/enums";
 
 export function Avatar() {
   const { t } = useTranslation();
-  const {
-    user: { email, image, name },
-    provider,
-  } = useSession();
+  const { user, provider } = useSession();
+  const { email, image, name } = user ?? {};
   let link = "";
 
   if (image) {

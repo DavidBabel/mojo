@@ -730,6 +730,7 @@ export type UserWhereInput = {
 export type UserWhereUniqueInput = {
   email?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
+  oAuthId?: InputMaybe<Scalars['String']>;
 };
 
 export type Video = {

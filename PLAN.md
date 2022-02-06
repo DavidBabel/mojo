@@ -46,8 +46,9 @@ Status:
 ## Step 5 : UI / UX 🚧
 
 - draft a modern UI with antd ✅
+- user experiences ✅ (but still some to do)
 - enhance video upload experience with advanced components 🚧
-- develop admin / user experiences 🚧
+- develop admin
 
 ## Step 6 : Non-regression
 
@@ -67,7 +68,8 @@ Status:
 
 - cleanup
 - docker setup
-- manage migrations
+- manage DB migrations
+- i18n backend / errors
 
 ## Step 10
 

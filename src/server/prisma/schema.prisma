@@ -21,7 +21,7 @@ model User {
   name     String?
   role     String  @default("USER")
   email    String? @unique
-  oAuthId  String?
+  oAuthId  String? @unique
   /// @TypeGraphQL.omit(output: true)
   password String?
   image    String?

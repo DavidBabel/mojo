@@ -1,38 +1,44 @@
-import { useMutation } from "@apollo/client";
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 
 import {
   EmailInput,
   Form,
+  FormContentWrapper,
   PasswordInput,
   SubmitButton,
   UserInput,
 } from "@/_form";
 import { Title } from "@/_layout/Title";
+import { ButtonLink } from "@/ButtonLink";
 import { GitHubSignIn } from "@/GitHubSignIn";
-import type {
-  Mutation,
-  MutationRegisterNewUserArgs,
-} from "~/@types/generated/graphqlTypes";
-import { REGISTER_NEW_USER_MUTATION } from "~/front/gql/mutations";
+import { useRegisterNewUserMutation } from "~/front/gql/mutations";
+import {
+  openErrorNotification,
+  openSuccessNotification,
+} from "~/front/lib/notifications";
+
+interface FormValues {
+  email: string;
+  name: string;
+  password: string;
+}
 
 const RegisterPage: NextPage = () => {
   const { t } = useTranslation();
+  const router = useRouter();
 
-  const [registerNewUser, { loading }] = useMutation<
-    Mutation,
-    MutationRegisterNewUserArgs
-  >(REGISTER_NEW_USER_MUTATION);
+  const [registerNewUser, { loadingRegisterNewUser }] =
+    useRegisterNewUserMutation();
 
-  const onFinish = (values: any) => {
-    registerNewUser({ variables: { ...values } })
-      .then(() => console.log("success"))
-      .catch(err => console.log(`error ${err}`));
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+  const onFinish = (values: FormValues) => {
+    registerNewUser(values)
+      .then(() => {
+        openSuccessNotification(t("pages.register.success"));
+        router.push("/auth/signin");
+      })
+      .catch(openErrorNotification);
   };
 
   return (
@@ -40,11 +46,18 @@ const RegisterPage: NextPage = () => {
       <Title>{t("pages.register.title")}</Title>
       <GitHubSignIn mode="register" />
 
-      <Form name="register" onFinish={onFinish} onFinishFailed={onFinishFailed}>
+      <Form name="register" onFinish={onFinish}>
         <UserInput />
         <EmailInput />
         <PasswordInput />
-        <SubmitButton loading={loading} />
+        <FormContentWrapper>
+          <ButtonLink disabled={loadingRegisterNewUser} href="/auth/signin">
+            {t("pages.register.already-have-account")}
+          </ButtonLink>
+          <SubmitButton loading={loadingRegisterNewUser}>
+            {t("pages.register.register-with-credentials")}
+          </SubmitButton>
+        </FormContentWrapper>
       </Form>
     </>
   );

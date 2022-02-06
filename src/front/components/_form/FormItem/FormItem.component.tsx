@@ -15,7 +15,7 @@ export function FormItem({ name, label, ...props }: FormItemProps) {
   const { t } = useTranslation();
   const { formName } = useFormContext();
 
-  label = label ?? t(`forms.${formName}.${name}` as any) ?? name;
+  label = label ?? t(`forms__dynamic.${formName}.${name}` as any) ?? name;
   const rules = formValidationRules?.[formName]?.[name!] ?? [];
 
   return (

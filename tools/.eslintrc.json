@@ -57,6 +57,11 @@
       {
         "paths": [
           {
+            "name": "@/VideoPlayerNoSSR",
+            "importNames": ["VideoPlayerNoSSR"],
+            "message": "Mojo custom: this component is no SSR, please use nextjs dynamic import"
+          },
+          {
             "name": "~/iso/env",
             "importNames": ["ENV"],
             "message": "Mojo custom: use custom ~/iso/config instead"
@@ -80,6 +85,7 @@
               "~/front/contexts/*.context*",
               "~/front/gql/mutations/*.mutation*",
               "~/front/gql/querys/*.query*",
+              "~/front/lib/notifications/*.notifications*",
               "~/iso/enums/*.enum*",
               "~/server/graphql/guards/*.guard*",
               "~/server/graphql/middlewares/*.middleware*",

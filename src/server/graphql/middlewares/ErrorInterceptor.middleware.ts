@@ -1,10 +1,11 @@
 import { MiddlewareFn } from "type-graphql";
 
-export const ErrorInterceptorMiddleware: MiddlewareFn<any> = async (
+import { Context } from "~/server/graphql/graphql-context";
+
+export const ErrorInterceptorMiddleware: MiddlewareFn<Context> = async (
   action,
   next,
 ) => {
-  // console.log(action);
   try {
     return await next();
   } catch (err: any) {
@@ -12,12 +13,11 @@ export const ErrorInterceptorMiddleware: MiddlewareFn<any> = async (
     if (err?.message) {
       console.log(err.message);
     }
-    // hide errors from db like printing sql query
+
     if (err?.message?.startsWith("File truncated as it exceeds")) {
       throw new Error("File too large");
     }
 
-    // rethrow the error
     throw err;
   }
 };

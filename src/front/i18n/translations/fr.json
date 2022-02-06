@@ -1,45 +1,78 @@
 {
   "app-name": "Mojo Web Fr",
-  "pages": {
-    "home": {
-      "welcome-to": "Bienvenue chez"
-    },
-    "signin": {
-      "title": "Se connecter",
-      "signin-with-credentials": "Se connecter avec login / mot de passe"
-    },
-    "register": {
-      "title": "S'enregistrer"
-    },
-    "auth-error": {
-      "title": "Oh non ...",
-      "description": "Une erreur s'est produite lors de la connexion.",
-      "please-retry": "Veuillez réessayer.",
-      "error": "Erreur:"
-    },
-    "404": {
-      "title": "Page non trouvée",
-      "description": "404, pas ajoutée encore, désolé !"
-    }
+  "common": {
+    "cancel": "Annuler",
+    "public": "Publique",
+    "submit": "Envoyer"
   },
-  "forms": {
-    "signin": {
-      "email": "Adresse email",
-      "password": "Mot de passe"
-    },
-    "register": {
-      "name": "Nom d'utilisateur",
-      "email": "Adresse email",
-      "password": "Mot de passe"
-    }
-  },
-  "common": { "submit": "Envoyer", "cancel": "Annuler" },
   "components": {
     "GitHubSignIn": {
+      "notification": {
+        "register": "Enregistremet avec GitHub réussi, vous êtes maintenant connecté",
+        "signin": "Connexion avec GitHub réussi"
+      },
       "description": {
-        "signin": "Connexion avec GitHub",
-        "register": "S'enregistrer avec GitHub"
+        "register": "S'enregistrer avec GitHub",
+        "signin": "Connexion avec GitHub"
       }
+    },
+    "LanguageSwitcher": {
+      "switch-to": "Turn into English"
+    },
+    "LoadingOrError": {
+      "hide-error": "Masquer le détail des erreurs",
+      "show-error": "Voir le détail des erreurs",
+      "title": {
+        "an-error-occured": "Une erreur s'est produite, êtes vous",
+        "logged-in": "connecté"
+      }
+    },
+    "NoDataFound": {
+      "no-data-found": "Aucune donnée trouvée pour {{dataName}}",
+      "title": "Aucune donnée trouvée"
+    },
+    "VideoCard": {
+      "action": {
+        "delete": "Effacer cette vidéo",
+        "edit": "Éditer cette vidéo",
+        "lock": "Rendre cette vidéo privée",
+        "publish": "Publier cette vidéo"
+      },
+      "created-at": "Ajoutée le {{date}}",
+      "modals": {
+        "confirm-delete": {
+          "cancelText": "Annuler",
+          "content": "Cette action ne peut pas être annulée",
+          "okText": "Confirmer et effacer",
+          "title": "Voulez vous effacer cette video ?"
+        }
+      },
+      "notifications": {
+        "video-deleted": {
+          "description": "La vidéo \"{{videoName}}\" a été supprimée",
+          "message": "Vidéo supprimée"
+        },
+        "video-published": {
+          "description": "La vidéo \"{{videoName}}\" a été ",
+          "message": "Visibilité de la vidéo modifiée",
+          "private": "rendue privée",
+          "public": "publiée"
+        }
+      }
+    }
+  },
+  "dateFormat": {
+    "date": "DD/MM/YYYY"
+  },
+  "forms__dynamic": {
+    "register": {
+      "email": "Adresse email",
+      "name": "Nom d'utilisateur",
+      "password": "Mot de passe"
+    },
+    "signin": {
+      "email": "Adresse email",
+      "password": "Mot de passe"
     }
   },
   "layout": {
@@ -47,31 +80,78 @@
       "logged-as": "Connecté: {{name}}",
       "logged-with-provider": "Connecté: {{name}} depuis {{provider}}"
     },
-    "menu": {
-      "videos": "Videos",
-      "account": "Compte",
-      "manage-users": "Utilisateurs",
-      "demo-tools": "< Demo Tools />"
-    },
     "breadcrumb": {
-      "Home": "Acceuil",
-      "videos": "Videos",
       "account": "Compte",
+      "demo-tools": "< Demo Tools />",
+      "home": "Acceuil",
       "manage-users": "Utilisateurs",
-      "demo-tools": "< Demo Tools />"
-    },
-    "header": {
-      "connexion": {
-        "sign-in": "Connexion",
-        "sign-out": "Déconnexion",
-        "register": "S'enregistrer"
-      }
+      "videos": "Mes Videos"
     },
     "footer": {
       "credit": {
         "by": "Par",
         "for": "pour"
       }
+    },
+    "header": {
+      "connexion": {
+        "register": "S'enregistrer",
+        "sign-in": "Connexion",
+        "sign-out": "Déconnexion"
+      }
+    },
+    "menu": {
+      "account": "Compte",
+      "demo-tools": "< Demo Tools />",
+      "manage-users": "Utilisateurs",
+      "videos": "Videos"
+    }
+  },
+  "notifications": {
+    "error": {
+      "default": "Erreur inconnue",
+      "message": "Une erreur est survenue"
+    },
+    "success": {
+      "message": "Succès"
+    }
+  },
+  "pages": {
+    "404": {
+      "description": "404, pas ajoutée encore, désolé !",
+      "title": "Page non trouvée"
+    },
+    "auth": {
+      "description": "Que voulez vous faire ?",
+      "title": "S'authentifier"
+    },
+    "auth-error": {
+      "description": "Une erreur s'est produite lors de la connexion.",
+      "error": "Erreur:",
+      "please-retry": "Veuillez réessayer.",
+      "title": "Oh non ..."
+    },
+    "home": {
+      "welcome-to": "Bienvenue chez"
+    },
+    "register": {
+      "already-have-account": "S'identifier",
+      "register-with-credentials": "S'enregistrer avec login / mot de passe",
+      "success": "Enregistré avec succès, vous pouvez maintenant vous connecter",
+      "title": "S'enregistrer"
+    },
+    "signin": {
+      "dont-have-account": "S'enregistrer",
+      "signin-with-credentials": "Se connecter avec login / mot de passe",
+      "success": "Connecté avec succès",
+      "title": "Se connecter"
+    },
+    "videos": {
+      "download-example": "Télécharger une vidéo d'exemple (démo)",
+      "no-datas": "l'utilisateur",
+      "no-videos": "Aucune vidéo trouvée",
+      "title": "Mes vidéos",
+      "upload-video": "Uploader une nouvelle vidéo"
     }
   }
 }

@@ -2,8 +2,8 @@ import { User } from "@prisma/client";
 import { Arg, Ctx, Mutation, Resolver, UseMiddleware } from "type-graphql";
 
 import { UserRole } from "~/iso/enums";
+import { Context } from "~/server/graphql/graphql-context";
 import { isEmailGuard, passwordFormatGuard } from "~/server/graphql/guards";
-import { Context } from "~/server/prisma/context";
 import { hashPassword } from "~/server/services/password/hash-password.service";
 
 @Resolver()
@@ -18,7 +18,7 @@ export class RegisterResolver {
   ) {
     let existingUser: MaybeNull<User> = null;
     try {
-      existingUser = await prisma.user.findFirst({ where: { email } });
+      existingUser = await prisma.user.findUnique({ where: { email } });
     } catch (error) {
       throw new Error("unable to search for user");
     }
