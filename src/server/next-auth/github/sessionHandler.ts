@@ -8,7 +8,7 @@ export const githubSessionHandler: SessionHandler = async ({
   token,
 }) => {
   try {
-    let user = await PrismaClient.user.findFirst({
+    let user = await PrismaClient.user.findUnique({
       where: { oAuthId: token.providerId },
     });
 

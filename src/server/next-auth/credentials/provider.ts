@@ -12,7 +12,7 @@ export const credentialProvider = CredentialsProvider({
       throw new AuthError("Credentials not found");
     }
 
-    const user = await PrismaClient.user.findFirst({
+    const user = await PrismaClient.user.findUnique({
       where: { email },
     });
 

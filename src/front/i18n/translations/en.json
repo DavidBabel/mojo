@@ -1,45 +1,78 @@
 {
   "app-name": "Mojo Web",
-  "pages": {
-    "home": {
-      "welcome-to": "Welcome to"
-    },
-    "signin": {
-      "title": "Sign-in",
-      "signin-with-credentials": "Sign-in with Credentials"
-    },
-    "register": {
-      "title": "Register"
-    },
-    "auth-error": {
-      "title": "Oh no ...",
-      "description": "An error occurred while trying to sign you in.",
-      "please-retry": "Please try again.",
-      "error": "Error:"
-    },
-    "404": {
-      "title": "Page not found",
-      "description": "404, not yet added, sorry sorry !"
-    }
+  "common": {
+    "cancel": "Cancel",
+    "public": "Public",
+    "submit": "Submit"
   },
-  "forms": {
-    "signin": {
-      "email": "Email address",
-      "password": "Password"
-    },
-    "register": {
-      "name": "User name",
-      "email": "Email address",
-      "password": "Password"
-    }
-  },
-  "common": { "submit": "Submit", "cancel": "Cancel" },
   "components": {
     "GitHubSignIn": {
+      "notification": {
+        "register": "Success to register with your GitHub account",
+        "signin": "Success to signin with your GitHub account"
+      },
       "description": {
-        "signin": "Sign-in with GitHub account",
-        "register": "Register with GitHub account"
+        "register": "Register with GitHub account",
+        "signin": "Sign-in with GitHub account"
       }
+    },
+    "LanguageSwitcher": {
+      "switch-to": "Mettre en Français"
+    },
+    "LoadingOrError": {
+      "hide-error": "Hide error details",
+      "show-error": "Show error details",
+      "title": {
+        "an-error-occured": "An error occured, are you",
+        "logged-in": "logged in"
+      }
+    },
+    "NoDataFound": {
+      "no-data-found": "No data found for {{dataName}}",
+      "title": "No data found"
+    },
+    "VideoCard": {
+      "action": {
+        "delete": "Delete this video",
+        "edit": "Edit this video",
+        "lock": "Make this video private",
+        "publish": "Make this video public"
+      },
+      "created-at": "Added the {{date}}",
+      "modals": {
+        "confirm-delete": {
+          "cancelText": "Cancel",
+          "content": "This action cannot be undone",
+          "okText": "Confirm and delete",
+          "title": "Do you want to delete these video ?"
+        }
+      },
+      "notifications": {
+        "video-deleted": {
+          "description": "The video \"{{videoName}}\" has been deleted",
+          "message": "Video deleted"
+        },
+        "video-published": {
+          "description": "The video \"{{videoName}}\" has been turned ",
+          "message": "Video privacy changed",
+          "private": "private",
+          "public": "public"
+        }
+      }
+    }
+  },
+  "dateFormat": {
+    "date": "YYYY/MM/DD"
+  },
+  "forms__dynamic": {
+    "register": {
+      "email": "Email address",
+      "name": "User name",
+      "password": "Password"
+    },
+    "signin": {
+      "email": "Email address",
+      "password": "Password"
     }
   },
   "layout": {
@@ -47,31 +80,78 @@
       "logged-as": "Logged as {{name}}",
       "logged-with-provider": "Logged as {{name}} from {{provider}}"
     },
-    "menu": {
-      "videos": "Videos",
-      "account": "Account",
-      "manage-users": "Users",
-      "demo-tools": "< Demo Tools />"
-    },
     "breadcrumb": {
-      "Home": "Home",
-      "videos": "Videos",
       "account": "Account",
+      "demo-tools": "< Demo Tools />",
+      "home": "Home",
       "manage-users": "Users",
-      "demo-tools": "< Demo Tools />"
-    },
-    "header": {
-      "connexion": {
-        "sign-in": "Sign in",
-        "sign-out": "Sign out",
-        "register": "Register"
-      }
+      "videos": "My videos"
     },
     "footer": {
       "credit": {
         "by": "By",
         "for": "for"
       }
+    },
+    "header": {
+      "connexion": {
+        "register": "Register",
+        "sign-in": "Sign in",
+        "sign-out": "Sign out"
+      }
+    },
+    "menu": {
+      "account": "Account",
+      "demo-tools": "< Demo Tools />",
+      "manage-users": "Users",
+      "videos": "Videos"
+    }
+  },
+  "notifications": {
+    "error": {
+      "default": "Unknown error",
+      "message": "An error occurred"
+    },
+    "success": {
+      "message": "Success"
+    }
+  },
+  "pages": {
+    "404": {
+      "description": "404, not yet added, sorry sorry !",
+      "title": "Page not found"
+    },
+    "auth": {
+      "description": "What do you want to do ?",
+      "title": "Auth"
+    },
+    "auth-error": {
+      "description": "An error occurred while trying to sign you in.",
+      "error": "Error:",
+      "please-retry": "Please try again.",
+      "title": "Oh no ..."
+    },
+    "home": {
+      "welcome-to": "Welcome to"
+    },
+    "register": {
+      "already-have-account": "Prefer sign-in",
+      "register-with-credentials": "Register with Credentials",
+      "success": "Register success, you can now login",
+      "title": "Register"
+    },
+    "signin": {
+      "dont-have-account": "Go to register",
+      "signin-with-credentials": "Sign-in with Credentials",
+      "success": "Signin success",
+      "title": "Sign-in"
+    },
+    "videos": {
+      "download-example": "Download a video sample (demo)",
+      "no-datas": "user",
+      "no-videos": "No video found",
+      "title": "My videos",
+      "upload-video": "Upload new video"
     }
   }
 }

@@ -1,6 +1,7 @@
 import "~/front/i18n/init-i18n";
 import "antd/dist/antd.css";
 import "~/front/styles/globals.css";
+import "@vime/core/themes/default.css";
 
 import { ApolloProvider } from "@apollo/client";
 import { ConfigProvider } from "antd";

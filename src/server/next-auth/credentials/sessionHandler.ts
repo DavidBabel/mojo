@@ -8,7 +8,7 @@ export const credentialSessionHandler: SessionHandler = async ({
   token,
 }) => {
   try {
-    const user = await PrismaClient.user.findFirst({
+    const user = await PrismaClient.user.findUnique({
       where: { id: token.providerId },
     });
 

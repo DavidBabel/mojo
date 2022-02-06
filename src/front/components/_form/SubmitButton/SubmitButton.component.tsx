@@ -17,18 +17,16 @@ export function SubmitButton({
   }
   return (
     <>
-      <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
-        <Button
-          htmlType="submit"
-          type="primary"
-          {...buttonProps}
-          disabled={loading || buttonProps.disabled}
-        >
-          {children}
-        </Button>
+      <Button
+        htmlType="submit"
+        type="primary"
+        {...buttonProps}
+        disabled={loading || buttonProps.disabled}
+      >
+        {children}
+      </Button>
 
-        {loading && <Spin style={{ marginLeft: 12 }} />}
-      </Form.Item>
+      {loading && <Spin style={{ marginLeft: 12 }} />}
     </>
   );
 }

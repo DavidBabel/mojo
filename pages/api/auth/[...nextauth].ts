@@ -2,9 +2,9 @@
 
 import NextAuth from "next-auth";
 
-import { CONFIG } from "~/iso/config";
 import { AuthProviders } from "~/iso/enums";
 import { AuthError } from "~/iso/errors";
+import { day } from "~/iso/numbers/time";
 import {
   credentialProvider,
   credentialSessionHandler,
@@ -23,6 +23,7 @@ export default NextAuth({
       }
       return token;
     },
+    redirect: ({ baseUrl }) => baseUrl,
     async session({ session, token }) {
       if (token.provider === AuthProviders.Github) {
         return githubSessionHandler({ session, token });
@@ -33,17 +34,14 @@ export default NextAuth({
     },
   },
   jwt: {
-    maxAge: 60 * 60 * 24 * 30,
-    secret: CONFIG.NEXTAUTH_SECRET,
+    maxAge: 10 * day,
   },
   pages: {
-    // signOut: "/auth/signout",
     error: "/auth/error",
     newUser: "/",
     signIn: "/auth/signin",
   },
   providers: [githubProvider, credentialProvider],
-  secret: CONFIG.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
   },

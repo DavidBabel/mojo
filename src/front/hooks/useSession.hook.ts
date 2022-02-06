@@ -11,9 +11,7 @@ export function useSession() {
   const isAdmin = () => data?.user.role === UserRole.ADMIN;
   const provider = data?.provider;
 
-  const user = {
-    ...data?.user,
-  };
+  const user = data?.user;
 
   return { isAdmin, isAuthenticated, provider, /* session, */ user };
 }

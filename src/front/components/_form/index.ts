@@ -1,7 +1,7 @@
-export * from "./EmailInput";
+export * from "./_inputs";
 export * from "./Form";
+export * from "./FormContentWrapper";
 export * from "./FormItem";
-export * from "./PasswordInput";
 export * from "./SubmitButton";
-export * from "./UserInput";
+
 // export * from "./VideoUpload";

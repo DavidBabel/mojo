@@ -534,6 +534,7 @@ input UserWhereInput {
 input UserWhereUniqueInput {
   email: String
   id: String
+  oAuthId: String
 }
 
 type Video {

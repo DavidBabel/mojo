@@ -3,9 +3,10 @@ import { Express } from "express";
 import { graphqlUploadExpress } from "graphql-upload";
 
 import { CONFIG } from "~/iso/config";
+import { getCors } from "~/iso/cors";
 import { Mb } from "~/iso/numbers/size";
 import { schema } from "~/server/graphql/buildSchema";
-import { context } from "~/server/prisma/context";
+import { context } from "~/server/graphql/graphql-context";
 
 const apolloServer = new ApolloServer({
   context,
@@ -30,5 +31,6 @@ export async function startApolloServer(expressServer: Express) {
   apolloServer.applyMiddleware({
     app: expressServer,
     path: CONFIG.GRAPHQL_ENDPOINT,
+    ...getCors("apolloServerCors"),
   });
 }
