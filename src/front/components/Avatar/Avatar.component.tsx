@@ -1,7 +1,6 @@
 import { Avatar as AntAvatar, Popover } from "antd";
 import md5 from "md5";
 import Image from "next/image";
-import React from "react";
 import { useTranslation } from "react-i18next";
 
 import { useSession } from "~/front/hooks";

@@ -21,7 +21,7 @@ interface FormProps extends AntFormProps {
 }
 
 export function Form({ children, style, ...props }: FormProps) {
-  const styleDefault = { marginTop: 50, ...style };
+  const styleDefault = { marginTop: 35, ...style };
   const formContextValue = { formName: props.name ?? "form" };
   return (
     <>

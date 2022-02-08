@@ -2,7 +2,7 @@ import faker from "@faker-js/faker";
 import { Prisma } from "@prisma/client";
 
 import { UserRole } from "~/iso/enums";
-import { hashPassword } from "~/server/services/password/hash-password.service";
+import { hashPassword } from "~/server/services/hash-password";
 
 const getFakeVideos = (addMoreVideos: number = 0) =>
   Array(

@@ -4,17 +4,16 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Card, Col, Row, Typography } from "antd";
+import { Card, Col, Row } from "antd";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 import { PrismaCard } from "@/_devTools/PrismaCard";
+import { Title } from "@/_layout/Title";
 import { LinkNewTab } from "~/front/components/LinkNewTab";
 import { useBaseUrl } from "~/front/hooks";
 import { CONFIG } from "~/iso/config";
-
-const { Title } = Typography;
 
 const colProps = {
   md: { span: 12 },
@@ -34,7 +33,7 @@ const ToolsPage: NextPage = () => {
 
   return (
     <>
-      <Title level={2}>Tools for demo only</Title>
+      <Title>Tools for demo only</Title>
       <Row gutter={[24, 16]} justify="space-around">
         <Col {...colProps}>
           <Link

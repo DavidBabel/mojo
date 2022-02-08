@@ -15,7 +15,7 @@ const REGISTER_NEW_USER_MUTATION = gql`
   }
 `;
 
-export function useRegisterNewUserMutation<T>() {
+export function useRegisterNewUserMutation() {
   const [action, options] = useMutation<Mutation, MutationRegisterNewUserArgs>(
     REGISTER_NEW_USER_MUTATION,
   );

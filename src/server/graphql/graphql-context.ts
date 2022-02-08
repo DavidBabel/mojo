@@ -10,6 +10,13 @@ export type Context = {
   user: Maybe<Session["user"]>;
 };
 
+/**
+ * Can be used when we have a @LoggedIn() decorator to save some checks in code
+ */
+export type EnsuredUser<T extends Context> = T & {
+  user: Session["user"];
+};
+
 export const context: ContextFunction<ExpressContext, object> = async ({
   req,
 }): Promise<Context> => {

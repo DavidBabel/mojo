@@ -1,1 +1,2 @@
-export * from "./oneUser.query";
+export * from "./useOneUser.query";
+export * from "./useOneVideo.query";

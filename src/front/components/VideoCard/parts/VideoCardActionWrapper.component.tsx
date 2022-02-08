@@ -20,8 +20,6 @@ interface Props extends PropsWithChildren<Video> {
   onAction: ReturnType<typeof useOneUserQuery>["refetch"];
 }
 
-const minHeight = 370;
-
 export function VideoCardActionWrapper({
   onAction,
   children,
@@ -36,7 +34,7 @@ export function VideoCardActionWrapper({
   const [setVideoPublished, { loadingPublishVideo }] =
     usePublishVideoMutation();
 
-  const handleEdit = () => !loading && router.push(`/video/edit/${id}`);
+  const handleEdit = () => !loading && router.push(`/videos/edit/${id}`);
 
   const handleTogglePublic = useCallback(() => {
     if (loading) return;
@@ -44,12 +42,12 @@ export function VideoCardActionWrapper({
     setVideoPublished(id, !published)
       .then(() => openPublishedVideoNotification(title, !published))
       .catch(openErrorNotification)
-      .finally(() => {
+      .finally(async () => {
         // prevent little ui glitch
         setTimeout(() => {
           setLoading(false);
         }, 500);
-        onAction();
+        await onAction();
       });
   }, [loading, setVideoPublished, id, published, onAction, title]);
 
@@ -61,44 +59,41 @@ export function VideoCardActionWrapper({
         deleteVideo(id)
           .then(() => openDeletedVideodNotification(title))
           .catch(openErrorNotification)
-          .finally(() => {
+          .finally(async () => {
             setLoading(false);
-            onAction();
+            await onAction();
           });
       },
       () => setLoading(false),
     );
   }, [deleteVideo, id, loading, onAction, title]);
 
-  const publishAction = published ? (
-    <VideoCardAction action={handleTogglePublic} key="lock" name="lock" />
-  ) : (
-    <VideoCardAction action={handleTogglePublic} key="publish" name="publish" />
-  );
   const actions = [
     <VideoCardAction action={handleDelete} key="delete" name="delete" />,
-    publishAction,
+    <VideoCardAction
+      action={handleTogglePublic}
+      key="publish"
+      name={published ? "publish" : "lock"}
+    />,
     <VideoCardAction action={handleEdit} key="edit" name="edit" />,
   ];
 
   const isLoading = loading || loadingDeleteVideo || loadingPublishVideo;
 
   return (
-    <Card actions={actions} hoverable style={{ minHeight }}>
-      {isLoading ? (
+    <Card actions={actions} hoverable>
+      {isLoading && (
         <div
           style={{
-            alignItems: "center",
-            display: "flex",
-            height: minHeight - 35,
-            justifyContent: "center",
+            float: "left",
+            marginLeft: "48%",
+            position: "relative",
           }}
         >
-          <Spin size="large" />
+          <Spin size="large" style={{ position: "absolute", top: 140 }} />
         </div>
-      ) : (
-        <div style={{ height: minHeight - 35 }}>{children}</div>
       )}
+      <div style={{ opacity: isLoading ? 0 : 100 }}>{children}</div>
     </Card>
   );
 }

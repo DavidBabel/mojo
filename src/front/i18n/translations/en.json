@@ -7,13 +7,13 @@
   },
   "components": {
     "GitHubSignIn": {
-      "notification": {
-        "register": "Success to register with your GitHub account",
-        "signin": "Success to signin with your GitHub account"
-      },
       "description": {
         "register": "Register with GitHub account",
         "signin": "Sign-in with GitHub account"
+      },
+      "notification": {
+        "register": "Success to register with your GitHub account",
+        "signin": "Success to signin with your GitHub account"
       }
     },
     "LanguageSwitcher": {
@@ -73,6 +73,19 @@
     "signin": {
       "email": "Email address",
       "password": "Password"
+    },
+    "video-edit": {
+      "description": "Description",
+      "published": "Published",
+      "title": "Title",
+      "video": "Video"
+    },
+    "video-upload": {
+      "description": "Description",
+      "forceBucketUpload": "Force upload to GStorage",
+      "published": "Published",
+      "title": "Title",
+      "video": "Video"
     }
   },
   "layout": {
@@ -85,6 +98,8 @@
       "demo-tools": "< Demo Tools />",
       "home": "Home",
       "manage-users": "Users",
+      "upload": "Upload a new video",
+      "video": "Video",
       "videos": "My videos"
     },
     "footer": {
@@ -104,7 +119,7 @@
       "account": "Account",
       "demo-tools": "< Demo Tools />",
       "manage-users": "Users",
-      "videos": "Videos"
+      "videos": "My Videos"
     }
   },
   "notifications": {
@@ -152,6 +167,30 @@
       "no-videos": "No video found",
       "title": "My videos",
       "upload-video": "Upload new video"
+    },
+    "videos-edit": {
+      "check-video": "Video saved ! Check at it",
+      "delete": "Delete this video",
+      "here": "here",
+      "notifications": {
+        "edit-success": "Video edited with success"
+      },
+      "submit": "Save modifications",
+      "title": "Edit video",
+      "title-hint": "Must finish with \"- demo\" for demo to have a defaulted video file"
+    },
+    "videos-play": {
+      "edit-video": "Edit this video"
+    },
+    "videos-upload": {
+      "goto-videos": "See your videos",
+      "notifications": {
+        "upload-success": "Your video has been uploaded"
+      },
+      "play-video": "Check your video",
+      "submit": "Send your video",
+      "title": "Upload a new video",
+      "upload-another-one": "Upload another video"
     }
   }
 }
