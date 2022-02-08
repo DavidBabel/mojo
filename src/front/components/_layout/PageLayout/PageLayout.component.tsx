@@ -57,7 +57,7 @@ export function PageLayout({ children }: Props) {
         >
           <Header />
           <Content
-            style={{ margin: "0 16px", maxHeight: "87vh", overflow: "auto" }}
+            style={{ margin: "0 16px", maxHeight: "85vh", overflow: "auto" }}
           >
             <AutoBreadcrumb />
             <div

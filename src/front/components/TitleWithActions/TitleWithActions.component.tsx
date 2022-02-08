@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import { wideHack } from "~/front/styles/wide.hack";
+import { cn } from "~/front/lib/classnames.exports";
 
 interface Props {
   actions: ReactNode[];
@@ -10,18 +10,12 @@ interface Props {
 }
 
 export function TitleWithActions({ title, actions, sticky }: Props) {
-  const style: CSSProperties = sticky
-    ? {
-        bottom: 0,
-        position: "sticky",
-        top: 0,
-        zIndex: 60000,
-        ...wideHack,
-      }
-    : {};
   return (
     <>
-      <Row style={{ backgroundColor: "white", paddingBottom: 8, ...style }}>
+      <Row
+        className={cn({ sticky })}
+        style={{ backgroundColor: "white", paddingBottom: 8 }}
+      >
         <Col xl={8} xs={24}>
           {title}
         </Col>
