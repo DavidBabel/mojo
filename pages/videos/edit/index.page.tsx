@@ -1,7 +1,11 @@
-import Router from "next/router";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const redirect = () => {
-  Router.push("/videos");
+const Redirect = () => {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/videos");
+  }, [router]);
   return <></>;
 };
-export default redirect;
+export default Redirect;
