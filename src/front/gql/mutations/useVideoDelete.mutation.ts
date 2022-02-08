@@ -4,7 +4,6 @@ import {
   Mutation,
   MutationDeleteVideoArgs,
 } from "~/@types/generated/graphqlTypes";
-import { whereMutationId } from "~/front/gql/helpers/graphql.helpers";
 
 const VIDEO_DELETE_MUTATION = gql`
   mutation DeleteVideo($where: VideoWhereUniqueInput!) {
@@ -19,7 +18,10 @@ export function useDeleteVideoMutation() {
     VIDEO_DELETE_MUTATION,
   );
   return [
-    (id: string) => action(whereMutationId(id)),
+    (id: string) =>
+      action({
+        variables: { where: { id } },
+      }),
     { ...options, loadingDeleteVideo: options.loading },
   ] as const;
 }

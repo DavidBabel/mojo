@@ -1,5 +1,4 @@
-import { type ButtonProps as AntButtonProps, Button, Form, Spin } from "antd";
-import React from "react";
+import { type ButtonProps as AntButtonProps, Button, Spin } from "antd";
 import { useTranslation } from "react-i18next";
 
 interface ButtonProps extends AntButtonProps {

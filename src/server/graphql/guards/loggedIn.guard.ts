@@ -8,6 +8,7 @@ export const loggedInGuard: MiddlewareFn<Context> = async (
   next,
 ) => {
   const { user } = context;
+
   if (noUser(user)) {
     throw new Error("You need to be logged in to perform this action");
   }
@@ -15,6 +16,6 @@ export const loggedInGuard: MiddlewareFn<Context> = async (
   return await next();
 };
 
-export function LoggedInDecorator() {
+export function LoggedIn() {
   return createMethodDecorator<Context>(loggedInGuard);
 }

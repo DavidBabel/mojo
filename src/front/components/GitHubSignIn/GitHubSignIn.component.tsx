@@ -2,7 +2,7 @@ import { Button, Form, Spin } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -28,7 +28,7 @@ export function GitHubSignIn({ mode = "signin" }: Props) {
         openSuccessNotification(
           t(`components.GitHubSignIn.notification.${mode}`),
         );
-        router.push("/auth/signin");
+        router.push("/");
       })
       .catch(openErrorNotification)
       .finally(() => {

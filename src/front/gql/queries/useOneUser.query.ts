@@ -1,7 +1,11 @@
 import { gql, useQuery } from "@apollo/client";
 
-import { Query, QueryFindFirstUserArgs } from "~/@types/generated/graphqlTypes";
-import { whereQueryId } from "~/front/gql/helpers/graphql.helpers";
+import {
+  Query,
+  QueryFindFirstUserArgs,
+  SortOrder,
+  VideoOrderByWithRelationInput,
+} from "~/@types/generated/graphqlTypes";
 
 const ONE_USER_QUERY = gql`
   query FindFirstUser(
@@ -27,8 +31,15 @@ const ONE_USER_QUERY = gql`
 `;
 
 export function useOneUserQuery(id?: string) {
-  return useQuery<Query, QueryFindFirstUserArgs>(
-    ONE_USER_QUERY,
-    whereQueryId(id),
-  );
+  return useQuery<
+    Query,
+    QueryFindFirstUserArgs & { orderBy?: VideoOrderByWithRelationInput[] }
+  >(ONE_USER_QUERY, {
+    fetchPolicy: "no-cache",
+    skip: !id,
+    variables: {
+      orderBy: [{ createdAt: SortOrder.Desc }],
+      where: { id: { equals: id } },
+    },
+  });
 }

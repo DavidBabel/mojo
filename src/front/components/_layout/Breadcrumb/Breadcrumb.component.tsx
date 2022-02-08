@@ -1,7 +1,6 @@
 import { Breadcrumb, BreadcrumbProps } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import { useTranslation } from "react-i18next";
 
 import { BreadcrumbKey } from "~/@types/breadcrumb";
@@ -16,6 +15,9 @@ export function AutoBreadcrumb(props: BreadcrumbProps) {
 
   if (pathParts[0] === "[...page404]") {
     pathParts[0] = "404";
+  }
+  if (pathParts.includes("[videoId]")) {
+    pathParts[pathParts.indexOf("[videoId]")] = t("layout.breadcrumb.video");
   }
 
   let currentLink = "/";

@@ -1,13 +1,11 @@
 import { UserAddOutlined, UserOutlined } from "@ant-design/icons";
-import { Typography } from "antd";
 import type { NextPage } from "next";
 import { useTranslation } from "react-i18next";
 
 import { FormContentWrapper } from "@/_form";
+import { Paragraph } from "@/_layout/antd.exports";
 import { Title } from "@/_layout/Title";
 import { ButtonLink } from "@/ButtonLink";
-
-const { Paragraph } = Typography;
 
 const AuthIndexPage: NextPage = () => {
   const { t } = useTranslation();

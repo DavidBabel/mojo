@@ -3,11 +3,11 @@ import {
   UserDeleteOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Layout } from "antd";
+import { Button, Layout } from "antd";
 import { signOut } from "next-auth/react";
-import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { Ribbon } from "@/_layout/antd.exports";
 import { Avatar } from "@/Avatar";
 import { ButtonLink } from "@/ButtonLink";
 import { LanguageSwitcher } from "@/LanguageSwitcher";
@@ -24,8 +24,8 @@ export function Header() {
     <>
       <HeaderAntd className="site-layout-background">
         {isAdmin() && (
-          <div style={{ float: "left", marginLeft: -50, marginTop: -5 }}>
-            <Badge.Ribbon color="volcano" text="Admin"></Badge.Ribbon>
+          <div style={{ float: "left", marginLeft: -54, marginTop: -5 }}>
+            <Ribbon color="volcano" text="Admin"></Ribbon>;
           </div>
         )}
         <div

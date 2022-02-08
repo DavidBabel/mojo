@@ -1,6 +1,6 @@
 import { Layout } from "antd";
 import Head from "next/head";
-import React, { useCallback } from "react";
+import { type ReactNode, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";
@@ -13,7 +13,7 @@ import { useOnMobile, useSession, useToggle } from "~/front/hooks";
 const { Content, Sider } = Layout;
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export function PageLayout({ children }: Props) {
@@ -56,7 +56,9 @@ export function PageLayout({ children }: Props) {
           }}
         >
           <Header />
-          <Content style={{ margin: "0 16px" }}>
+          <Content
+            style={{ margin: "0 16px", maxHeight: "87vh", overflow: "auto" }}
+          >
             <AutoBreadcrumb />
             <div
               className="site-layout-background"

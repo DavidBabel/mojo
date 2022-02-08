@@ -1,12 +1,11 @@
 import { User } from "@prisma/client";
 import type { NextPage } from "next";
 
+// eslint-disable-next-line import/no-restricted-paths
 import { PrismaClient } from "~/server/prisma/singleton";
 
 export const getServerSideProps = async () => {
   const users = await PrismaClient.user.findMany();
-
-  // await prisma.$disconnect();
 
   return {
     props: {

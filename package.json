@@ -12,7 +12,7 @@
     "dev": "yarn studio & PORT=4000 next dev & nodemon --config ./tools/nodemon.json",
     "heroku-prebuild": "yarn setup && rm .env",
     "build": "yarn build:next && yarn build:server",
-    "start": "prisma generate && NODE_ENV=production node ./dist/src/server/boot/index.js",
+    "start": "prisma generate && NODE_ENV=production node --optimize_for_size --max_old_space_size=2560 ./dist/src/server/boot/index.js",
     "start:local": "NEXTAUTH_URL=http://localhost:3000 NODE_ENV=production node ./dist/src/server/boot/index.js",
     "build:next": "next build",
     "build:server": "rm -rf ./dist || true && tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./ -o ./dist",

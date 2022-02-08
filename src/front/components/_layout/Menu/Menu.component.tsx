@@ -7,17 +7,17 @@ import {
 import { Menu as AntMenu } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import { useTranslation } from "react-i18next";
 
 import { LinkNewTab } from "@/LinkNewTab";
-import { useKeyPress } from "~/front/hooks";
+import { useKeyPress, useSession } from "~/front/hooks";
 
 const { Item, SubMenu } = AntMenu;
 
 export function Menu() {
   const { t } = useTranslation();
   const { pathname } = useRouter();
+  const { isAdmin } = useSession();
   const isDevToolsEnabled = useKeyPress({ key: "d", modifier: "ctrlKey" });
 
   const subPath = pathname.split("/").slice(1);
@@ -31,16 +31,11 @@ export function Menu() {
         <Item icon={<SettingOutlined />} key="account">
           <Link href="/account">{t("layout.menu.account")}</Link>
         </Item>
-        <Item icon={<UserOutlined />} key="db">
-          <Link href="/db">DB test</Link>
-        </Item>
-        <Item icon={<UserOutlined />} key="gql">
-          <Link href="/gql">GQL test</Link>
-        </Item>
-        <Item icon={<UserOutlined />} key="admin/users">
-          <Link href="/admin/users">{t("layout.menu.manage-users")}</Link>
-        </Item>
-
+        {isAdmin() && (
+          <Item icon={<UserOutlined />} key="admin/users">
+            <Link href="/admin/users">{t("layout.menu.manage-users")}</Link>
+          </Item>
+        )}
         <Item icon={<ToolOutlined />} key="tools">
           <Link href="/tools">{t("layout.menu.demo-tools")}</Link>
         </Item>
@@ -77,6 +72,11 @@ export function Menu() {
                   Test Subject
                 </Link>
               </Item>
+              <Item icon={<SettingOutlined />} key="storage">
+                <Link href="https://console.cloud.google.com/storage/browser/mojo-dev">
+                  GStorage
+                </Link>
+              </Item>
             </SubMenu>
             <SubMenu
               icon={<SettingOutlined />}
@@ -84,11 +84,11 @@ export function Menu() {
               title="Env Jumper"
             >
               <Item icon={<SettingOutlined />} key="local">
-                <Link href="http://localhost:4000">Local</Link>
+                <Link href="http://localhost:4000">Localhost</Link>
               </Item>
               <Item icon={<SettingOutlined />} key="devenv">
                 <Link href="https://dashboard.heroku.com/pipelines/6041acc2-fe63-4add-a8c3-51a9ce622ca9">
-                  Dev env
+                  Review apps
                 </Link>
               </Item>
               <Item icon={<SettingOutlined />} key="stagingenv">
