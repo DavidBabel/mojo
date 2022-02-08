@@ -1,6 +1,8 @@
 import { Col, Row } from "antd";
 import type { CSSProperties, ReactNode } from "react";
 
+import { wideHack } from "~/front/styles/wide.hack";
+
 interface Props {
   actions: ReactNode[];
   sticky?: boolean;
@@ -10,16 +12,16 @@ interface Props {
 export function TitleWithActions({ title, actions, sticky }: Props) {
   const style: CSSProperties = sticky
     ? {
-        backgroundColor: "#fff",
         bottom: 0,
         position: "sticky",
         top: 0,
         zIndex: 60000,
+        ...wideHack,
       }
     : {};
   return (
     <>
-      <Row style={style}>
+      <Row style={{ backgroundColor: "white", paddingBottom: 8, ...style }}>
         <Col xl={8} xs={24}>
           {title}
         </Col>
