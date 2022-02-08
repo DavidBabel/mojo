@@ -43,6 +43,7 @@
     "apollo-server-express": "^3.6.2",
     "apollo-upload-client": "^17.0.0",
     "class-validator": "^0.13.2",
+    "classnames": "^2.3.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
