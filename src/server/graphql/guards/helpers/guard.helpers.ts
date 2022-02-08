@@ -27,7 +27,7 @@ export function adminByPass<T extends ExpectedUserObject>(user: T) {
 }
 
 export function noUser<T extends ExpectedUserObject>(user: T) {
-  return user?.id !== undefined;
+  return user?.id === undefined;
 }
 
 export function isCurrentRequestedUser<T extends ExpectedUserObject>(

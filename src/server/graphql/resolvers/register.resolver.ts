@@ -1,15 +1,21 @@
 import { User } from "@prisma/client";
-import { Arg, Ctx, Mutation, Resolver, UseMiddleware } from "type-graphql";
+import {
+  Arg,
+  Ctx,
+  Mutation,
+  Resolver,
+  UseMiddleware as UseGuards,
+} from "type-graphql";
 
 import { UserRole } from "~/iso/enums";
 import { Context } from "~/server/graphql/graphql-context";
 import { isEmailGuard, passwordFormatGuard } from "~/server/graphql/guards";
-import { hashPassword } from "~/server/services/password/hash-password.service";
+import { hashPassword } from "~/server/services/hash-password";
 
 @Resolver()
 export class RegisterResolver {
   @Mutation(() => String)
-  @UseMiddleware(isEmailGuard, passwordFormatGuard)
+  @UseGuards(isEmailGuard, passwordFormatGuard)
   async registerNewUser(
     @Ctx() { prisma }: Context,
     @Arg("email", () => String) email: string,

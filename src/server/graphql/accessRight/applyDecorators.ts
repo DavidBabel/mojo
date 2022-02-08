@@ -2,8 +2,8 @@
 
 import { ResolversEnhanceMap } from "@generated/type-graphql";
 import { Authorized } from "type-graphql";
-import { MethodAndPropDecorator } from "type-graphql/dist/decorators/types";
 
+// import { MethodAndPropDecorator } from "type-graphql/dist/decorators/types";
 import { UserRole } from "~/iso/enums";
 import {
   NoOneDecorator,
@@ -18,7 +18,7 @@ const Admin = [Authorized(UserRole.ADMIN)];
 const SelfUserOnly = [SelfUserOnlyDecorator()];
 const SelfVideoOnly = [SelfVideoOnlyDecorator()];
 const LoggedIn = [Authorized(UserRole.ADMIN, UserRole.USER)];
-const EveryOne: MethodAndPropDecorator[] = [];
+// const EveryOne: MethodAndPropDecorator[] = [];
 
 export const accessRightEnhancement: ResolversEnhanceMap = {
   /* eslint-disable sort-keys-fix/sort-keys-fix */

@@ -11,14 +11,20 @@ import { v4 as uuidv4 } from "uuid";
 import { UserRole } from "~/iso/enums";
 import { isProd } from "~/iso/env";
 import { getExtension } from "~/iso/string";
-import { mimeTypeGuard } from "~/server/graphql/guards";
+import { videoMimeTypeGuard } from "~/server/graphql/guards";
 import { saveToBucket, saveToLocal } from "~/server/services/imageUpload";
 
 @Resolver()
+/**
+ * @deprecated
+ */
 export class VideoUploadResolver {
   @Authorized([UserRole.ADMIN, UserRole.USER])
   @Mutation(() => String)
-  @UseMiddleware(mimeTypeGuard)
+  @UseMiddleware(videoMimeTypeGuard)
+  /**
+   * @deprecated
+   */
   async videoUpload(
     @Arg("video", () => GraphQLUpload) video: FileUpload,
     @Arg("forceBucketUpload", () => Boolean, { nullable: true })

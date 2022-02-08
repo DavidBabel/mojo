@@ -1,6 +1,5 @@
 import { Popover } from "antd";
 import Image from "next/image";
-import React from "react";
 import { useTranslation } from "react-i18next";
 
 import type { AvailableLocale } from "~/@types/react-i18next";

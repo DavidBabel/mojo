@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { AuthProviders } from "~/iso/enums";
 import { AuthError } from "~/iso/errors";
 import { PrismaClient } from "~/server/prisma/singleton";
-import { checkPassword } from "~/server/services/password/hash-password.service";
+import { checkPassword } from "~/server/services/hash-password";
 
 export const credentialProvider = CredentialsProvider({
   async authorize(credentials) {

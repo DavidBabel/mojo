@@ -1,12 +1,11 @@
-export function whereQueryId(objectId?: string) {
-  return {
-    skip: !objectId,
-    variables: { where: { id: { equals: objectId } } },
-  };
-}
-
-export function whereMutationId(objectId?: string) {
-  return {
-    variables: { where: { id: objectId } },
-  };
+/**
+ * Transform an Antd form values object into a GraphQL Update {set: value} object
+ */
+export function objectToGraphqlSet(object: any) {
+  return Object.keys(object).reduce((acc, key) => {
+    if (object[key]) {
+      acc[key] = { set: object[key] };
+    }
+    return acc;
+  }, {} as any);
 }

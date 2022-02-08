@@ -7,13 +7,13 @@
   },
   "components": {
     "GitHubSignIn": {
-      "notification": {
-        "register": "Enregistremet avec GitHub réussi, vous êtes maintenant connecté",
-        "signin": "Connexion avec GitHub réussi"
-      },
       "description": {
         "register": "S'enregistrer avec GitHub",
         "signin": "Connexion avec GitHub"
+      },
+      "notification": {
+        "register": "Enregistremet avec GitHub réussi, vous êtes maintenant connecté",
+        "signin": "Connexion avec GitHub réussi"
       }
     },
     "LanguageSwitcher": {
@@ -73,6 +73,19 @@
     "signin": {
       "email": "Adresse email",
       "password": "Mot de passe"
+    },
+    "video-edit": {
+      "description": "Description",
+      "published": "Publiée",
+      "title": "Titre",
+      "video": "Vidéo"
+    },
+    "video-upload": {
+      "description": "Déscription",
+      "forceBucketUpload": "Forcer l'upload dans GStorage",
+      "published": "Publiée",
+      "title": "Titre",
+      "video": "Vidéo"
     }
   },
   "layout": {
@@ -85,6 +98,8 @@
       "demo-tools": "< Demo Tools />",
       "home": "Acceuil",
       "manage-users": "Utilisateurs",
+      "upload": "Envoyer une vidéo",
+      "video": "Vidéo",
       "videos": "Mes Videos"
     },
     "footer": {
@@ -104,7 +119,7 @@
       "account": "Compte",
       "demo-tools": "< Demo Tools />",
       "manage-users": "Utilisateurs",
-      "videos": "Videos"
+      "videos": "Mes Vidéos"
     }
   },
   "notifications": {
@@ -152,6 +167,30 @@
       "no-videos": "Aucune vidéo trouvée",
       "title": "Mes vidéos",
       "upload-video": "Uploader une nouvelle vidéo"
+    },
+    "videos-edit": {
+      "check-video": "Vidéo modifiée ! Regardez là",
+      "delete": "Effacer cette vidéo",
+      "here": "ici",
+      "notifications": {
+        "edit-success": "Vidéo éditer avec succès"
+      },
+      "submit": "Sauvegarder les modifications",
+      "title": "Éditer la vidéo",
+      "title-hint": "Doit se finir par \"- demo\" pour charger le fichier vidéo de démo"
+    },
+    "videos-play": {
+      "edit-video": "Éditer cette vidéo"
+    },
+    "videos-upload": {
+      "goto-videos": "Voir vos vidéos",
+      "notifications": {
+        "upload-success": "Votre vidéo a été uploadé avec succès"
+      },
+      "play-video": "Jouer votre vidéo",
+      "submit": "Envoyer votre vidéo",
+      "title": "Envoyer une nouvelle vidéo",
+      "upload-another-one": "En uploader une autre"
     }
   }
 }

@@ -7,13 +7,19 @@ import {
   Video,
 } from "@vime/react";
 
+import { DemoSource } from "@/_devTools/DemoSource";
+import { allowedMimeTypes } from "~/iso/constant";
+
 export interface VideoPlayerProps {
-  mimetype?: string;
+  mimetype?: typeof allowedMimeTypes[number];
   posterUrl?: string;
   small?: boolean;
   videoUrl: string;
 }
 
+/**
+ * This component should NOT be imported directly
+ */
 export function VideoPlayerNoSSR({
   videoUrl,
   mimetype = "video/mp4",
@@ -28,6 +34,7 @@ export function VideoPlayerNoSSR({
         preload={small ? "none" : "auto"}
       >
         <source data-src={videoUrl} type={mimetype} />
+        <DemoSource dataSrc={videoUrl} type={mimetype} />
       </Video>
 
       {small ? (

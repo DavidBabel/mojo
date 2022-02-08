@@ -81,15 +81,16 @@
           {
             "group": [
               "@/**/*.component*",
-              "~/front/hooks/*.hook*",
-              "~/front/contexts/*.context*",
-              "~/front/gql/mutations/*.mutation*",
-              "~/front/gql/querys/*.query*",
-              "~/front/lib/notifications/*.notifications*",
-              "~/iso/enums/*.enum*",
-              "~/server/graphql/guards/*.guard*",
-              "~/server/graphql/middlewares/*.middleware*",
-              "~/server/graphql/resolvers/*.resolver*"
+              "~/front/hooks/**/*.hook*",
+              "~/front/contexts/**/*.context*",
+              "~/front/gql/mutations/**/*.mutation*",
+              "~/front/gql/querys/**/*.query*",
+              "~/front/lib/notifications/**/*.notifications*",
+              "~/iso/enums/**/*.enum*",
+              "~/server/services/**/*.service*",
+              "~/server/graphql/guards/**/*.guard*",
+              "~/server/graphql/middlewares/**/*.middleware*",
+              "~/server/graphql/resolvers/**/*.resolver*"
             ],
             "message": "Mojo custom: export from index.ts and import from root directory directly"
           }

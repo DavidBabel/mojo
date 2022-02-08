@@ -1,4 +1,4 @@
-import { type FormItemProps as AntFormItemProps, Form } from "antd";
+import { type FormItemProps as AntFormItemProps, Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { FormFieldName } from "~/@types/forms";
@@ -11,22 +11,26 @@ export interface FormItemProps extends AntFormItemProps {
   name?: FormFieldName;
 }
 
-export function FormItem({ name, label, ...props }: FormItemProps) {
+export function FormItem({ name, label, children, ...props }: FormItemProps) {
   const { t } = useTranslation();
   const { formName } = useFormContext();
 
-  label = label ?? t(`forms__dynamic.${formName}.${name}` as any) ?? name;
+  label = label ?? t([`forms__dynamic.${formName}.${name}` as any, name]);
   const rules = formValidationRules?.[formName]?.[name!] ?? [];
+
+  children = children ?? <Input />;
 
   return (
     <>
       <Item
-        //hasFeedback
+        // hasFeedback
         label={label}
         name={name}
         rules={rules}
         {...props}
-      />
+      >
+        {children}
+      </Item>
     </>
   );
 }

@@ -84,6 +84,7 @@ type Mutation {
   updateVideo(data: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video
   upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   upsertVideo(create: VideoCreateInput!, update: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video!
+  videoCreate(description: String, forceBucketUpload: Boolean, published: Boolean!, title: String!, video: Upload!): String!
   videoUpload(forceBucketUpload: Boolean, video: Upload!): String!
 }
 

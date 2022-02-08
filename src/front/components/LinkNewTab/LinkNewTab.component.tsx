@@ -1,7 +1,7 @@
 import Link, { type LinkProps } from "next/link";
-import React from "react";
+import type { PropsWithChildren } from "react";
 
-interface LinkNewTabProps extends React.PropsWithChildren<LinkProps> {
+interface LinkNewTabProps extends PropsWithChildren<LinkProps> {
   download?: string;
   href: string;
 }
