@@ -9,6 +9,7 @@ const defaultEnv = {
   GITHUB_ID: process.env.GITHUB_ID ?? "",
   GITHUB_SECRET: process.env.GITHUB_SECRET ?? "",
   GQL_DISABLE_AUTH_DECORATORS: process.env.GQL_DISABLE_AUTH_DECORATORS ?? false,
+  HOSTNAME: process.env.NEXTAUTH_URL ?? "",
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET ?? "",
   NEXTAUTH_URL: process.env.NEXTAUTH_URL ?? "",
   NODE_ENV: process.env.NODE_ENV ?? "development",
