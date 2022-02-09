@@ -56,10 +56,10 @@ Status:
 - Allows admin to manage other user's videos  ✅
 - i18n backend / errors  ✅
 
-## Step 6 : Non-regression
+## Step 6 : Non-regression 🚧
 
-- Add test stack
-- Add monitoring stack
+- Add test stack (pupeteer + test one of each logics) 🚧
+- Add monitoring stack 🚧
 
 ## Step 7 : Compatibility check
 
