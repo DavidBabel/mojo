@@ -166,7 +166,11 @@
       "title": "Page non trouvée"
     },
     "account": {
+      "cannot-edit": "Vous ne pouvez pas éditer les comptes oAuth",
       "demo-account-warning": "Vous ne pouvez pas éditer les comptes de démo :)",
+      "notifications": {
+        "edit-success": "Compte édité avec succès"
+      },
       "password-extra": "Saisir un nouveau mot de passe pour en changer.",
       "submit": "Editer votre compte",
       "title": "Editer votre compte",

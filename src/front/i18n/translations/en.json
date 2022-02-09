@@ -166,7 +166,11 @@
       "title": "Page not found"
     },
     "account": {
+      "cannot-edit": "You cannot edit oAuth accounts",
       "demo-account-warning": "You cannot edit the demo accounts :)",
+      "notifications": {
+        "edit-success": "Account edited with success"
+      },
       "password-extra": "Input a new password to change it.",
       "submit": "Edit your account",
       "title": "Edit your account",

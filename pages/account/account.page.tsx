@@ -21,10 +21,11 @@ import {
   openErrorNotification,
   openSuccessNotification,
 } from "~/front/lib/notifications";
+import { AuthProviders } from "~/iso/enums";
 
 const AccountPage: NextPage = () => {
   const { t } = useTranslation();
-  const { user: sessionUser } = useSession();
+  const { user: sessionUser, provider } = useSession();
   const userId = sessionUser?.id ?? "";
 
   const [updateUser, { loadingUserUpdate }] = useUserUpdateMutation();
@@ -45,9 +46,7 @@ const AccountPage: NextPage = () => {
     if (loadingUserUpdate) return;
     await updateUser(userId, values)
       .then(async () => {
-        openSuccessNotification(
-          t("pages.videos-edit.notifications.edit-success"),
-        );
+        openSuccessNotification(t("pages.account.notifications.edit-success"));
         await refetch();
       })
       .catch(openErrorNotification)
@@ -58,6 +57,9 @@ const AccountPage: NextPage = () => {
     String(user?.email),
   );
 
+  const isOAuthAccount = provider !== AuthProviders.Credentials;
+  const isFormDisabled = isDemoAccount || isOAuthAccount;
+
   return (
     <>
       <Title>{t("pages.account.title")}</Title>
@@ -66,11 +68,16 @@ const AccountPage: NextPage = () => {
           <Paragraph>⚠️ {t("pages.account.demo-account-warning")}</Paragraph>
         </FormContentWrapper>
       )}
+      {isOAuthAccount && (
+        <FormContentWrapper>
+          <Paragraph>{t("pages.account.cannot-edit")}</Paragraph>
+        </FormContentWrapper>
+      )}
       <Form initialValues={user ?? {}} name="account-edit" onFinish={onFinish}>
-        <UserInput disabled={isDemoAccount} />
+        <UserInput disabled={isFormDisabled} />
         <EmailInput disabled />
         <PasswordInput
-          disabled={isDemoAccount}
+          disabled={isFormDisabled}
           extra={t("pages.account.password-extra")}
           placeholder="••••••••"
         />
@@ -78,7 +85,7 @@ const AccountPage: NextPage = () => {
           {t("pages.account.video-count", { count: user?.videos?.length })}
         </FormContentWrapper>
         <FormContentWrapper>
-          <SubmitButton disabled={isDemoAccount} loading={loadingUserUpdate}>
+          <SubmitButton disabled={isFormDisabled} loading={loadingUserUpdate}>
             <EditOutlined />
             {t("pages.account.submit")}
           </SubmitButton>
