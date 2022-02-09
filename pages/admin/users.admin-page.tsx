@@ -9,11 +9,13 @@ import { ButtonLink } from "@/ButtonLink";
 import { LoadingOrError } from "@/LoadingOrError";
 import { User } from "~/@types/generated/graphqlTypes";
 import { useUsersQuery } from "~/front/gql/queries/useAllUsers.query";
-import { useSession } from "~/front/hooks";
+import { useOnMobile, useSession } from "~/front/hooks";
+import { Truthy } from "~/iso/boolean";
 import { AuthProviders } from "~/iso/enums";
 
 const AdminUsersPage: NextPage = () => {
   const { t } = useTranslation();
+  const isMobile = useOnMobile();
   const { isAdmin } = useSession();
   const { data, loading, error } = useUsersQuery();
 
@@ -23,11 +25,11 @@ const AdminUsersPage: NextPage = () => {
         dataIndex: "name",
         title: t("pages.admin-users.columns.name"),
       },
-      {
+      !isMobile && {
         dataIndex: "email",
         title: t("pages.admin-users.columns.email"),
       },
-      {
+      !isMobile && {
         render: (row: User) =>
           row?.oAuthId ? AuthProviders.Github : AuthProviders.Credentials,
         title: t("pages.admin-users.columns.account-type"),
@@ -44,9 +46,11 @@ const AdminUsersPage: NextPage = () => {
         ),
         title: t("pages.admin-users.columns.videos-shows"),
       },
-    ].map((e, index) => ({ ...e, key: `table-row-${index}` }));
+    ]
+      .filter(Truthy)
+      .map((e, index) => ({ ...e, key: `table-row-${index}` }));
     return columnsBuild;
-  }, [t]);
+  }, [t, isMobile]);
 
   const users = data?.users;
 
