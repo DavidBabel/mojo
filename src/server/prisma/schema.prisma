@@ -19,10 +19,11 @@ datasource db {
 model User {
   id       String  @id @default(cuid())
   name     String?
+  /// @TypeGraphQL.omit(output: false, input: true)
   role     String  @default("USER")
   email    String? @unique
   oAuthId  String? @unique
-  /// @TypeGraphQL.omit(output: true)
+  /// @TypeGraphQL.omit(output: true, input: false)
   password String?
   image    String?
   videos   Video[]

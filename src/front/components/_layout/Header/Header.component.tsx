@@ -13,7 +13,7 @@ import { ButtonLink } from "@/ButtonLink";
 import { LanguageSwitcher } from "@/LanguageSwitcher";
 import { useSession } from "~/front/hooks";
 
-const { Header: HeaderAntd } = Layout;
+const { Header: AntHeader } = Layout;
 
 export function Header() {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <>
-      <HeaderAntd className="site-layout-background">
+      <AntHeader className="site-layout-background">
         {isAdmin() && (
           <div style={{ float: "left", marginLeft: -54, marginTop: -5 }}>
             <Ribbon color="volcano" text="Admin"></Ribbon>;
@@ -59,7 +59,7 @@ export function Header() {
           )}
           <LanguageSwitcher />
         </div>
-      </HeaderAntd>
+      </AntHeader>
     </>
   );
 }

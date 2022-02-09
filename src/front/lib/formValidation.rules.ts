@@ -1,36 +1,31 @@
 import { FormFieldName, FormName } from "~/@types/forms";
-import {
-  noRule,
-  ruleRequiredEmail,
-  ruleRequiredName,
-  ruleRequiredPassword,
-  Rules,
-  ruleValidEmail,
-  videoDescriptionRules,
-  videoFileRules,
-  videoTitleRules,
-} from "~/front/lib/validation-rules";
+import * as r from "~/front/lib/validation-rules";
 
 export const formValidationRules: Record<
   FormName,
-  Partial<Record<FormFieldName, Rules>>
+  Partial<Record<FormFieldName, r.Rules>>
 > = {
+  "account-edit": {
+    email: r.ruleValidEmail,
+    name: r.ruleName,
+    password: r.rulePassword,
+  },
   register: {
-    email: ruleRequiredEmail,
-    name: ruleRequiredName,
-    password: ruleRequiredPassword,
+    email: r.ruleRequiredEmail,
+    name: r.ruleRequiredName,
+    password: r.ruleRequiredPassword,
   },
   signin: {
-    email: ruleValidEmail,
-    password: noRule,
+    email: r.ruleValidEmail,
+    password: r.noRule,
   },
   "video-edit": {
-    description: videoDescriptionRules,
-    title: videoTitleRules,
+    description: r.videoDescriptionRules,
+    title: r.videoTitleRules,
   },
   "video-upload": {
-    description: videoDescriptionRules,
-    title: videoTitleRules,
-    video: videoFileRules,
+    description: r.videoDescriptionRules,
+    title: r.videoTitleRules,
+    video: r.videoFileRules,
   },
 } as const;

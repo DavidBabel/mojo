@@ -1,5 +1,33 @@
 {
   "app-name": "Mojo Web",
+  "backend-errors": {
+    "authentication-failed": "Authentication failed",
+    "could-not-log-you-in": "Could not log you in!",
+    "credentials-not-found": "Credentials not found",
+    "disallowed-action": "Disallowed action",
+    "email-already-taken": "Email already taken",
+    "file-too-large": "File too large",
+    "invalid-file-type": "Invalid file type, only handle video/mp4",
+    "no-email-provided": "No email provided",
+    "no-id-found-for-requested-object": "No id found for the requested object",
+    "no-password-provided": "No password provided",
+    "no-user-found": "No user found!",
+    "unable-to-create-video": "Unable to create video",
+    "unable-to-register-user": "Unable to register user",
+    "unable-to-retreive-created-video": "Unable to retreive created video",
+    "unable-to-search-for-user": "Unable to search for user",
+    "unable-to-upload-the-video": "Unable to upload the video",
+    "unable-to-upload-the-video-locally": "Unable to upload the video locally",
+    "unauthorized": "Unauthorized",
+    "unauthorized-action": "Unauthorized Action",
+    "unknown-provider": "Unknown provider",
+    "user-can-only-edit-itself": "A user can only edit itself",
+    "user-can-only-edit-own-video": "A user can only edit it's own videos",
+    "video-not-found": "Video not found",
+    "wrong-email-format": "Wrong email format",
+    "wrong-password-size": "Password should be between 8 and 32 characters",
+    "you-need-to-be-logged-in-to-perform-this-action": "You need to be logged in to perform this action"
+  },
   "common": {
     "cancel": "Cancel",
     "public": "Public",
@@ -43,20 +71,7 @@
         "confirm-delete": {
           "cancelText": "Cancel",
           "content": "This action cannot be undone",
-          "okText": "Confirm and delete",
-          "title": "Do you want to delete these video ?"
-        }
-      },
-      "notifications": {
-        "video-deleted": {
-          "description": "The video \"{{videoName}}\" has been deleted",
-          "message": "Video deleted"
-        },
-        "video-published": {
-          "description": "The video \"{{videoName}}\" has been turned ",
-          "message": "Video privacy changed",
-          "private": "private",
-          "public": "public"
+          "okText": "Confirm and delete"
         }
       }
     }
@@ -65,6 +80,11 @@
     "date": "YYYY/MM/DD"
   },
   "forms__dynamic": {
+    "account-edit": {
+      "email": "Email address",
+      "name": "User name",
+      "password": "Password"
+    },
     "register": {
       "email": "Email address",
       "name": "User name",
@@ -94,13 +114,20 @@
       "logged-with-provider": "Logged as {{name}} from {{provider}}"
     },
     "breadcrumb": {
+      "[...page404]": "404",
+      "[userId]": "User content",
+      "[videoId]": "Video",
       "account": "Account",
+      "auth": "Auth",
       "demo-tools": "< Demo Tools />",
+      "edit": "Edit",
       "home": "Home",
       "manage-users": "Users",
+      "register": "Register",
+      "signin": "Sign-in",
+      "tools": "Démo tools",
       "upload": "Upload a new video",
-      "video": "Video",
-      "videos": "My videos"
+      "videos": "Videos"
     },
     "footer": {
       "credit": {
@@ -117,9 +144,11 @@
     },
     "menu": {
       "account": "Account",
+      "auth": "Auth",
       "demo-tools": "< Demo Tools />",
       "manage-users": "Users",
-      "videos": "My Videos"
+      "my-videos": "My Videos",
+      "videos": "Videos"
     }
   },
   "notifications": {
@@ -135,6 +164,23 @@
     "404": {
       "description": "404, not yet added, sorry sorry !",
       "title": "Page not found"
+    },
+    "account": {
+      "demo-account-warning": "You cannot edit the demo accounts :)",
+      "password-extra": "Input a new password to change it.",
+      "submit": "Edit your account",
+      "title": "Edit your account",
+      "video-count": "Count of videos : {{count}}"
+    },
+    "admin-users": {
+      "columns": {
+        "account-type": "Account type",
+        "email": "Email",
+        "name": "Username",
+        "videos-count": "Videos count",
+        "videos-shows": "Look at this videos"
+      },
+      "title": "List of users"
     },
     "auth": {
       "description": "What do you want to do ?",
@@ -163,9 +209,25 @@
     },
     "videos": {
       "download-example": "Download a video sample (demo)",
+      "modals": {
+        "confirm-delete": "Are you sure to delete this video ?"
+      },
       "no-datas": "user",
       "no-videos": "No video found",
+      "notifications": {
+        "video-deleted": {
+          "description": "The video \"{{videoName}}\" has been deleted",
+          "message": "Video deleted"
+        },
+        "video-published": {
+          "description": "The video \"{{videoName}}\" has been turned ",
+          "message": "Video privacy changed",
+          "private": "private",
+          "public": "public"
+        }
+      },
       "title": "My videos",
+      "title-admin": "Videos of {{userName}}",
       "upload-video": "Upload new video"
     },
     "videos-edit": {

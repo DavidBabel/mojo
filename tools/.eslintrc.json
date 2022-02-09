@@ -46,8 +46,9 @@
             "from": "./src/server"
           },
           {
-            "target": "./pages/!(api)/**/*",
-            "from": "./src/server"
+            "target": "./pages",
+            "from": "./src/server",
+            "except": ["./next-auth"]
           }
         ]
       }

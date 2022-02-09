@@ -1,10 +1,13 @@
 import { gql, useQuery } from "@apollo/client";
 
-import { Query, QueryVideoArgs } from "~/@types/generated/graphqlTypes";
+import {
+  Query,
+  QueryFindFirstVideoArgs,
+} from "~/@types/generated/graphqlTypes";
 
 const ONE_VIDEO_QUERY = gql`
-  query OneVideoQuery($where: VideoWhereUniqueInput!) {
-    video(where: $where) {
+  query FindFirstVideo($where: VideoWhereInput!) {
+    findFirstVideo(where: $where) {
       title
       description
       published
@@ -13,10 +16,10 @@ const ONE_VIDEO_QUERY = gql`
 `;
 
 export function useOneVideoQuery(id?: string) {
-  return useQuery<Query, QueryVideoArgs>(ONE_VIDEO_QUERY, {
+  return useQuery<Query, QueryFindFirstVideoArgs>(ONE_VIDEO_QUERY, {
     skip: !id,
     variables: {
-      where: { id },
+      where: { id: { equals: id } },
     },
   });
 }

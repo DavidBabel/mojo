@@ -1,19 +1,15 @@
 import { Rule } from "antd/lib/form";
 
-import {
-  nameMaxLength,
-  nameMinLength,
-  passwordMaxLength,
-  passwordMinLength,
-  videoDescriptionMaxLength,
-  videoDescriptionMinLength,
-  videoTitleMaxLength,
-  videoTitleMinLength,
-} from "~/iso/constant";
+import * as c from "~/iso/constant";
 
 export type Rules = Rule[];
 
 export const noRule: Rules = [];
+export const required: Rules = [
+  {
+    required: true,
+  },
+];
 
 export const ruleRequiredEmail: Rules = [
   {
@@ -24,39 +20,47 @@ export const ruleRequiredEmail: Rules = [
 
 export const ruleValidEmail: Rules = [{ type: "email" }];
 
+export const ruleName: Rules = [
+  {
+    max: c.nameMaxLength,
+    min: c.nameMinLength,
+  },
+];
+
 export const ruleRequiredName: Rules = [
   {
-    max: nameMaxLength,
-    min: nameMinLength,
+    ...ruleName[0],
     required: true,
+  },
+];
+
+export const rulePassword: Rules = [
+  {
+    max: c.passwordMaxLength,
+    min: c.passwordMinLength,
   },
 ];
 
 export const ruleRequiredPassword: Rules = [
   {
-    max: passwordMaxLength,
-    min: passwordMinLength,
+    ...rulePassword[0],
     required: true,
   },
 ];
 
 export const videoTitleRules: Rules = [
   {
-    max: videoTitleMaxLength,
-    min: videoTitleMinLength,
+    max: c.videoTitleMaxLength,
+    min: c.videoTitleMinLength,
     required: true,
   },
 ];
 
 export const videoDescriptionRules: Rules = [
   {
-    max: videoDescriptionMaxLength,
-    min: videoDescriptionMinLength,
+    max: c.videoDescriptionMaxLength,
+    min: c.videoDescriptionMinLength,
   },
 ];
 
-export const videoFileRules: Rules = [
-  {
-    required: true,
-  },
-];
+export const videoFileRules: Rules = required;

@@ -3,23 +3,29 @@ import { Session } from "next-auth";
 import { ArgsDictionary } from "type-graphql";
 
 import { UserRole } from "~/iso/enums";
+import { GraphQLCustomError } from "~/iso/errors/customErrors";
 
 type ExpectedUserObject = Maybe<Session["user"]>;
 
-export function extractId(object: any): string {
-  const id = object?.where?.id;
-  if (!id) {
-    throw new Error("No id found for the requested object");
-  }
+function extractId(args: ArgsDictionary): string {
+  const id = args?.where?.id;
   return id;
 }
 
-export function extractIdEquals(object: any): string {
-  const id = object?.where?.id?.equals;
-  if (!id) {
-    throw new Error("No id.equals found for the requested object");
-  }
+function extractIdEquals(args: ArgsDictionary): string {
+  const id = args?.where?.id?.equals;
   return id;
+}
+
+export function extractRequestedId(args: ArgsDictionary): string {
+  const requestedObjectIdEquals = extractIdEquals(args);
+  const requestedObjectId = extractId(args);
+
+  const testedId = requestedObjectIdEquals ?? requestedObjectId;
+  if (!testedId) {
+    throw new GraphQLCustomError("no-id-found-for-requested-object");
+  }
+  return testedId;
 }
 
 export function adminByPass<T extends ExpectedUserObject>(user: T) {
@@ -34,9 +40,11 @@ export function isCurrentRequestedUser<T extends ExpectedUserObject>(
   user: T,
   args: ArgsDictionary,
 ) {
-  const requestedObjectId = extractIdEquals(args);
-
-  return !user?.id || !requestedObjectId || user?.id !== requestedObjectId;
+  if (adminByPass(user)) {
+    return true;
+  }
+  const id = extractRequestedId(args);
+  return !user?.id || !id || user?.id !== id;
 }
 
 export function isCurrentRequestedVideoOwner<T extends ExpectedUserObject>(

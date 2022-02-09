@@ -1,5 +1,6 @@
 import { createMethodDecorator, MiddlewareFn } from "type-graphql";
 
+import { RightsError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
 import { noUser } from "~/server/graphql/guards/helpers/guard.helpers";
 
@@ -10,7 +11,7 @@ export const loggedInGuard: MiddlewareFn<Context> = async (
   const { user } = context;
 
   if (noUser(user)) {
-    throw new Error("You need to be logged in to perform this action");
+    throw new RightsError("you-need-to-be-logged-in-to-perform-this-action");
   }
 
   return await next();

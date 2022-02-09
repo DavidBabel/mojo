@@ -334,7 +334,6 @@ input UserCountOrderByAggregateInput {
   name: SortOrder
   oAuthId: SortOrder
   password: SortOrder
-  role: SortOrder
 }
 
 input UserCreateInput {
@@ -344,7 +343,6 @@ input UserCreateInput {
   name: String
   oAuthId: String
   password: String
-  role: String
   videos: VideoCreateNestedManyWithoutAuthorInput
 }
 
@@ -366,7 +364,6 @@ input UserCreateWithoutVideosInput {
   name: String
   oAuthId: String
   password: String
-  role: String
 }
 
 type UserGroupBy {
@@ -399,7 +396,6 @@ input UserMaxOrderByAggregateInput {
   name: SortOrder
   oAuthId: SortOrder
   password: SortOrder
-  role: SortOrder
 }
 
 type UserMinAggregate {
@@ -419,7 +415,6 @@ input UserMinOrderByAggregateInput {
   name: SortOrder
   oAuthId: SortOrder
   password: SortOrder
-  role: SortOrder
 }
 
 input UserOrderByWithAggregationInput {
@@ -432,7 +427,6 @@ input UserOrderByWithAggregationInput {
   name: SortOrder
   oAuthId: SortOrder
   password: SortOrder
-  role: SortOrder
 }
 
 input UserOrderByWithRelationInput {
@@ -442,7 +436,6 @@ input UserOrderByWithRelationInput {
   name: SortOrder
   oAuthId: SortOrder
   password: SortOrder
-  role: SortOrder
   videos: VideoOrderByRelationAggregateInput
 }
 
@@ -471,7 +464,6 @@ input UserScalarWhereWithAggregatesInput {
   name: StringNullableWithAggregatesFilter
   oAuthId: StringNullableWithAggregatesFilter
   password: StringNullableWithAggregatesFilter
-  role: StringWithAggregatesFilter
 }
 
 input UserUpdateInput {
@@ -481,7 +473,6 @@ input UserUpdateInput {
   name: NullableStringFieldUpdateOperationsInput
   oAuthId: NullableStringFieldUpdateOperationsInput
   password: NullableStringFieldUpdateOperationsInput
-  role: StringFieldUpdateOperationsInput
   videos: VideoUpdateManyWithoutAuthorInput
 }
 
@@ -492,7 +483,6 @@ input UserUpdateManyMutationInput {
   name: NullableStringFieldUpdateOperationsInput
   oAuthId: NullableStringFieldUpdateOperationsInput
   password: NullableStringFieldUpdateOperationsInput
-  role: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateOneRequiredWithoutVideosInput {
@@ -510,7 +500,6 @@ input UserUpdateWithoutVideosInput {
   name: NullableStringFieldUpdateOperationsInput
   oAuthId: NullableStringFieldUpdateOperationsInput
   password: NullableStringFieldUpdateOperationsInput
-  role: StringFieldUpdateOperationsInput
 }
 
 input UserUpsertWithoutVideosInput {
@@ -528,7 +517,6 @@ input UserWhereInput {
   name: StringNullableFilter
   oAuthId: StringNullableFilter
   password: StringNullableFilter
-  role: StringFilter
   videos: VideoListRelationFilter
 }
 

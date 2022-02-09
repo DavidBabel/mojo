@@ -2,7 +2,7 @@
 const isoEnv = {
   DEMO_VIDEO_ID: process.env.NEXT_PUBLIC_DEMO_VIDEO_ID ?? "demo-video",
   GRAPHQL_ENDPOINT: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "/graphql",
-  MAX_FILE_SIZE_MB: process.env.NEXT_PUBLIC_MAX_FILE_SIZE_MB ?? 5,
+  MAX_FILE_SIZE_MB: process.env.NEXT_PUBLIC_MAX_FILE_SIZE_MB ?? 15,
 };
 
 const defaultEnv = {

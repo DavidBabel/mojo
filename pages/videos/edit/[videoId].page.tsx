@@ -9,8 +9,6 @@ import { Form, FormContentWrapper, FormItem, SubmitButton } from "@/_form";
 import { Paragraph } from "@/_layout/antd.exports";
 import { Title } from "@/_layout/Title";
 import { LoadingOrError } from "@/LoadingOrError";
-import { ifConfirmDeleteModal } from "@/VideoCard/parts/modals";
-import { openDeletedVideodNotification } from "@/VideoCard/parts/notifications";
 import { useMemoVideoPlayer } from "@/VideoPlayer";
 import { Video, VideoUpdateInput } from "~/@types/generated/graphqlTypes";
 import {
@@ -23,8 +21,10 @@ import {
   openErrorNotification,
   openSuccessNotification,
 } from "~/front/lib/notifications";
+import { ifConfirmDeleteModal } from "~/front/modals/modals";
+import { openDeletedVideodNotification } from "~/pages/videos/part/notifications";
 
-const PlayVideoPage: NextPage = () => {
+const EditVideoPage: NextPage = () => {
   const { t } = useTranslation();
   const { videoId, router } = useVideoIdRouter();
 
@@ -39,7 +39,7 @@ const PlayVideoPage: NextPage = () => {
     loading: loadingVideoQuery,
     refetch,
   } = useOneVideoQuery(videoId);
-  const video: MaybeNull<Maybe<Video>> = data?.video;
+  const video: MaybeNull<Maybe<Video>> = data?.findFirstVideo;
 
   const VideoPlayer = useMemoVideoPlayer(videoId, video?.title, {
     small: true,
@@ -69,6 +69,7 @@ const PlayVideoPage: NextPage = () => {
     setJustSaved(false);
     setLoadingDelete(true);
     ifConfirmDeleteModal(
+      t("pages.videos.modals.confirm-delete"),
       () => {
         deleteVideo(videoId)
           .then(() => openDeletedVideodNotification(String(video?.title)))
@@ -81,6 +82,9 @@ const PlayVideoPage: NextPage = () => {
       () => setLoadingDelete(false),
     );
   };
+
+  console.log("video :");
+  console.log(video);
 
   return (
     <>
@@ -120,4 +124,4 @@ const PlayVideoPage: NextPage = () => {
   );
 };
 
-export default PlayVideoPage;
+export default EditVideoPage;

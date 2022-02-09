@@ -9,7 +9,7 @@ import {
 
 const ONE_USER_QUERY = gql`
   query FindFirstUser(
-    $where: UserWhereInput
+    $where: UserWhereInput!
     $orderBy: [VideoOrderByWithRelationInput!]
   ) {
     findFirstUser(where: $where) {

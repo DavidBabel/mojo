@@ -30,7 +30,12 @@ export function useVideoUpdateMutation() {
   );
   return [
     (id: string, data: VideoUpdateInput) =>
-      action({ variables: { data: objectToGraphqlSet(data), where: { id } } }),
+      action({
+        variables: {
+          data: objectToGraphqlSet(data),
+          where: { id },
+        },
+      }),
     { ...options, loadingVideoUpdate: options.loading },
   ] as const;
 }
