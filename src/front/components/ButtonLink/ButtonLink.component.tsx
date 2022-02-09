@@ -1,7 +1,7 @@
 import { type ButtonProps, Button } from "antd";
 import Link from "next/link";
 
-interface Props extends ButtonProps {
+export interface ButtonLinkProps extends ButtonProps {
   download?: string;
   href: string;
 }
@@ -11,7 +11,7 @@ export function ButtonLink({
   href,
   download,
   ...buttonProps
-}: Props) {
+}: ButtonLinkProps) {
   const external = href.startsWith("http://") || href.startsWith("https://");
   const aProps = {
     children,

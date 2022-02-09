@@ -98,7 +98,6 @@ export type Mutation = {
   upsertUser: User;
   upsertVideo: Video;
   videoCreate: Scalars['String'];
-  videoUpload: Scalars['String'];
 };
 
 
@@ -182,12 +181,6 @@ export type MutationVideoCreateArgs = {
   forceBucketUpload?: InputMaybe<Scalars['Boolean']>;
   published: Scalars['Boolean'];
   title: Scalars['String'];
-  video: Scalars['Upload'];
-};
-
-
-export type MutationVideoUploadArgs = {
-  forceBucketUpload?: InputMaybe<Scalars['Boolean']>;
   video: Scalars['Upload'];
 };
 
@@ -536,7 +529,6 @@ export type UserCountOrderByAggregateInput = {
   name?: InputMaybe<SortOrder>;
   oAuthId?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
-  role?: InputMaybe<SortOrder>;
 };
 
 export type UserCreateInput = {
@@ -546,7 +538,6 @@ export type UserCreateInput = {
   name?: InputMaybe<Scalars['String']>;
   oAuthId?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;
-  role?: InputMaybe<Scalars['String']>;
   videos?: InputMaybe<VideoCreateNestedManyWithoutAuthorInput>;
 };
 
@@ -568,7 +559,6 @@ export type UserCreateWithoutVideosInput = {
   name?: InputMaybe<Scalars['String']>;
   oAuthId?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;
-  role?: InputMaybe<Scalars['String']>;
 };
 
 export type UserGroupBy = {
@@ -603,7 +593,6 @@ export type UserMaxOrderByAggregateInput = {
   name?: InputMaybe<SortOrder>;
   oAuthId?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
-  role?: InputMaybe<SortOrder>;
 };
 
 export type UserMinAggregate = {
@@ -624,7 +613,6 @@ export type UserMinOrderByAggregateInput = {
   name?: InputMaybe<SortOrder>;
   oAuthId?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
-  role?: InputMaybe<SortOrder>;
 };
 
 export type UserOrderByWithAggregationInput = {
@@ -637,7 +625,6 @@ export type UserOrderByWithAggregationInput = {
   name?: InputMaybe<SortOrder>;
   oAuthId?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
-  role?: InputMaybe<SortOrder>;
 };
 
 export type UserOrderByWithRelationInput = {
@@ -647,7 +634,6 @@ export type UserOrderByWithRelationInput = {
   name?: InputMaybe<SortOrder>;
   oAuthId?: InputMaybe<SortOrder>;
   password?: InputMaybe<SortOrder>;
-  role?: InputMaybe<SortOrder>;
   videos?: InputMaybe<VideoOrderByRelationAggregateInput>;
 };
 
@@ -676,7 +662,6 @@ export type UserScalarWhereWithAggregatesInput = {
   name?: InputMaybe<StringNullableWithAggregatesFilter>;
   oAuthId?: InputMaybe<StringNullableWithAggregatesFilter>;
   password?: InputMaybe<StringNullableWithAggregatesFilter>;
-  role?: InputMaybe<StringWithAggregatesFilter>;
 };
 
 export type UserUpdateInput = {
@@ -686,7 +671,6 @@ export type UserUpdateInput = {
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   oAuthId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  role?: InputMaybe<StringFieldUpdateOperationsInput>;
   videos?: InputMaybe<VideoUpdateManyWithoutAuthorInput>;
 };
 
@@ -697,7 +681,6 @@ export type UserUpdateManyMutationInput = {
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   oAuthId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  role?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
 export type UserUpdateOneRequiredWithoutVideosInput = {
@@ -715,7 +698,6 @@ export type UserUpdateWithoutVideosInput = {
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   oAuthId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  role?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
 export type UserUpsertWithoutVideosInput = {
@@ -733,7 +715,6 @@ export type UserWhereInput = {
   name?: InputMaybe<StringNullableFilter>;
   oAuthId?: InputMaybe<StringNullableFilter>;
   password?: InputMaybe<StringNullableFilter>;
-  role?: InputMaybe<StringFilter>;
   videos?: InputMaybe<VideoListRelationFilter>;
 };
 

@@ -1,5 +1,6 @@
 import { MiddlewareFn } from "type-graphql";
 
+import { VideoUploadError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
 
 export const ErrorInterceptorMiddleware: MiddlewareFn<Context> = async (
@@ -15,7 +16,7 @@ export const ErrorInterceptorMiddleware: MiddlewareFn<Context> = async (
     }
 
     if (err?.message?.startsWith("File truncated as it exceeds")) {
-      throw new Error("File too large");
+      throw new VideoUploadError("file-too-large");
     }
 
     throw err;

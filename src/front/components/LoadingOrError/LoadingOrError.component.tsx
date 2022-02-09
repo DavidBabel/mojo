@@ -5,10 +5,11 @@ import { useTranslation } from "react-i18next";
 
 import { Title } from "@/_layout/Title";
 import { useToggle } from "~/front/hooks";
+import { extractErrorMessageLocale } from "~/front/lib/errors.helpers";
 
 interface Props {
-  error?: ApolloError;
-  loading: boolean;
+  error?: ApolloError | string;
+  loading?: boolean;
 }
 
 export function LoadingOrError({ loading, error }: Props) {
@@ -23,6 +24,7 @@ export function LoadingOrError({ loading, error }: Props) {
     );
   }
   if (error) {
+    const errorMessage = extractErrorMessageLocale(error);
     return (
       <>
         <Title>
@@ -33,7 +35,7 @@ export function LoadingOrError({ loading, error }: Props) {
           ?
         </Title>
 
-        {error.message}
+        {errorMessage}
 
         <div style={{ marginTop: 15 }}>
           <Button color="secondary" onClick={toggleShowErrorDetails}>

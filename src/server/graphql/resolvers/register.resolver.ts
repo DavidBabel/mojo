@@ -8,6 +8,7 @@ import {
 } from "type-graphql";
 
 import { UserRole } from "~/iso/enums";
+import { OrmError, RegisterError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
 import { isEmailGuard, passwordFormatGuard } from "~/server/graphql/guards";
 import { hashPassword } from "~/server/services/hash-password";
@@ -26,11 +27,11 @@ export class RegisterResolver {
     try {
       existingUser = await prisma.user.findUnique({ where: { email } });
     } catch (error) {
-      throw new Error("unable to search for user");
+      throw new OrmError("unable-to-search-for-user");
     }
 
     if (existingUser) {
-      throw new Error("email already taken");
+      throw new RegisterError("email-already-taken");
     }
 
     const hashedPassword = hashPassword(password.trim());
@@ -46,10 +47,9 @@ export class RegisterResolver {
       });
     } catch (error) {
       console.error(error);
-      throw new Error("unable to register user");
+      throw new OrmError("unable-to-register-user");
     }
 
-    // await prisma.$disconnect();
     return "Created user!";
   }
 }

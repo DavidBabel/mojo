@@ -3,11 +3,22 @@ import { Input } from "antd";
 
 import { type FormItemProps, FormItem } from "@/_form/FormItem";
 
-export function EmailInput({ name = "email", ...props }: FormItemProps) {
+interface EmailInputProps extends FormItemProps {
+  disabled?: boolean;
+}
+
+export function EmailInput({
+  name = "email",
+  disabled = false,
+  ...props
+}: EmailInputProps) {
   return (
     <>
       <FormItem name={name} {...props}>
-        <Input prefix={<MailOutlined className="site-form-item-icon" />} />
+        <Input
+          disabled={disabled}
+          prefix={<MailOutlined className="site-form-item-icon" />}
+        />
       </FormItem>
     </>
   );
