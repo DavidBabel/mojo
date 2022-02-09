@@ -10,7 +10,6 @@ import { ErrorInterceptorMiddleware } from "~/server/graphql/middlewares";
 import {
   RegisterResolver,
   VideoCreateResolver,
-  VideoUploadResolver,
 } from "~/server/graphql/resolvers";
 
 if (!CONFIG.GQL_DISABLE_AUTH_DECORATORS) {
@@ -21,11 +20,6 @@ export const schema = buildSchemaSync({
   authChecker: customAuthChecker,
   emitSchemaFile: "src/server/graphql/generated/schema.gql",
   globalMiddlewares: [ErrorInterceptorMiddleware],
-  resolvers: [
-    ...resolvers,
-    RegisterResolver,
-    VideoUploadResolver,
-    VideoCreateResolver,
-  ],
+  resolvers: [...resolvers, RegisterResolver, VideoCreateResolver],
   validate: false,
 });

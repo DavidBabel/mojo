@@ -98,7 +98,6 @@ export type Mutation = {
   upsertUser: User;
   upsertVideo: Video;
   videoCreate: Scalars['String'];
-  videoUpload: Scalars['String'];
 };
 
 
@@ -182,12 +181,6 @@ export type MutationVideoCreateArgs = {
   forceBucketUpload?: InputMaybe<Scalars['Boolean']>;
   published: Scalars['Boolean'];
   title: Scalars['String'];
-  video: Scalars['Upload'];
-};
-
-
-export type MutationVideoUploadArgs = {
-  forceBucketUpload?: InputMaybe<Scalars['Boolean']>;
   video: Scalars['Upload'];
 };
 
