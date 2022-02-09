@@ -1,5 +1,10 @@
-import { SendOutlined } from "@ant-design/icons";
-import { Button, Input, Switch } from "antd";
+import {
+  EyeOutlined,
+  InboxOutlined,
+  SendOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+import { Col, Input, Row, Switch } from "antd";
 import type { NextPage } from "next";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -7,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { Form, FormContentWrapper, FormItem, SubmitButton } from "@/_form";
 import { VideoUploadInput } from "@/_form/_inputs/VideoUploadInput";
 import { Title } from "@/_layout/Title";
+import { BigButton } from "@/BigButton";
 import { ButtonLink } from "@/ButtonLink";
 import { MutationVideoCreateArgs } from "~/@types/generated/graphqlTypes";
 import { useVideoCreateMutation } from "~/front/gql/mutations";
@@ -39,17 +45,29 @@ const UploadVideoPage: NextPage = () => {
     <>
       <Title>{t("pages.videos-upload.title")}</Title>
       {createdVideoId ? (
-        <FormContentWrapper>
-          <ButtonLink href={`/videos`}>
-            {t("pages.videos-upload.goto-videos")}
-          </ButtonLink>
-          <ButtonLink href={`/videos/${createdVideoId}`}>
-            {t("pages.videos-upload.play-video")}
-          </ButtonLink>
-          <Button onClick={() => setCreatedVideoId(undefined)}>
-            {t("pages.videos-upload.upload-another-one")}
-          </Button>
-        </FormContentWrapper>
+        <Row gutter={[12, 12]}>
+          <Col xl={8} xs={24}>
+            <BigButton href={`/videos`} icon={<EyeOutlined />}>
+              {t("pages.videos-upload.goto-videos")}
+            </BigButton>
+          </Col>
+          <Col xl={8} xs={24}>
+            <BigButton
+              href={`/videos/${createdVideoId}`}
+              icon={<VideoCameraOutlined />}
+            >
+              {t("pages.videos-upload.play-video")}
+            </BigButton>
+          </Col>
+          <Col xl={8} xs={24}>
+            <BigButton
+              icon={<InboxOutlined />}
+              onClick={() => setCreatedVideoId(undefined)}
+            >
+              {t("pages.videos-upload.upload-another-one")}
+            </BigButton>
+          </Col>
+        </Row>
       ) : (
         <Form
           initialValues={{ published: false }}

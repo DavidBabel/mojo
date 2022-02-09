@@ -1,5 +1,33 @@
 {
   "app-name": "Mojo Web Fr",
+  "backend-errors": {
+    "authentication-failed": "Echec de l'authentification",
+    "could-not-log-you-in": "Impossible de vous connecter!",
+    "credentials-not-found": "Identifiants non trouvés",
+    "disallowed-action": "Action non autorisée",
+    "email-already-taken": "Email déjà pris",
+    "file-too-large": "Fichier trop lourd",
+    "invalid-file-type": "Type de fichier invalide, seulement vidéo/mp4",
+    "no-email-provided": "Aucun email fourni",
+    "no-id-found-for-requested-object": "Aucun id trouvé pour l'objet demandé",
+    "no-password-provided": "Aucun mot de passe fourni",
+    "no-user-found": "Aucun utilisateur trouvé!",
+    "unable-to-create-video": "Impossible de créer la vidéo",
+    "unable-to-register-user": "Impossible d'enregistrer l'utilisateur",
+    "unable-to-retreive-created-video": "Impossible de récupérer la vidéo créée",
+    "unable-to-search-for-user": "Impossible de rechercher un utilisateur",
+    "unable-to-upload-the-video": "Impossible d'envoyer la vidéo",
+    "unable-to-upload-the-video-locally": "Impossible d'envoyer la vidéo localement",
+    "unauthorized": "Non autorisé",
+    "unauthorized-action": "Action non autorisée",
+    "unknown-provider": "Provider inconnu",
+    "user-can-only-edit-itself": "Un utilisateur peut seulement se modifier lui-même",
+    "user-can-only-edit-own-video": "Un utilisateur peut seulement modifier ses propres vidéos",
+    "video-not-found": "Vidéo non trouvée",
+    "wrong-email-format": "Mauvais format d'email",
+    "wrong-password-size": "Le mot de passe doit être compris entre 8 et 32 caractères",
+    "you-need-to-be-logged-in-to-perform-this-action": "Vous devez être connecté pour effectuer cette action"
+  },
   "common": {
     "cancel": "Annuler",
     "public": "Publique",
@@ -43,20 +71,7 @@
         "confirm-delete": {
           "cancelText": "Annuler",
           "content": "Cette action ne peut pas être annulée",
-          "okText": "Confirmer et effacer",
-          "title": "Voulez vous effacer cette video ?"
-        }
-      },
-      "notifications": {
-        "video-deleted": {
-          "description": "La vidéo \"{{videoName}}\" a été supprimée",
-          "message": "Vidéo supprimée"
-        },
-        "video-published": {
-          "description": "La vidéo \"{{videoName}}\" a été ",
-          "message": "Visibilité de la vidéo modifiée",
-          "private": "rendue privée",
-          "public": "publiée"
+          "okText": "Confirmer et effacer"
         }
       }
     }
@@ -65,6 +80,11 @@
     "date": "DD/MM/YYYY"
   },
   "forms__dynamic": {
+    "account-edit": {
+      "email": "Adresse email",
+      "name": "Nom d'utilisateur",
+      "password": "Mot de passe"
+    },
     "register": {
       "email": "Adresse email",
       "name": "Nom d'utilisateur",
@@ -94,12 +114,19 @@
       "logged-with-provider": "Connecté: {{name}} depuis {{provider}}"
     },
     "breadcrumb": {
+      "[...page404]": "404",
+      "[userId]": "Contenu utilisateur",
+      "[videoId]": "Vidéo",
       "account": "Compte",
+      "auth": "Authentification",
       "demo-tools": "< Demo Tools />",
+      "edit": "Éditer",
       "home": "Acceuil",
       "manage-users": "Utilisateurs",
+      "register": "S'enregistrer",
+      "signin": "Se connecter",
+      "tools": "Outils de démo",
       "upload": "Envoyer une vidéo",
-      "video": "Vidéo",
       "videos": "Mes Videos"
     },
     "footer": {
@@ -117,9 +144,11 @@
     },
     "menu": {
       "account": "Compte",
+      "auth": "Authentification",
       "demo-tools": "< Demo Tools />",
       "manage-users": "Utilisateurs",
-      "videos": "Mes Vidéos"
+      "my-videos": "Mes Vidéos",
+      "videos": "Vidéos"
     }
   },
   "notifications": {
@@ -135,6 +164,23 @@
     "404": {
       "description": "404, pas ajoutée encore, désolé !",
       "title": "Page non trouvée"
+    },
+    "account": {
+      "demo-account-warning": "Vous ne pouvez pas éditer les comptes de démo :)",
+      "password-extra": "Saisir un nouveau mot de passe pour en changer.",
+      "submit": "Editer votre compte",
+      "title": "Editer votre compte",
+      "video-count": "Nombre de vidéos : {{count}}"
+    },
+    "admin-users": {
+      "columns": {
+        "account-type": "Type de compte",
+        "email": "Email",
+        "name": "Nom d'utilisateur",
+        "videos-count": "Nombre de vidéos",
+        "videos-shows": "Consulter les vidéos"
+      },
+      "title": "Liste d'utilisateurs"
     },
     "auth": {
       "description": "Que voulez vous faire ?",
@@ -163,9 +209,25 @@
     },
     "videos": {
       "download-example": "Télécharger une vidéo d'exemple (démo)",
+      "modals": {
+        "confirm-delete": "Voulez vous supprimer cette vidéo ?"
+      },
       "no-datas": "l'utilisateur",
       "no-videos": "Aucune vidéo trouvée",
+      "notifications": {
+        "video-deleted": {
+          "description": "La vidéo \"{{videoName}}\" a été supprimée",
+          "message": "Vidéo supprimée"
+        },
+        "video-published": {
+          "description": "La vidéo \"{{videoName}}\" a été ",
+          "message": "Visibilité de la vidéo modifiée",
+          "private": "rendue privée",
+          "public": "publiée"
+        }
+      },
       "title": "Mes vidéos",
+      "title-admin": "Vidéos of {{userName}}",
       "upload-video": "Uploader une nouvelle vidéo"
     },
     "videos-edit": {

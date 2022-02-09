@@ -14,6 +14,7 @@ import { Title } from "@/_layout/Title";
 import { LinkNewTab } from "~/front/components/LinkNewTab";
 import { useBaseUrl } from "~/front/hooks";
 import { CONFIG } from "~/iso/config";
+import { isDev } from "~/iso/env";
 
 const colProps = {
   md: { span: 12 },
@@ -107,7 +108,7 @@ const ToolsPage: NextPage = () => {
           </Link>
         </Col>
         <PrismaCard {...colProps} />
-        <Col {...colProps}>
+        <Col {...colProps} style={{ opacity: isDev() ? 1 : 0.35 }}>
           <LinkNewTab
             href={`https://studio.apollographql.com/sandbox/explorer?endpoint=${serverBaseUrl}${CONFIG.GRAPHQL_ENDPOINT}`}
           >
@@ -125,7 +126,7 @@ const ToolsPage: NextPage = () => {
               hoverable
             >
               <Card.Meta
-                description="Allows to navigate through the GraphQL API"
+                description="Allows to navigate through the GraphQL API (local only)"
                 title="Launch Apollo studio"
               />
             </Card>

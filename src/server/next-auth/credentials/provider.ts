@@ -1,7 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { AuthProviders } from "~/iso/enums";
-import { AuthError } from "~/iso/errors";
+import { AuthError } from "~/iso/errors/customErrors";
 import { PrismaClient } from "~/server/prisma/singleton";
 import { checkPassword } from "~/server/services/hash-password";
 
@@ -9,7 +9,7 @@ export const credentialProvider = CredentialsProvider({
   async authorize(credentials) {
     const { email, password } = credentials!;
     if (!email || !password) {
-      throw new AuthError("Credentials not found");
+      throw new AuthError("credentials-not-found");
     }
 
     const user = await PrismaClient.user.findUnique({
@@ -17,13 +17,13 @@ export const credentialProvider = CredentialsProvider({
     });
 
     if (!user) {
-      throw new AuthError("No user found!");
+      throw new AuthError("no-user-found");
     }
 
     const isValid = checkPassword(password, user.password!);
 
     if (!isValid) {
-      throw new AuthError("Could not log you in!");
+      throw new AuthError("could-not-log-you-in");
     }
 
     return user;

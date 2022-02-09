@@ -4,4 +4,5 @@ export * from "./useOnMobile.hook";
 export * from "./useSession.hook";
 export * from "./useTimeout.hook";
 export * from "./useToggle.hook";
+export * from "./useUserIdRouter.hook";
 export * from "./useVideoIdRouter.hook";

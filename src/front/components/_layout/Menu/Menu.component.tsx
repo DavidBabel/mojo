@@ -17,7 +17,7 @@ const { Item, SubMenu } = AntMenu;
 export function Menu() {
   const { t } = useTranslation();
   const { pathname } = useRouter();
-  const { isAdmin } = useSession();
+  const { isAdmin, isAuthenticated } = useSession();
   const isDevToolsEnabled = useKeyPress({ key: "d", modifier: "ctrlKey" });
 
   const subPath = pathname.split("/").slice(1);
@@ -25,15 +25,28 @@ export function Menu() {
   return (
     <>
       <AntMenu mode="inline" selectedKeys={subPath} theme="dark">
-        <Item icon={<PlayCircleOutlined />} key="videos">
-          <Link href="/videos">{t("layout.menu.videos")}</Link>
-        </Item>
-        <Item icon={<SettingOutlined />} key="account">
-          <Link href="/account">{t("layout.menu.account")}</Link>
-        </Item>
+        {isAuthenticated() ? (
+          <>
+            <Item icon={<PlayCircleOutlined />} key="videos">
+              <Link href="/videos">
+                {isAdmin()
+                  ? t("layout.menu.videos")
+                  : t("layout.menu.my-videos")}
+              </Link>
+            </Item>
+            <Item icon={<SettingOutlined />} key="account">
+              <Link href="/account">{t("layout.menu.account")}</Link>
+            </Item>
+          </>
+        ) : (
+          <Item icon={<UserOutlined />} key="auth">
+            <Link href="/auth">{t("layout.menu.auth")}</Link>
+          </Item>
+        )}
+
         {isAdmin() && (
-          <Item icon={<UserOutlined />} key="admin/users">
-            <Link href="/admin/users">{t("layout.menu.manage-users")}</Link>
+          <Item icon={<UserOutlined />} key="admin">
+            <Link href="/admin">{t("layout.menu.manage-users")}</Link>
           </Item>
         )}
         <Item icon={<ToolOutlined />} key="tools">
@@ -67,7 +80,7 @@ export function Menu() {
                   Notion
                 </Link>
               </Item>
-              <Item icon={<SettingOutlined />} key="notion">
+              <Item icon={<SettingOutlined />} key="subject">
                 <Link href="https://www.notion.so/archery/Technical-Test-d5033edf044f45aaa8c13adce9076c82">
                   Test Subject
                 </Link>

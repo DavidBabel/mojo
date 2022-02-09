@@ -43,12 +43,18 @@ Status:
 - add login ✅
 - enable authenticated video upload ✅
 
-## Step 5 : UI / UX 🚧
+## Step 5 : UI / UX User ✅
 
 - draft a modern UI with antd ✅
 - user experiences ✅ (but still some to do)
-- enhance video upload experience with advanced components 🚧
-- develop admin
+- enhance video upload experience with advanced components ✅
+
+## Step 5 bis : UI / UX Admin  ✅
+
+- lock admin path  ✅
+- develop admin experience  ✅
+- Allows admin to manage other user's videos  ✅
+- i18n backend / errors  ✅
 
 ## Step 6 : Non-regression
 
@@ -64,12 +70,12 @@ Status:
 
 - show some respect to [Hofstadter law](https://en.wikipedia.org/wiki/Hofstadter%27s_law)
 
-## Step 9 : Improvments (if time)
+## Step 9 : Improvements (if time)
 
 - cleanup
 - docker setup
 - manage DB migrations
-- i18n backend / errors
+
 
 ## Step 10
 

@@ -3,11 +3,23 @@ import { Input } from "antd";
 
 import { type FormItemProps, FormItem } from "@/_form/FormItem";
 
-export function PasswordInput({ name = "password", ...props }: FormItemProps) {
+interface PasswordInputProps extends FormItemProps {
+  disabled?: boolean;
+  placeholder?: string;
+}
+
+export function PasswordInput({
+  name = "password",
+  disabled = false,
+  placeholder,
+  ...props
+}: PasswordInputProps) {
   return (
     <>
       <FormItem name={name} {...props}>
         <Input.Password
+          disabled={disabled}
+          placeholder={placeholder}
           prefix={<LockOutlined className="site-form-item-icon" />}
         />
       </FormItem>

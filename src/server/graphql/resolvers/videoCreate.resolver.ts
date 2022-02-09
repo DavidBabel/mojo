@@ -11,7 +11,7 @@ import {
 
 import { UserRole } from "~/iso/enums";
 import { isProd } from "~/iso/env";
-import { OrmError, VideoUploadError } from "~/iso/errors";
+import { OrmError, VideoUploadError } from "~/iso/errors/customErrors";
 import { getExtension } from "~/iso/string";
 import { Context, EnsuredUser } from "~/server/graphql/graphql-context";
 import { LoggedIn, videoMimeTypeGuard } from "~/server/graphql/guards";
@@ -44,10 +44,10 @@ export class VideoCreateResolver {
       });
     } catch (error) {
       console.error(error);
-      throw new OrmError("unable to create video");
+      throw new OrmError("unable-to-create-video");
     }
     if (!newVideo) {
-      throw new OrmError("unable to retreive created video");
+      throw new OrmError("unable-to-retreive-created-video");
     }
 
     video.filename = `${newVideo.id}.${getExtension(video.filename)}`;
@@ -57,7 +57,7 @@ export class VideoCreateResolver {
         await saveToBucket(video);
       } catch (error) {
         console.error(error);
-        throw new VideoUploadError("unable to upload the video");
+        throw new VideoUploadError("unable-to-upload-the-video");
       }
     } else {
       console.log("local configuration: saving to public/localBucket");
@@ -65,7 +65,7 @@ export class VideoCreateResolver {
         await saveToLocal(video);
       } catch (error) {
         console.error(error);
-        throw new VideoUploadError("unable to upload the video locally");
+        throw new VideoUploadError("unable-to-upload-the-video-locally");
       }
     }
     return newVideo.id;

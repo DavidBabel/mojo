@@ -1,10 +1,11 @@
 import { Video } from "@prisma/client";
 import { createMethodDecorator, MiddlewareFn } from "type-graphql";
 
+import { NotFoundError, RightsError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
 import {
   adminByPass,
-  extractId,
+  extractRequestedId,
   isCurrentRequestedVideoOwner,
 } from "~/server/graphql/guards/helpers/guard.helpers";
 
@@ -18,7 +19,7 @@ export const selfVideoOnlyGuard: MiddlewareFn<Context> = async (
     return await next();
   }
 
-  const videoId = extractId(args);
+  const videoId = extractRequestedId(args);
   let video: MaybeNull<Video>;
   try {
     video = await prisma.video.findUnique({ where: { id: videoId } });
@@ -28,11 +29,11 @@ export const selfVideoOnlyGuard: MiddlewareFn<Context> = async (
   }
 
   if (!video) {
-    throw new Error("Video not found");
+    throw new NotFoundError("video-not-found");
   }
 
   if (isCurrentRequestedVideoOwner(user, video)) {
-    throw new Error("A user can only edit it's own videos");
+    throw new RightsError("user-can-only-edit-own-video");
   }
 
   return await next();

@@ -1,13 +1,9 @@
 import { Card, Spin } from "antd";
 import { useRouter } from "next/router";
 import { PropsWithChildren, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { VideoCardAction } from "@/VideoCard/parts";
-import { ifConfirmDeleteModal } from "@/VideoCard/parts/modals";
-import {
-  openDeletedVideodNotification,
-  openPublishedVideoNotification,
-} from "@/VideoCard/parts/notifications";
 import { Video } from "~/@types/generated/graphqlTypes";
 import {
   useDeleteVideoMutation,
@@ -15,6 +11,11 @@ import {
 } from "~/front/gql/mutations";
 import type { useOneUserQuery } from "~/front/gql/queries";
 import { openErrorNotification } from "~/front/lib/notifications";
+import { ifConfirmDeleteModal } from "~/front/modals/modals";
+import {
+  openDeletedVideodNotification,
+  openPublishedVideoNotification,
+} from "~/pages/videos/part/notifications";
 
 interface Props extends PropsWithChildren<Video> {
   onAction: ReturnType<typeof useOneUserQuery>["refetch"];
@@ -28,6 +29,7 @@ export function VideoCardActionWrapper({
   title,
 }: Props) {
   const router = useRouter();
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
   const [deleteVideo, { loadingDeleteVideo }] = useDeleteVideoMutation();
@@ -55,6 +57,7 @@ export function VideoCardActionWrapper({
     if (loading) return;
     setLoading(true);
     ifConfirmDeleteModal(
+      t("pages.videos.modals.confirm-delete"),
       () => {
         deleteVideo(id)
           .then(() => openDeletedVideodNotification(title))
@@ -66,7 +69,7 @@ export function VideoCardActionWrapper({
       },
       () => setLoading(false),
     );
-  }, [deleteVideo, id, loading, onAction, title]);
+  }, [deleteVideo, id, loading, onAction, title, t]);
 
   const actions = [
     <VideoCardAction action={handleDelete} key="delete" name="delete" />,

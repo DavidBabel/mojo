@@ -13,11 +13,16 @@ import { VideoCard } from "@/VideoCard";
 import { useOneUserQuery } from "~/front/gql/queries";
 import { useSession } from "~/front/hooks";
 
-const VideosPage: NextPage = () => {
+interface PageProps {
+  isAdminMode?: boolean;
+  userId?: string;
+}
+
+const VideosPage: NextPage<PageProps> = ({ userId, isAdminMode }) => {
   const { user } = useSession();
   const { t } = useTranslation();
 
-  const { loading, data, error, refetch } = useOneUserQuery(user?.id);
+  const { loading, data, error, refetch } = useOneUserQuery(userId ?? user?.id);
 
   if (loading || error) {
     return <LoadingOrError error={error} loading={loading} />;
@@ -26,31 +31,44 @@ const VideosPage: NextPage = () => {
   if (!userData) {
     return <NoDataFound dataName={String(t("pages.videos.no-datas"))} />;
   }
+  const { name: userName, videos } = userData;
 
-  const actions = [
-    <ButtonLink download={"cat-example.mp4"} href={"/cat-example.mp4"} key="dl">
-      {t("pages.videos.download-example")}
-    </ButtonLink>,
-    <ButtonLink href={"/videos/upload"} key="action-upload" type="primary">
-      <PlusCircleOutlined /> {t("pages.videos.upload-video")}
-    </ButtonLink>,
-  ];
+  const actions = isAdminMode
+    ? []
+    : [
+        <ButtonLink
+          download={"cat-example.mp4"}
+          href={"/cat-example.mp4"}
+          key="dl"
+        >
+          {t("pages.videos.download-example")}
+        </ButtonLink>,
+        <ButtonLink href={"/videos/upload"} key="action-upload" type="primary">
+          <PlusCircleOutlined /> {t("pages.videos.upload-video")}
+        </ButtonLink>,
+      ];
 
   return (
     <>
       <TitleWithActions
         actions={actions}
         sticky
-        title={<Title>{t("pages.videos.title")}</Title>}
+        title={
+          <Title>
+            {isAdminMode
+              ? t("pages.videos.title-admin", { userName })
+              : t("pages.videos.title")}
+          </Title>
+        }
       />
 
       <Row gutter={[20, 20]}>
-        {userData.videos.map((video, index) => (
+        {videos.map((video, index) => (
           <Col key={`videos-video-${index}`} lg={12} sm={24} xl={8} xxl={6}>
             <VideoCard {...video} onAction={refetch} />
           </Col>
         ))}
-        {userData.videos.length === 0 && (
+        {videos.length === 0 && (
           <Col>
             <Paragraph>{t("pages.videos.no-videos")}</Paragraph>
             <ButtonLink href={"/videos/upload"} type="primary">

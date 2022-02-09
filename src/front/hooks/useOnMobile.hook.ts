@@ -1,9 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export function useOnMobile(actionCallback: () => void) {
+/**
+ * exec a callback or return a isMobile boolean
+ */
+export function useOnMobile(actionCallback?: () => void) {
+  const [isMobile, setMobile] = useState(false);
   useEffect(() => {
     if (window?.innerWidth < 768) {
-      actionCallback();
+      actionCallback?.();
     }
+    setMobile(window?.innerWidth < 768);
   }, [actionCallback]);
+  return isMobile;
 }

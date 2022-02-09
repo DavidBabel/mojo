@@ -1,5 +1,6 @@
 import { createMethodDecorator, MiddlewareFn } from "type-graphql";
 
+import { RightsError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
 import {
   adminByPass,
@@ -17,7 +18,7 @@ export const selfUserOnlyGuard: MiddlewareFn<Context> = async (
   }
 
   if (isCurrentRequestedUser(user, args)) {
-    throw new Error("A user can only edit itself");
+    throw new RightsError("user-can-only-edit-itself");
   }
 
   return await next();

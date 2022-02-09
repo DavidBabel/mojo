@@ -3,7 +3,7 @@
 import NextAuth from "next-auth";
 
 import { AuthProviders } from "~/iso/enums";
-import { AuthError } from "~/iso/errors";
+import { AuthError } from "~/iso/errors/customErrors";
 import { day } from "~/iso/numbers/time";
 import {
   credentialProvider,
@@ -30,7 +30,7 @@ export default NextAuth({
       } else if (token.provider === AuthProviders.Credentials) {
         return credentialSessionHandler({ session, token });
       }
-      throw new AuthError(`Unknown provider ${token.provider}`);
+      throw new AuthError("unknown-provider");
     },
   },
   jwt: {
