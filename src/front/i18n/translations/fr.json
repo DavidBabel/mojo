@@ -196,6 +196,27 @@
       "please-retry": "Veuillez réessayer.",
       "title": "Oh non ..."
     },
+    "auth-success": {
+      "signin": {
+        "goto-videos": "Voir vos vidéos",
+        "success-description": "Vous pouvez explorer l'app",
+        "success-title": "Connecté",
+        "title": "Connecté avec succès",
+        "upload-a-video": "Uploader une vidéo"
+      },
+      "signout": {
+        "goto-signin": "Se connecter",
+        "success-description": "Connectez-vous à nouveau pour accéder à l'app",
+        "success-title": "Déconnecté",
+        "title": "Déconnecté avec succès"
+      }
+    },
+    "auth-success-register": {
+      "goto-signin": "Se connecter",
+      "success-description": "Vous pouvez maintenant vous connecter",
+      "success-title": "Compte {{registeredEmail}} créé",
+      "title": "Enregistré avec succès"
+    },
     "home": {
       "welcome-to": "Bienvenue chez"
     },
@@ -230,6 +251,8 @@
           "public": "publiée"
         }
       },
+      "success-description": "Votre vidéo a été uploadée",
+      "success-title": "Succès",
       "title": "Mes vidéos",
       "title-admin": "Vidéos of {{userName}}",
       "upload-video": "Uploader une nouvelle vidéo"
@@ -249,7 +272,7 @@
       "edit-video": "Éditer cette vidéo"
     },
     "videos-upload": {
-      "goto-videos": "Voir vos vidéos",
+      "goto-videos": "Voir la page de vos vidéos",
       "notifications": {
         "upload-success": "Votre vidéo a été uploadé avec succès"
       },

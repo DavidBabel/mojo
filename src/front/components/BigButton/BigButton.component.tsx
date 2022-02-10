@@ -14,7 +14,7 @@ export function BigButton({
   ...buttonProps
 }: Props) {
   const style = {
-    fontSize: "1.8em",
+    fontSize: "1.5em",
     height: "5em",
     overflow: "hidden",
     width: "100%",

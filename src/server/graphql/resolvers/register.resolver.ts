@@ -7,6 +7,7 @@ import {
   UseMiddleware as UseGuards,
 } from "type-graphql";
 
+import { nameRequired } from "~/iso/constant";
 import { UserRole } from "~/iso/enums";
 import { OrmError, RegisterError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
@@ -21,7 +22,7 @@ export class RegisterResolver {
     @Ctx() { prisma }: Context,
     @Arg("email", () => String) email: string,
     @Arg("password", () => String) password: string,
-    @Arg("name", () => String) name: string,
+    @Arg("name", () => String, { nullable: !nameRequired }) name?: string,
   ) {
     let existingUser: MaybeNull<User> = null;
     try {
@@ -40,7 +41,7 @@ export class RegisterResolver {
       await prisma.user.create({
         data: {
           email: email.trim().toLocaleLowerCase(),
-          name: name.trim(),
+          name: name?.trim(),
           password: hashedPassword,
           role: UserRole.USER,
         },

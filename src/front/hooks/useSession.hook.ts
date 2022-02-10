@@ -7,11 +7,12 @@ export function useSession() {
   const session = useSessionOriginal();
   const { data, status } = session;
 
+  const sessionLoading = status === "loading";
   const isAuthenticated = () => status === "authenticated";
-  const isAdmin = () => data?.user.role === UserRole.ADMIN;
+  const isAdmin = () => isAuthenticated() && data?.user.role === UserRole.ADMIN;
   const provider = data?.provider;
 
   const user = data?.user;
 
-  return { isAdmin, isAuthenticated, provider, /* session, */ user };
+  return { isAdmin, isAuthenticated, provider, sessionLoading, user };
 }

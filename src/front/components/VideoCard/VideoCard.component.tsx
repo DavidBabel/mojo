@@ -19,7 +19,7 @@ export function VideoCard(props: Props) {
   const { id, title, description, published, createdAt } = props;
   const { t } = useTranslation();
 
-  const VideoPlayer = useMemoVideoPlayer(id, title, { small: true });
+  const VideoPlayer = useMemoVideoPlayer(id, title!, { small: true });
 
   return (
     <VideoCardActionWrapper {...props}>
@@ -33,7 +33,7 @@ export function VideoCard(props: Props) {
         text={t("common.public")}
       >
         <Title level={4}>
-          <Link href={`/videos/${id}`}>{title}</Link>
+          <Link href={`/videos/${id}`}>{title ?? "Open video"}</Link>
         </Title>
       </Ribbon>
       {VideoPlayer}

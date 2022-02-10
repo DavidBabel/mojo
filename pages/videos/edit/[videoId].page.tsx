@@ -41,12 +41,12 @@ const EditVideoPage: NextPage = () => {
   } = useOneVideoQuery(videoId);
   const video: MaybeNull<Maybe<Video>> = data?.findFirstVideo;
 
-  const VideoPlayer = useMemoVideoPlayer(videoId, video?.title, {
+  const VideoPlayer = useMemoVideoPlayer(videoId, video?.title!, {
     small: true,
   });
 
   if (loadingVideoQuery || error) {
-    return <LoadingOrError error={error} loading={loadingVideoQuery} />;
+    return <LoadingOrError error={error} />;
   }
 
   const onFinish = async (values: VideoUpdateInput) => {

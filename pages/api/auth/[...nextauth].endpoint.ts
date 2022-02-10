@@ -4,7 +4,7 @@ import NextAuth from "next-auth";
 
 import { AuthProviders } from "~/iso/enums";
 import { AuthError } from "~/iso/errors/customErrors";
-import { day } from "~/iso/numbers/time";
+import { min } from "~/iso/numbers/time";
 import {
   credentialProvider,
   credentialSessionHandler,
@@ -23,7 +23,7 @@ export default NextAuth({
       }
       return token;
     },
-    redirect: ({ baseUrl }) => baseUrl,
+    redirect: ({ baseUrl }) => `${baseUrl}/auth/success`,
     async session({ session, token }) {
       if (token.provider === AuthProviders.Github) {
         return githubSessionHandler({ session, token });
@@ -34,11 +34,11 @@ export default NextAuth({
     },
   },
   jwt: {
-    maxAge: 10 * day,
+    maxAge: 45 * min,
   },
   pages: {
     error: "/auth/error",
-    newUser: "/",
+    newUser: "/auth/register-success",
     signIn: "/auth/signin",
   },
   providers: [githubProvider, credentialProvider],

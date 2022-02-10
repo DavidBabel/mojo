@@ -4,7 +4,7 @@ import {
   SendOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Col, Input, Row, Switch } from "antd";
+import { Col, Input, Result, Row, Switch } from "antd";
 import type { NextPage } from "next";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -46,17 +46,24 @@ const UploadVideoPage: NextPage = () => {
       <Title>{t("pages.videos-upload.title")}</Title>
       {createdVideoId ? (
         <Row gutter={[12, 12]}>
-          <Col xl={8} xs={24}>
-            <BigButton href={`/videos`} icon={<EyeOutlined />}>
-              {t("pages.videos-upload.goto-videos")}
-            </BigButton>
+          <Col span={24}>
+            <Result
+              status="success"
+              subTitle={t("pages.videos.success-description")}
+              title={t("pages.videos.success-title")}
+            />
           </Col>
           <Col xl={8} xs={24}>
             <BigButton
               href={`/videos/${createdVideoId}`}
-              icon={<VideoCameraOutlined />}
+              icon={<EyeOutlined />}
             >
               {t("pages.videos-upload.play-video")}
+            </BigButton>
+          </Col>
+          <Col xl={8} xs={24}>
+            <BigButton href={`/videos`} icon={<VideoCameraOutlined />}>
+              {t("pages.videos-upload.goto-videos")}
             </BigButton>
           </Col>
           <Col xl={8} xs={24}>

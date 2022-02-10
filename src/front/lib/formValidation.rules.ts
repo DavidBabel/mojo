@@ -12,7 +12,7 @@ export const formValidationRules: Record<
   },
   register: {
     email: r.ruleRequiredEmail,
-    name: r.ruleRequiredName,
+    name: r.ruleSubscribeName,
     password: r.ruleRequiredPassword,
   },
   signin: {

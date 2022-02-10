@@ -36,7 +36,7 @@ const RegisterPage: NextPage = () => {
     registerNewUser(values)
       .then(() => {
         openSuccessNotification(t("pages.register.success"));
-        router.push("/auth/signin");
+        router.push("/auth/success-register?email=" + values.email);
       })
       .catch(openErrorNotification);
   };

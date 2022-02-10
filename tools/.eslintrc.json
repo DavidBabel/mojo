@@ -87,6 +87,7 @@
               "~/front/gql/mutations/**/*.mutation*",
               "~/front/gql/querys/**/*.query*",
               "~/front/lib/notifications/**/*.notifications*",
+              "~/front/lib/exports/**/*.export*",
               "~/iso/enums/**/*.enum*",
               "~/server/services/**/*.service*",
               "~/server/graphql/guards/**/*.guard*",

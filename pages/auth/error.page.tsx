@@ -16,7 +16,8 @@ const AuthErroPage: NextPage = () => {
         <Link href="/auth/signin">{t("pages.auth-error.please-retry")}</Link>
       </p>
       <p>
-        {t("pages.auth-error.error")} {query?.error}
+        {t("pages.auth-error.error")}{" "}
+        {t(`backend-errors.${String(query?.error)}` as any) ?? query?.error}
       </p>
     </>
   );

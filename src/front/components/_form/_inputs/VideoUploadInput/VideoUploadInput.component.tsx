@@ -21,6 +21,7 @@ export function VideoUploadInput({
       <FormItem name={name}>
         <Dragger
           accept={allowedMimeTypes.join(",")}
+          customRequest={() => {}}
           iconRender={() => <VideoCameraAddOutlined />}
           maxCount={1}
           multiple={false}

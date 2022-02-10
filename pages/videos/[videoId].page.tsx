@@ -21,11 +21,11 @@ const PlayVideoPage: NextPage = () => {
   const { data, error, loading } = useOneVideoQuery(videoId);
   const video: Maybe<MaybeNull<Video>> = data?.findFirstVideo;
 
-  const VideoPlayer = useMemoVideoPlayer(videoId, video?.title, {
+  const VideoPlayer = useMemoVideoPlayer(videoId, video?.title!, {
     small: isMobile,
   });
   if (loading || error) {
-    return <LoadingOrError error={error} loading={loading} />;
+    return <LoadingOrError error={error} />;
   }
 
   const { title, description } = video ?? {};
