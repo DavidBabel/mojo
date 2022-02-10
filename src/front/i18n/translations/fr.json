@@ -127,6 +127,7 @@
       "signin": "Se connecter",
       "tools": "Outils de démo",
       "upload": "Envoyer une vidéo",
+      "upload-success": "Succès de l'upload",
       "videos": "Mes Videos"
     },
     "footer": {
@@ -251,8 +252,6 @@
           "public": "publiée"
         }
       },
-      "success-description": "Votre vidéo a été uploadée",
-      "success-title": "Succès",
       "title": "Mes vidéos",
       "title-admin": "Vidéos of {{userName}}",
       "upload-video": "Uploader une nouvelle vidéo"
@@ -272,14 +271,23 @@
       "edit-video": "Éditer cette vidéo"
     },
     "videos-upload": {
-      "goto-videos": "Voir la page de vos vidéos",
       "notifications": {
         "upload-success": "Votre vidéo a été uploadé avec succès"
       },
-      "play-video": "Jouer votre vidéo",
       "submit": "Envoyer votre vidéo",
-      "title": "Envoyer une nouvelle vidéo",
-      "upload-another-one": "En uploader une autre"
+      "title": "Envoyer une nouvelle vidéo"
+    },
+    "videos-upload-success": {
+      "goto-videos": "Voir la page de vos vidéos",
+      "notifications": {
+        "upload-success": "Your video has been uploaded"
+      },
+      "play-video": "Jouer votre vidéo",
+      "success-description": "Votre vidéo a été uploadée",
+      "success-title": "Succès",
+      "title": "{{videoTitle}} uploadée avec succès",
+      "upload-another-one": "En uploader une autre",
+      "video": "Vidéo"
     }
   }
 }

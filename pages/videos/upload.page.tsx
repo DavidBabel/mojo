@@ -1,18 +1,12 @@
-import {
-  EyeOutlined,
-  InboxOutlined,
-  SendOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Col, Input, Result, Row, Switch } from "antd";
+import { SendOutlined } from "@ant-design/icons";
+import { Input, Switch } from "antd";
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 
 import { Form, FormContentWrapper, FormItem, SubmitButton } from "@/_form";
 import { VideoUploadInput } from "@/_form/_inputs/VideoUploadInput";
 import { Title } from "@/_layout/Title";
-import { BigButton } from "@/BigButton";
 import { ButtonLink } from "@/ButtonLink";
 import { MutationVideoCreateArgs } from "~/@types/generated/graphqlTypes";
 import { useVideoCreateMutation } from "~/front/gql/mutations";
@@ -24,7 +18,8 @@ import { isDev } from "~/iso/env";
 
 const UploadVideoPage: NextPage = () => {
   const { t } = useTranslation();
-  const [createdVideoId, setCreatedVideoId] = useState<Maybe<string>>();
+  const router = useRouter();
+
   const [createVideo, { loadingVideoCreate }] = useVideoCreateMutation();
 
   const onFinish = async (values: MutationVideoCreateArgs) => {
@@ -35,7 +30,9 @@ const UploadVideoPage: NextPage = () => {
         openSuccessNotification(
           t("pages.videos-upload.notifications.upload-success"),
         );
-        setCreatedVideoId(result?.data?.videoCreate);
+        let successPage = `/videos/upload-success?videoId=${result?.data?.videoCreate}`;
+        if (values.title) successPage += `&videoTitle=${values.title}`;
+        router.push(successPage);
       })
       .catch(openErrorNotification)
       .finally();
@@ -44,69 +41,37 @@ const UploadVideoPage: NextPage = () => {
   return (
     <>
       <Title>{t("pages.videos-upload.title")}</Title>
-      {createdVideoId ? (
-        <Row gutter={[12, 12]}>
-          <Col span={24}>
-            <Result
-              status="success"
-              subTitle={t("pages.videos.success-description")}
-              title={t("pages.videos.success-title")}
-            />
-          </Col>
-          <Col xl={8} xs={24}>
-            <BigButton
-              href={`/videos/${createdVideoId}`}
-              icon={<EyeOutlined />}
-            >
-              {t("pages.videos-upload.play-video")}
-            </BigButton>
-          </Col>
-          <Col xl={8} xs={24}>
-            <BigButton href={`/videos`} icon={<VideoCameraOutlined />}>
-              {t("pages.videos-upload.goto-videos")}
-            </BigButton>
-          </Col>
-          <Col xl={8} xs={24}>
-            <BigButton
-              icon={<InboxOutlined />}
-              onClick={() => setCreatedVideoId(undefined)}
-            >
-              {t("pages.videos-upload.upload-another-one")}
-            </BigButton>
-          </Col>
-        </Row>
-      ) : (
-        <Form
-          initialValues={{ published: false }}
-          name="video-upload"
-          onFinish={onFinish}
-        >
-          <FormItem name="title" />
-          <FormItem name="description">
-            <Input.TextArea />
-          </FormItem>
-          <FormContentWrapper>
-            <ButtonLink download={"cat-example.mp4"} href={"/cat-example.mp4"}>
-              {t("pages.videos.download-example")}
-            </ButtonLink>
-          </FormContentWrapper>
-          <VideoUploadInput />
-          <FormItem name="published" valuePropName="checked">
+
+      <Form
+        initialValues={{ published: false }}
+        name="video-upload"
+        onFinish={onFinish}
+      >
+        <FormItem name="title" />
+        <FormItem name="description">
+          <Input.TextArea />
+        </FormItem>
+        <FormContentWrapper>
+          <ButtonLink download={"cat-example.mp4"} href={"/cat-example.mp4"}>
+            {t("pages.videos.download-example")}
+          </ButtonLink>
+        </FormContentWrapper>
+        <VideoUploadInput />
+        <FormItem name="published" valuePropName="checked">
+          <Switch />
+        </FormItem>
+        {isDev() && (
+          <FormItem name="forceBucketUpload" valuePropName="checked">
             <Switch />
           </FormItem>
-          {isDev() && (
-            <FormItem name="forceBucketUpload" valuePropName="checked">
-              <Switch />
-            </FormItem>
-          )}
-          <FormContentWrapper>
-            <SubmitButton loading={loadingVideoCreate}>
-              <SendOutlined />
-              {t("pages.videos-upload.submit")}
-            </SubmitButton>
-          </FormContentWrapper>
-        </Form>
-      )}
+        )}
+        <FormContentWrapper>
+          <SubmitButton loading={loadingVideoCreate}>
+            <SendOutlined />
+            {t("pages.videos-upload.submit")}
+          </SubmitButton>
+        </FormContentWrapper>
+      </Form>
     </>
   );
 };
