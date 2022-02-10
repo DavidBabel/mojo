@@ -22,3 +22,6 @@ export const localBucketPrefix = "http://localhost:4000/localBucket/";
 
 // allowed mime types
 export const allowedMimeTypes = ["video/mp4"];
+export const allowedVideoExtensions = [
+  ...new Set(allowedMimeTypes.map(type => `.${type.split("/")[1]}`)),
+];

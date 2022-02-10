@@ -59,6 +59,10 @@
       "no-data-found": "Aucune donnée trouvée pour {{dataName}}",
       "title": "Aucune donnée trouvée"
     },
+    "VideoUploadInput": {
+      "supported-files": "Supporte seulement les fichiers {{formats}}",
+      "drag-and-drop-video": "Cliquer ou glisser le fichier vidéo ici"
+    },
     "VideoCard": {
       "action": {
         "delete": "Effacer cette vidéo",
@@ -254,7 +258,8 @@
       },
       "title": "Mes vidéos",
       "title-admin": "Vidéos of {{userName}}",
-      "upload-video": "Uploader une nouvelle vidéo"
+      "upload-video": "Uploader une nouvelle vidéo",
+      "no-title": "sans nom"
     },
     "videos-edit": {
       "check-video": "Vidéo modifiée ! Regardez là",

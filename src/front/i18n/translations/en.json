@@ -56,8 +56,12 @@
       }
     },
     "NoDataFound": {
-      "no-data-found": "No data found for {{dataName}}",
+      "no-data-found": "No data found for {{dataName}} files",
       "title": "No data found"
+    },
+    "VideoUploadInput": {
+      "supported-files": "Only support {{formats}} files",
+      "drag-and-drop-video": "Click or drag video file to this area to upload"
     },
     "VideoCard": {
       "action": {
@@ -254,7 +258,8 @@
       },
       "title": "My videos",
       "title-admin": "Videos of {{userName}}",
-      "upload-video": "Upload new video"
+      "upload-video": "Upload new video",
+      "no-title": "unnamed"
     },
     "videos-edit": {
       "check-video": "Video saved ! Check at it",

@@ -26,7 +26,7 @@ export function VideoCardActionWrapper({
   children,
   id,
   published,
-  title,
+  title: maybeTitle,
 }: Props) {
   const router = useRouter();
   const { t } = useTranslation();
@@ -37,6 +37,8 @@ export function VideoCardActionWrapper({
     usePublishVideoMutation();
 
   const handleEdit = () => !loading && router.push(`/videos/edit/${id}`);
+
+  const title = maybeTitle ? maybeTitle : t("pages.videos.no-title");
 
   const handleTogglePublic = useCallback(() => {
     if (loading) return;
