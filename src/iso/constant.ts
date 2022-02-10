@@ -21,7 +21,5 @@ export const bucketPrefix = `https://storage.googleapis.com/${bucketName}/`;
 export const localBucketPrefix = "http://localhost:4000/localBucket/";
 
 // allowed mime types
-export const allowedMimeTypes = ["video/mp4"];
-export const allowedVideoExtensions = [
-  ...new Set(allowedMimeTypes.map(type => `.${type.split("/")[1]}`)),
-];
+export const allowedMimeTypes = ["video/mp4" /* , "video/quicktime" */];
+export const allowedVideoExtensions = [".mp4" /* , ".mov" */];

@@ -40,8 +40,9 @@ const EditVideoPage: NextPage = () => {
     refetch,
   } = useOneVideoQuery(videoId);
   const video: MaybeNull<Maybe<Video>> = data?.findFirstVideo;
+  const title = video?.title ?? t("pages.videos.no-title");
 
-  const VideoPlayer = useMemoVideoPlayer(videoId, video?.title!, {
+  const VideoPlayer = useMemoVideoPlayer(videoId, title, {
     small: true,
   });
 
@@ -72,7 +73,7 @@ const EditVideoPage: NextPage = () => {
       t("pages.videos.modals.confirm-delete"),
       () => {
         deleteVideo(videoId)
-          .then(() => openDeletedVideodNotification(String(video?.title)))
+          .then(() => openDeletedVideodNotification(title))
           .catch(openErrorNotification)
           .finally(async () => {
             setLoadingDelete(false);
@@ -82,9 +83,6 @@ const EditVideoPage: NextPage = () => {
       () => setLoadingDelete(false),
     );
   };
-
-  console.log("video :");
-  console.log(video);
 
   return (
     <>

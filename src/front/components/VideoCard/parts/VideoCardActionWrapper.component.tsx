@@ -38,7 +38,7 @@ export function VideoCardActionWrapper({
 
   const handleEdit = () => !loading && router.push(`/videos/edit/${id}`);
 
-  const title = maybeTitle ? maybeTitle : t("pages.videos.no-title");
+  const title = maybeTitle ?? t("pages.videos.no-title");
 
   const handleTogglePublic = useCallback(() => {
     if (loading) return;

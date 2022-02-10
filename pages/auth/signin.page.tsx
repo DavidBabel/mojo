@@ -14,7 +14,10 @@ import {
 import { Title } from "@/_layout/Title";
 import { ButtonLink } from "@/ButtonLink";
 import { GitHubSignIn } from "@/GitHubSignIn";
-import { openErrorNotification } from "~/front/lib/notifications";
+import {
+  openErrorNotification,
+  openSuccessNotification,
+} from "~/front/lib/notifications";
 import { AuthProviders } from "~/iso/enums";
 
 interface FormValues extends SignInOptions {
@@ -32,7 +35,7 @@ const SignInPage: NextPage = () => {
 
     await signIn(AuthProviders.Credentials, values)
       .then(() => {
-        console.log(`signIn success`);
+        openSuccessNotification(t("pages.signin.notifications.signin-success"));
       })
       .catch(openErrorNotification)
       .finally(() => {

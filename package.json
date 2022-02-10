@@ -16,7 +16,7 @@
     "start:local": "NEXTAUTH_URL=http://localhost:3000 NODE_ENV=production node ./dist/src/server/boot/index.js",
     "build:next": "next build",
     "build:server": "rimraf ./dist || true && tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./ -o ./dist",
-    "lint": "eslint . --report-unused-disable-directives --rule '@typescript-eslint/no-unused-vars:2'",
+    "lint": "eslint . --report-unused-disable-directives --rule '@typescript-eslint/no-unused-vars:2' --rule 'no-console:1'",
     "test": "jest --config=./tools/jest.config.js",
     "script": "ts-node -r tsconfig-paths/register",
     "types": "graphql-codegen --config ./tools/graphql-gen-types-config.yml",
