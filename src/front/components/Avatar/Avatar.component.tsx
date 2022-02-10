@@ -1,9 +1,9 @@
 import { Avatar as AntAvatar, Popover } from "antd";
-import md5 from "md5";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 import { useSession } from "~/front/hooks";
+import { getGravatarLink } from "~/front/lib/gravatar";
 import { AuthProviders } from "~/iso/enums";
 
 export function Avatar() {
@@ -15,9 +15,7 @@ export function Avatar() {
   if (image) {
     link = image;
   } else if (email) {
-    link = `https://www.gravatar.com/avatar/${md5(
-      email.toLowerCase().trim(),
-    )}?d=identicon`;
+    link = getGravatarLink(email);
   }
 
   const popoverLabel =
@@ -34,7 +32,7 @@ export function Avatar() {
         <AntAvatar
           alt={name}
           src={link && <Image alt="User avatar" layout="fill" src={link} />}
-          style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}
+          style={{ backgroundColor: "lightgrey", color: "#f56a00" }}
         >
           {String(name ?? email)
             .toLocaleUpperCase()

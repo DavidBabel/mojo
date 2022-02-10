@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
 import type { ReactNode } from "react";
 
-import { cn } from "~/front/lib/classnames.exports";
+import { cn } from "~/iso/exports";
 
 interface Props {
   actions: ReactNode[];

@@ -1,6 +1,5 @@
 import { Button, Form, Spin } from "antd";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,6 +9,7 @@ import {
   openSuccessNotification,
 } from "~/front/lib/notifications";
 import { AuthProviders } from "~/iso/enums";
+import { sec } from "~/iso/numbers/timeMs";
 
 interface Props {
   mode?: "register" | "signin";
@@ -18,20 +18,19 @@ interface Props {
 export function GitHubSignIn({ mode = "signin" }: Props) {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   async function handleGitHubSignIn() {
     if (loading) return;
     setLoading(true);
+    setTimeout(() => setLoading(false), 6 * sec);
     await signIn(AuthProviders.Github)
-      .then(() => {
+      .then(() =>
         openSuccessNotification(
           t(`components.GitHubSignIn.notification.${mode}`),
-        );
-        router.push("/");
-      })
-      .catch(openErrorNotification)
-      .finally(() => {
+        ),
+      )
+      .catch(error => {
+        openErrorNotification(error);
         setLoading(false);
       });
   }

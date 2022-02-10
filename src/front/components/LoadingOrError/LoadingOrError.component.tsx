@@ -9,20 +9,12 @@ import { extractErrorMessageLocale } from "~/front/lib/errors.helpers";
 
 interface Props {
   error?: ApolloError | string;
-  loading?: boolean;
 }
 
-export function LoadingOrError({ loading, error }: Props) {
+export function LoadingOrError({ error }: Props) {
   const [showErrorDetails, toggleShowErrorDetails] = useToggle(false);
   const { t } = useTranslation();
 
-  if (loading) {
-    return (
-      <Row align="middle" justify="center" style={{ height: "40vh" }}>
-        <Spin size="large" />
-      </Row>
-    );
-  }
   if (error) {
     const errorMessage = extractErrorMessageLocale(error);
     return (
@@ -54,6 +46,12 @@ export function LoadingOrError({ loading, error }: Props) {
         </div>
       </>
     );
+  } else {
+    // loading
+    return (
+      <Row align="middle" justify="center" style={{ height: "40vh" }}>
+        <Spin size="large" />
+      </Row>
+    );
   }
-  return null;
 }

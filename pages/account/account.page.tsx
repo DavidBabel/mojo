@@ -25,7 +25,7 @@ import { AuthProviders } from "~/iso/enums";
 
 const AccountPage: NextPage = () => {
   const { t } = useTranslation();
-  const { user: sessionUser, provider } = useSession();
+  const { user: sessionUser, provider, sessionLoading } = useSession();
   const userId = sessionUser?.id ?? "";
 
   const [updateUser, { loadingUserUpdate }] = useUserUpdateMutation();
@@ -38,8 +38,9 @@ const AccountPage: NextPage = () => {
   } = useOneUserQuery(userId);
   const user: MaybeNull<Maybe<User>> = data?.findFirstUser;
 
-  if (loadingUserQuery || error) {
-    return <LoadingOrError error={error} loading={loadingUserQuery} />;
+  const loading = sessionLoading || loadingUserQuery;
+  if (loading || error) {
+    return <LoadingOrError error={error} />;
   }
 
   const onFinish = async (values: UserUpdateInput) => {

@@ -9,6 +9,7 @@ import {
   UseMiddleware as UseGuards,
 } from "type-graphql";
 
+import { videoTitleRequired } from "~/iso/constant";
 import { UserRole } from "~/iso/enums";
 import { isProd } from "~/iso/env";
 import { OrmError, VideoUploadError } from "~/iso/errors/customErrors";
@@ -26,11 +27,12 @@ export class VideoCreateResolver {
   async videoCreate(
     @Ctx() { prisma, user }: EnsuredUser<Context>,
     @Arg("video", () => GraphQLUpload) video: FileUpload,
-    @Arg("title", () => String) title: string,
-    @Arg("description", () => String, { nullable: true }) description: string,
     @Arg("published", () => Boolean) published: boolean,
+    @Arg("title", () => String, { nullable: !videoTitleRequired })
+    title?: string,
+    @Arg("description", () => String, { nullable: true }) description?: string,
     @Arg("forceBucketUpload", () => Boolean, { nullable: true })
-    forceBucketUpload: boolean,
+    forceBucketUpload?: boolean,
   ) {
     let newVideo: MaybeNull<Video> = null;
     try {

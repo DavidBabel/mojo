@@ -196,6 +196,27 @@
       "please-retry": "Please try again.",
       "title": "Oh no ..."
     },
+    "auth-success": {
+      "signin": {
+        "goto-videos": "Look at your videos",
+        "success-description": "You can now explore the app",
+        "success-title": "Connected",
+        "title": "Connected with success",
+        "upload-a-video": "Upload a video"
+      },
+      "signout": {
+        "goto-signin": "Signin",
+        "success-description": "Signin again to access the app",
+        "success-title": "Signout success",
+        "title": "Signout with success"
+      }
+    },
+    "auth-success-register": {
+      "goto-signin": "Signin",
+      "success-description": "You can now signin with yout new account",
+      "success-title": "Account {{registeredEmail}} created",
+      "title": "Registered with success"
+    },
     "home": {
       "welcome-to": "Welcome to"
     },
@@ -230,6 +251,8 @@
           "public": "public"
         }
       },
+      "success-description": "Your video has been uploaded",
+      "success-title": "Success",
       "title": "My videos",
       "title-admin": "Videos of {{userName}}",
       "upload-video": "Upload new video"
@@ -249,7 +272,7 @@
       "edit-video": "Edit this video"
     },
     "videos-upload": {
-      "goto-videos": "See your videos",
+      "goto-videos": "Go to your videos page",
       "notifications": {
         "upload-success": "Your video has been uploaded"
       },

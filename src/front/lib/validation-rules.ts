@@ -27,10 +27,10 @@ export const ruleName: Rules = [
   },
 ];
 
-export const ruleRequiredName: Rules = [
+export const ruleSubscribeName: Rules = [
   {
     ...ruleName[0],
-    required: true,
+    required: c.nameRequired,
   },
 ];
 
@@ -52,7 +52,7 @@ export const videoTitleRules: Rules = [
   {
     max: c.videoTitleMaxLength,
     min: c.videoTitleMinLength,
-    required: true,
+    required: c.videoTitleRequired,
   },
 ];
 
