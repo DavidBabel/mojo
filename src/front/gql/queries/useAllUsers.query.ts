@@ -15,8 +15,9 @@ const USERS_QUERY = gql`
   }
 `;
 
-export function useUsersQuery() {
+export function useUsersQuery(onlyIf: () => boolean = () => true) {
   return useQuery<Query>(USERS_QUERY, {
     fetchPolicy: "no-cache",
+    skip: !onlyIf(),
   });
 }

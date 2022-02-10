@@ -17,7 +17,7 @@ const AdminUsersPage: NextPage = () => {
   const { t } = useTranslation();
   const isMobile = useOnMobile();
   const { isAdmin, sessionLoading } = useSession();
-  const { data, loading, error } = useUsersQuery();
+  const { data, loading, error } = useUsersQuery(isAdmin);
 
   const columns = useMemo(() => {
     const columnsBuild: ColumnProps<User>[] = [

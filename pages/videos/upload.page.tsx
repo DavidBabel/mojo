@@ -47,16 +47,16 @@ const UploadVideoPage: NextPage = () => {
         name="video-upload"
         onFinish={onFinish}
       >
-        <FormItem name="title" />
-        <FormItem name="description">
-          <Input.TextArea />
-        </FormItem>
         <FormContentWrapper>
           <ButtonLink download={"cat-example.mp4"} href={"/cat-example.mp4"}>
             {t("pages.videos.download-example")}
           </ButtonLink>
         </FormContentWrapper>
         <VideoUploadInput />
+        <FormItem name="title" />
+        <FormItem name="description">
+          <Input.TextArea />
+        </FormItem>
         <FormItem name="published" valuePropName="checked">
           <Switch />
         </FormItem>
