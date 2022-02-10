@@ -26,7 +26,7 @@ export function Avatar() {
   return (
     <>
       <Popover
-        content={<>{t(popoverLabel, { name, provider })}</>}
+        content={<>{t(popoverLabel, { name: name ?? email, provider })}</>}
         placement="bottom"
       >
         <AntAvatar
