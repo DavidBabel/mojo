@@ -84,7 +84,7 @@ type Mutation {
   updateVideo(data: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video
   upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   upsertVideo(create: VideoCreateInput!, update: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video!
-  videoCreate(description: String, forceBucketUpload: Boolean, published: Boolean!, title: String!, video: Upload!): String!
+  videoCreate(description: String, forceBucketUpload: Boolean, published: Boolean!, title: String, video: Upload!): String!
 }
 
 input NestedBoolFilter {
@@ -532,7 +532,7 @@ type Video {
   description: String
   id: String!
   published: Boolean!
-  title: String!
+  title: String
   updatedAt: DateTime!
 }
 
@@ -563,7 +563,7 @@ input VideoCreateInput {
   description: String
   id: String
   published: Boolean
-  title: String!
+  title: String
   updatedAt: DateTime
 }
 
@@ -583,7 +583,7 @@ input VideoCreateWithoutAuthorInput {
   description: String
   id: String
   published: Boolean
-  title: String!
+  title: String
   updatedAt: DateTime
 }
 
@@ -596,7 +596,7 @@ type VideoGroupBy {
   description: String
   id: String!
   published: Boolean!
-  title: String!
+  title: String
   updatedAt: DateTime!
 }
 
@@ -693,7 +693,7 @@ input VideoScalarWhereInput {
   description: StringNullableFilter
   id: StringFilter
   published: BoolFilter
-  title: StringFilter
+  title: StringNullableFilter
   updatedAt: DateTimeFilter
 }
 
@@ -706,7 +706,7 @@ input VideoScalarWhereWithAggregatesInput {
   description: StringNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
   published: BoolWithAggregatesFilter
-  title: StringWithAggregatesFilter
+  title: StringNullableWithAggregatesFilter
   updatedAt: DateTimeWithAggregatesFilter
 }
 
@@ -716,7 +716,7 @@ input VideoUpdateInput {
   description: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
+  title: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
@@ -725,7 +725,7 @@ input VideoUpdateManyMutationInput {
   description: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
+  title: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
@@ -757,7 +757,7 @@ input VideoUpdateWithoutAuthorInput {
   description: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
+  title: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
@@ -777,7 +777,7 @@ input VideoWhereInput {
   description: StringNullableFilter
   id: StringFilter
   published: BoolFilter
-  title: StringFilter
+  title: StringNullableFilter
   updatedAt: DateTimeFilter
 }
 

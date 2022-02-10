@@ -1,10 +1,11 @@
 import { InboxOutlined, VideoCameraAddOutlined } from "@ant-design/icons";
 import { Upload } from "antd";
 import type { DraggerProps } from "antd/lib/upload";
+import { useTranslation } from "react-i18next";
 
 import { FormItem } from "@/_form";
 import { FormFieldName } from "~/@types/forms";
-import { allowedMimeTypes } from "~/iso/constant";
+import { allowedVideoExtensions } from "~/iso/constant";
 
 const { Dragger } = Upload;
 interface VideoUploadInputProps extends DraggerProps {
@@ -16,20 +17,27 @@ export function VideoUploadInput({
   name = "video",
   ...props
 }: VideoUploadInputProps) {
+  const { t } = useTranslation();
+  const formats = allowedVideoExtensions.join(",");
+
   return (
     <>
-      <FormItem name={name}>
+      <FormItem
+        extra={t("components.VideoUploadInput.supported-files", {
+          formats,
+        })}
+        name={name}
+      >
         <Dragger
-          accept={allowedMimeTypes.join(",")}
+          accept={formats}
+          customRequest={() => {}}
           iconRender={() => <VideoCameraAddOutlined />}
           maxCount={1}
           multiple={false}
           {...props}
           style={{
-            height: 175,
-            maxHeight: 175,
-            paddingLeft: 50,
-            paddingRight: 50,
+            paddingLeft: 40,
+            paddingRight: 40,
             ...props.style,
           }}
         >
@@ -37,9 +45,9 @@ export function VideoUploadInput({
             <InboxOutlined />
           </p>
           <p className="ant-upload-text">
-            Click or drag video file to this area to upload
+            {t("components.VideoUploadInput.drag-and-drop-video")}
           </p>
-          <p className="ant-upload-hint">Only support for MP4 files</p>
+          <p className="ant-upload-hint"></p>
         </Dragger>
       </FormItem>
     </>

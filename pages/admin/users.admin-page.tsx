@@ -16,8 +16,8 @@ import { AuthProviders } from "~/iso/enums";
 const AdminUsersPage: NextPage = () => {
   const { t } = useTranslation();
   const isMobile = useOnMobile();
-  const { isAdmin } = useSession();
-  const { data, loading, error } = useUsersQuery();
+  const { isAdmin, sessionLoading } = useSession();
+  const { data, loading, error } = useUsersQuery(isAdmin);
 
   const columns = useMemo(() => {
     const columnsBuild: ColumnProps<User>[] = [
@@ -54,7 +54,7 @@ const AdminUsersPage: NextPage = () => {
 
   const users = data?.users;
 
-  if (error || !isAdmin()) {
+  if (!isAdmin() || error) {
     return <LoadingOrError error={error ?? t("backend-errors.unauthorized")} />;
   }
 
@@ -65,7 +65,7 @@ const AdminUsersPage: NextPage = () => {
       <Table
         columns={columns}
         dataSource={users}
-        loading={loading}
+        loading={loading || sessionLoading}
         size="small"
       />
     </>

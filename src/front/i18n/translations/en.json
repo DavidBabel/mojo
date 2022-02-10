@@ -56,8 +56,12 @@
       }
     },
     "NoDataFound": {
-      "no-data-found": "No data found for {{dataName}}",
+      "no-data-found": "No data found for {{dataName}} files",
       "title": "No data found"
+    },
+    "VideoUploadInput": {
+      "supported-files": "Only support {{formats}} files",
+      "drag-and-drop-video": "Click or drag video file to this area to upload"
     },
     "VideoCard": {
       "action": {
@@ -127,6 +131,7 @@
       "signin": "Sign-in",
       "tools": "Démo tools",
       "upload": "Upload a new video",
+      "upload-success": "Upload Success",
       "videos": "Videos"
     },
     "footer": {
@@ -196,6 +201,27 @@
       "please-retry": "Please try again.",
       "title": "Oh no ..."
     },
+    "auth-success": {
+      "signin": {
+        "goto-videos": "Look at your videos",
+        "success-description": "You can now explore the app",
+        "success-title": "Connected",
+        "title": "Connected with success",
+        "upload-a-video": "Upload a video"
+      },
+      "signout": {
+        "goto-signin": "Signin",
+        "success-description": "Signin again to access the app",
+        "success-title": "Signout success",
+        "title": "Signout with success"
+      }
+    },
+    "auth-success-register": {
+      "goto-signin": "Signin",
+      "success-description": "You can now signin with yout new account",
+      "success-title": "Account {{registeredEmail}} created",
+      "title": "Registered with success"
+    },
     "home": {
       "welcome-to": "Welcome to"
     },
@@ -232,7 +258,8 @@
       },
       "title": "My videos",
       "title-admin": "Videos of {{userName}}",
-      "upload-video": "Upload new video"
+      "upload-video": "Upload new video",
+      "no-title": "unnamed"
     },
     "videos-edit": {
       "check-video": "Video saved ! Check at it",
@@ -249,14 +276,23 @@
       "edit-video": "Edit this video"
     },
     "videos-upload": {
-      "goto-videos": "See your videos",
+      "notifications": {
+        "upload-success": "Your video has been uploaded"
+      },
+      "submit": "Send your video",
+      "title": "Upload a new video"
+    },
+    "videos-upload-success": {
+      "goto-videos": "Go to your videos page",
       "notifications": {
         "upload-success": "Your video has been uploaded"
       },
       "play-video": "Check your video",
-      "submit": "Send your video",
-      "title": "Upload a new video",
-      "upload-another-one": "Upload another video"
+      "success-description": "Your video has been uploaded",
+      "success-title": "Success",
+      "title": "{{videoTitle}} successfully uploaded",
+      "upload-another-one": "Upload another video",
+      "video": "Video"
     }
   }
 }

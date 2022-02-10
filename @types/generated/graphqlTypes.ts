@@ -180,7 +180,7 @@ export type MutationVideoCreateArgs = {
   description?: InputMaybe<Scalars['String']>;
   forceBucketUpload?: InputMaybe<Scalars['Boolean']>;
   published: Scalars['Boolean'];
-  title: Scalars['String'];
+  title?: InputMaybe<Scalars['String']>;
   video: Scalars['Upload'];
 };
 
@@ -732,7 +732,7 @@ export type Video = {
   description?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   published: Scalars['Boolean'];
-  title: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
 
@@ -764,7 +764,7 @@ export type VideoCreateInput = {
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   published?: InputMaybe<Scalars['Boolean']>;
-  title: Scalars['String'];
+  title?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -784,7 +784,7 @@ export type VideoCreateWithoutAuthorInput = {
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   published?: InputMaybe<Scalars['Boolean']>;
-  title: Scalars['String'];
+  title?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -798,7 +798,7 @@ export type VideoGroupBy = {
   description?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   published: Scalars['Boolean'];
-  title: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
 };
 
@@ -897,7 +897,7 @@ export type VideoScalarWhereInput = {
   description?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<StringFilter>;
   published?: InputMaybe<BoolFilter>;
-  title?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
@@ -910,7 +910,7 @@ export type VideoScalarWhereWithAggregatesInput = {
   description?: InputMaybe<StringNullableWithAggregatesFilter>;
   id?: InputMaybe<StringWithAggregatesFilter>;
   published?: InputMaybe<BoolWithAggregatesFilter>;
-  title?: InputMaybe<StringWithAggregatesFilter>;
+  title?: InputMaybe<StringNullableWithAggregatesFilter>;
   updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
 };
 
@@ -920,7 +920,7 @@ export type VideoUpdateInput = {
   description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   id?: InputMaybe<StringFieldUpdateOperationsInput>;
   published?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  title?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -929,7 +929,7 @@ export type VideoUpdateManyMutationInput = {
   description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   id?: InputMaybe<StringFieldUpdateOperationsInput>;
   published?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  title?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -961,7 +961,7 @@ export type VideoUpdateWithoutAuthorInput = {
   description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   id?: InputMaybe<StringFieldUpdateOperationsInput>;
   published?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  title?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -981,7 +981,7 @@ export type VideoWhereInput = {
   description?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<StringFilter>;
   published?: InputMaybe<BoolFilter>;
-  title?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 

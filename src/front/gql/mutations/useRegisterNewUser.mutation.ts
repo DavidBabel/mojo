@@ -4,10 +4,14 @@ import {
   Mutation,
   MutationRegisterNewUserArgs,
 } from "~/@types/generated/graphqlTypes";
+import { nameRequired } from "~/iso/constant";
+import { GqlType } from "~/iso/enums";
+
+const nameStringType = nameRequired ? GqlType.StringRequired : GqlType.String;
 
 const REGISTER_NEW_USER_MUTATION = gql`
   mutation RegisterNewUserMutation(
-    $name: String!
+    $name: ${nameStringType}
     $password: String!
     $email: String!
   ) {

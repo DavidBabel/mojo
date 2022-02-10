@@ -14,7 +14,7 @@ import type { VideoPlayerProps } from "./part/VideoPlayerNoSSR.component";
  */
 export function useMemoVideoPlayer(
   videoId: string,
-  title: Maybe<string>,
+  title?: Maybe<string>,
   props?: Partial<VideoPlayerProps>,
 ) {
   const videoUrlToUse = getVideoUrlForDemo(videoId, title);

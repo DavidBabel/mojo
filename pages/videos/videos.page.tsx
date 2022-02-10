@@ -25,13 +25,13 @@ const VideosPage: NextPage<PageProps> = ({ userId, isAdminMode }) => {
   const { loading, data, error, refetch } = useOneUserQuery(userId ?? user?.id);
 
   if (loading || error) {
-    return <LoadingOrError error={error} loading={loading} />;
+    return <LoadingOrError error={error} />;
   }
   const userData = data?.findFirstUser;
   if (!userData) {
     return <NoDataFound dataName={String(t("pages.videos.no-datas"))} />;
   }
-  const { name: userName, videos } = userData;
+  const { name: userName, email, videos } = userData;
 
   const actions = isAdminMode
     ? []
@@ -56,7 +56,7 @@ const VideosPage: NextPage<PageProps> = ({ userId, isAdminMode }) => {
         title={
           <Title>
             {isAdminMode
-              ? t("pages.videos.title-admin", { userName })
+              ? t("pages.videos.title-admin", { userName: userName ?? email })
               : t("pages.videos.title")}
           </Title>
         }

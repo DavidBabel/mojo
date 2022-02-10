@@ -18,7 +18,7 @@ export function NoDataFound({ dataName }: Props) {
   // the 3s timeout is only reached in case of error (no data)
   useTimeout(3 * sec, () => setForceLoadingState(false));
   if (forceLoadingState) {
-    return <LoadingOrError loading={true} />;
+    return <LoadingOrError />;
   }
 
   return (
