@@ -1,11 +1,12 @@
 import { EditOutlined } from "@ant-design/icons";
 import type { NextPage } from "next";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
   EmailInput,
   Form,
-  FormContentWrapper,
+  FormContent,
   PasswordInput,
   SubmitButton,
   UserInput,
@@ -38,21 +39,25 @@ const AccountPage: NextPage = () => {
   } = useOneUserQuery(userId);
   const user: MaybeNull<Maybe<User>> = data?.findFirstUser;
 
+  const onAccountEdit = useCallback(
+    async function handleAccountEdit(values: UserUpdateInput) {
+      await updateUser(userId, values)
+        .then(async () => {
+          openSuccessNotification(
+            t("pages.account.notifications.edit-success"),
+          );
+          await refetch();
+        })
+        .catch(openErrorNotification)
+        .finally();
+    },
+    [refetch, t, updateUser, userId],
+  );
+
   const loading = sessionLoading || loadingUserQuery;
   if (loading || error) {
     return <LoadingOrError error={error} />;
   }
-
-  const onFinish = async (values: UserUpdateInput) => {
-    if (loadingUserUpdate) return;
-    await updateUser(userId, values)
-      .then(async () => {
-        openSuccessNotification(t("pages.account.notifications.edit-success"));
-        await refetch();
-      })
-      .catch(openErrorNotification)
-      .finally();
-  };
 
   const isDemoAccount = ["admin@admin.io", "user@user.io"].includes(
     String(user?.email),
@@ -65,16 +70,20 @@ const AccountPage: NextPage = () => {
     <>
       <Title>{t("pages.account.title")}</Title>
       {isDemoAccount && (
-        <FormContentWrapper>
+        <FormContent>
           <Paragraph>⚠️ {t("pages.account.demo-account-warning")}</Paragraph>
-        </FormContentWrapper>
+        </FormContent>
       )}
       {isOAuthAccount && (
-        <FormContentWrapper>
+        <FormContent>
           <Paragraph>{t("pages.account.cannot-edit")}</Paragraph>
-        </FormContentWrapper>
+        </FormContent>
       )}
-      <Form initialValues={user ?? {}} name="account-edit" onFinish={onFinish}>
+      <Form
+        initialValues={user ?? {}}
+        name="account-edit"
+        onFinish={onAccountEdit}
+      >
         <UserInput disabled={isFormDisabled} />
         <EmailInput disabled />
         <PasswordInput
@@ -82,15 +91,15 @@ const AccountPage: NextPage = () => {
           extra={t("pages.account.password-extra")}
           placeholder="••••••••"
         />
-        <FormContentWrapper>
+        <FormContent>
           {t("pages.account.video-count", { count: user?.videos?.length })}
-        </FormContentWrapper>
-        <FormContentWrapper>
+        </FormContent>
+        <FormContent>
           <SubmitButton disabled={isFormDisabled} loading={loadingUserUpdate}>
             <EditOutlined />
             {t("pages.account.submit")}
           </SubmitButton>
-        </FormContentWrapper>
+        </FormContent>
       </Form>
     </>
   );

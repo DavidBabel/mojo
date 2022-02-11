@@ -16,7 +16,7 @@
     "start:local": "NEXTAUTH_URL=http://localhost:3000 NODE_ENV=production node ./dist/src/server/boot/index.js",
     "build:next": "next build",
     "build:server": "rimraf ./dist || true && tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./ -o ./dist",
-    "lint": "eslint . --report-unused-disable-directives --rule '@typescript-eslint/no-unused-vars:2'",
+    "lint": "eslint . --report-unused-disable-directives --rule '@typescript-eslint/no-unused-vars:2' --rule 'no-console:1'",
     "test": "jest --config=./tools/jest.config.js",
     "script": "ts-node -r tsconfig-paths/register",
     "types": "graphql-codegen --config ./tools/graphql-gen-types-config.yml",
@@ -48,6 +48,7 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
+    "dd-trace": "^2.1.1",
     "express": "^4.17.2",
     "graphql": "^15.3.0",
     "graphql-fields": "^2.0.3",
@@ -68,7 +69,8 @@
     "tslib": "^2.3.1",
     "type-graphql": "^1.1.1",
     "typegraphql-prisma": "^0.18.4",
-    "uuidv4": "^6.2.12"
+    "uuidv4": "^6.2.12",
+    "winston": "^3.5.1"
   },
   "resolutions": {
     "graphql": "^15.3.0",

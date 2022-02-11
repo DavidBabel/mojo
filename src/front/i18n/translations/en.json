@@ -39,7 +39,7 @@
         "register": "Register with GitHub account",
         "signin": "Sign-in with GitHub account"
       },
-      "notification": {
+      "notifications": {
         "register": "Success to register with your GitHub account",
         "signin": "Success to signin with your GitHub account"
       }
@@ -59,10 +59,6 @@
       "no-data-found": "No data found for {{dataName}} files",
       "title": "No data found"
     },
-    "VideoUploadInput": {
-      "supported-files": "Only support {{formats}} files",
-      "drag-and-drop-video": "Click or drag video file to this area to upload"
-    },
     "VideoCard": {
       "action": {
         "delete": "Delete this video",
@@ -78,6 +74,10 @@
           "okText": "Confirm and delete"
         }
       }
+    },
+    "VideoUploadInput": {
+      "drag-and-drop-video": "Click or drag video file to this area to upload",
+      "supported-files": "Only support {{formats}} files"
     }
   },
   "dateFormat": {
@@ -233,6 +233,9 @@
     },
     "signin": {
       "dont-have-account": "Go to register",
+      "notifications": {
+        "signin-success": "Signin success"
+      },
       "signin-with-credentials": "Sign-in with Credentials",
       "success": "Signin success",
       "title": "Sign-in"
@@ -243,6 +246,7 @@
         "confirm-delete": "Are you sure to delete this video ?"
       },
       "no-datas": "user",
+      "no-title": "unnamed",
       "no-videos": "No video found",
       "notifications": {
         "video-deleted": {
@@ -258,8 +262,7 @@
       },
       "title": "My videos",
       "title-admin": "Videos of {{userName}}",
-      "upload-video": "Upload new video",
-      "no-title": "unnamed"
+      "upload-video": "Upload new video"
     },
     "videos-edit": {
       "check-video": "Video saved ! Check at it",

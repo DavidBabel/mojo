@@ -2,6 +2,7 @@ import { SessionHandler } from "~/@types/next-auth";
 import { AuthProviders, UserRole } from "~/iso/enums";
 import { AuthError } from "~/iso/errors/customErrors";
 import { PrismaClient } from "~/server/prisma/singleton";
+import { logger } from "~/server/services/logger";
 
 export const credentialSessionHandler: SessionHandler = async ({
   session,
@@ -20,8 +21,8 @@ export const credentialSessionHandler: SessionHandler = async ({
     }
 
     return session;
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    logger.error(error?.message, error);
     throw new AuthError("authentication-failed");
   }
 };

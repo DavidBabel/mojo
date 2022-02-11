@@ -39,9 +39,9 @@
         "register": "S'enregistrer avec GitHub",
         "signin": "Connexion avec GitHub"
       },
-      "notification": {
-        "register": "Enregistremet avec GitHub réussi, vous êtes maintenant connecté",
-        "signin": "Connexion avec GitHub réussi"
+      "notifications": {
+        "register": "Enregistrement avec GitHub réussi, vous êtes maintenant connecté",
+        "signin": "Connexion avec GitHub réussie"
       }
     },
     "LanguageSwitcher": {
@@ -59,10 +59,6 @@
       "no-data-found": "Aucune donnée trouvée pour {{dataName}}",
       "title": "Aucune donnée trouvée"
     },
-    "VideoUploadInput": {
-      "supported-files": "Supporte seulement les fichiers {{formats}}",
-      "drag-and-drop-video": "Cliquer ou glisser le fichier vidéo ici"
-    },
     "VideoCard": {
       "action": {
         "delete": "Effacer cette vidéo",
@@ -78,6 +74,10 @@
           "okText": "Confirmer et effacer"
         }
       }
+    },
+    "VideoUploadInput": {
+      "drag-and-drop-video": "Cliquer ou glisser le fichier vidéo ici",
+      "supported-files": "Supporte seulement les fichiers {{formats}}"
     }
   },
   "dateFormat": {
@@ -233,6 +233,9 @@
     },
     "signin": {
       "dont-have-account": "S'enregistrer",
+      "notifications": {
+        "signin-success": "Connecté avec succès"
+      },
       "signin-with-credentials": "Se connecter avec login / mot de passe",
       "success": "Connecté avec succès",
       "title": "Se connecter"
@@ -243,6 +246,7 @@
         "confirm-delete": "Voulez vous supprimer cette vidéo ?"
       },
       "no-datas": "l'utilisateur",
+      "no-title": "sans nom",
       "no-videos": "Aucune vidéo trouvée",
       "notifications": {
         "video-deleted": {
@@ -258,8 +262,7 @@
       },
       "title": "Mes vidéos",
       "title-admin": "Vidéos of {{userName}}",
-      "upload-video": "Uploader une nouvelle vidéo",
-      "no-title": "sans nom"
+      "upload-video": "Uploader une nouvelle vidéo"
     },
     "videos-edit": {
       "check-video": "Vidéo modifiée ! Regardez là",

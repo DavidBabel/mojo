@@ -26,7 +26,7 @@ export function GitHubSignIn({ mode = "signin" }: Props) {
     await signIn(AuthProviders.Github)
       .then(() =>
         openSuccessNotification(
-          t(`components.GitHubSignIn.notification.${mode}`),
+          t(`components.GitHubSignIn.notifications.${mode}`),
         ),
       )
       .catch(error => {

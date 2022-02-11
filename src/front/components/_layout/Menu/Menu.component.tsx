@@ -90,6 +90,9 @@ export function Menu() {
                   GStorage
                 </Link>
               </Item>
+              <Item icon={<SettingOutlined />} key="datadog">
+                <Link href="https://app.datadoghq.eu/logs">Datadog</Link>
+              </Item>
             </SubMenu>
             <SubMenu
               icon={<SettingOutlined />}

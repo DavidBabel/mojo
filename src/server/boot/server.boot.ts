@@ -18,7 +18,7 @@ export async function bootstrapApp() {
     expressServer.get("*", nextRequestHandler);
     expressServer.post("*", nextRequestHandler);
   } else {
-    expressServer.get("*", (req, res) => {
+    expressServer.get("*", (_, res) => {
       return res.send(
         "<p>for dev env, use : <a href='http://localhost:4000'>http://localhost:4000</p>",
       );

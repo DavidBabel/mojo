@@ -2,10 +2,10 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Input, Switch } from "antd";
 import type { NextPage } from "next";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Form, FormContentWrapper, FormItem, SubmitButton } from "@/_form";
+import { Form, FormContent, FormItem, SubmitButton } from "@/_form";
 import { Paragraph } from "@/_layout/antd.exports";
 import { Title } from "@/_layout/Title";
 import { LoadingOrError } from "@/LoadingOrError";
@@ -40,39 +40,37 @@ const EditVideoPage: NextPage = () => {
     refetch,
   } = useOneVideoQuery(videoId);
   const video: MaybeNull<Maybe<Video>> = data?.findFirstVideo;
+  const title = video?.title ?? t("pages.videos.no-title");
 
-  const VideoPlayer = useMemoVideoPlayer(videoId, video?.title!, {
+  const VideoPlayer = useMemoVideoPlayer(videoId, title, {
     small: true,
   });
 
-  if (loadingVideoQuery || error) {
-    return <LoadingOrError error={error} />;
-  }
+  const onVideoEdit = useCallback(
+    async function handleEditVideo(values: VideoUpdateInput) {
+      setJustSaved(false);
+      await updateVideo(videoId, values)
+        .then(async () => {
+          openSuccessNotification(
+            t("pages.videos-edit.notifications.edit-success"),
+          );
+          setJustSaved(true);
+          await refetch();
+        })
+        .catch(openErrorNotification)
+        .finally();
+    },
+    [refetch, t, updateVideo, videoId],
+  );
 
-  const onFinish = async (values: VideoUpdateInput) => {
-    if (loadingDelete) return;
-    setJustSaved(false);
-    await updateVideo(videoId, values)
-      .then(async () => {
-        openSuccessNotification(
-          t("pages.videos-edit.notifications.edit-success"),
-        );
-        setJustSaved(true);
-        await refetch();
-      })
-      .catch(openErrorNotification)
-      .finally();
-  };
-
-  const handleDelete = () => {
-    if (loadingDelete) return;
+  const handleDelete = useCallback(async () => {
     setJustSaved(false);
     setLoadingDelete(true);
     ifConfirmDeleteModal(
       t("pages.videos.modals.confirm-delete"),
       () => {
         deleteVideo(videoId)
-          .then(() => openDeletedVideodNotification(String(video?.title)))
+          .then(() => openDeletedVideodNotification(title))
           .catch(openErrorNotification)
           .finally(async () => {
             setLoadingDelete(false);
@@ -81,43 +79,50 @@ const EditVideoPage: NextPage = () => {
       },
       () => setLoadingDelete(false),
     );
-  };
+  }, [deleteVideo, router, t, title, videoId]);
 
-  console.log("video :");
-  console.log(video);
+  if (loadingVideoQuery || error) {
+    return <LoadingOrError error={error} />;
+  }
+
+  const loading = loadingVideoUpdate || loadingDelete;
 
   return (
     <>
       <Title>{t("pages.videos-edit.title")}</Title>
-      <Form initialValues={video ?? {}} name="video-edit" onFinish={onFinish}>
+      <Form
+        initialValues={video ?? {}}
+        name="video-edit"
+        onFinish={onVideoEdit}
+      >
         <FormItem extra={t("pages.videos-edit.title-hint")} name="title" />
         <FormItem name="description">
           <Input.TextArea />
         </FormItem>
-        <FormContentWrapper>{VideoPlayer}</FormContentWrapper>
+        <FormContent>{VideoPlayer}</FormContent>
         <FormItem name="published" valuePropName="checked">
           <Switch />
         </FormItem>
-        <FormContentWrapper>
-          <Button onClick={handleDelete}>
+        <FormContent>
+          <Button disabled={loading} onClick={handleDelete}>
             <DeleteOutlined />
             {t("pages.videos-edit.delete")}
           </Button>
 
-          <SubmitButton loading={loadingVideoUpdate || loadingDelete}>
+          <SubmitButton loading={loading}>
             <EditOutlined />
             {t("pages.videos-edit.submit")}
           </SubmitButton>
-        </FormContentWrapper>
+        </FormContent>
         {justSaved && (
-          <FormContentWrapper>
+          <FormContent>
             <Paragraph>
               {t("pages.videos-edit.check-video")}{" "}
               <Link href={`/videos/${videoId}`}>
                 {t("pages.videos-edit.here")}
               </Link>
             </Paragraph>
-          </FormContentWrapper>
+          </FormContent>
         )}
       </Form>
     </>
