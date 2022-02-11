@@ -154,6 +154,28 @@ const ToolsPage: NextPage = () => {
             </Card>
           </LinkNewTab>
         </Col>
+        <Col {...colProps}>
+          <LinkNewTab href="https://app.datadoghq.eu/logs">
+            <Card
+              cover={
+                <div style={{ padding: 20 }}>
+                  <Image
+                    alt="Datadog"
+                    height={200}
+                    src="/tools/datadog.svg"
+                    width={400}
+                  />
+                </div>
+              }
+              hoverable
+            >
+              <Card.Meta
+                description="Consult the app Datadog logs"
+                title="Check Datadog logs"
+              />
+            </Card>
+          </LinkNewTab>
+        </Col>
       </Row>
     </>
   );

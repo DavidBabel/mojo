@@ -91,9 +91,7 @@ export function Menu() {
                 </Link>
               </Item>
               <Item icon={<SettingOutlined />} key="datadog">
-                <Link href="https://app.datadoghq.eu/monitors/manage">
-                  Datadog
-                </Link>
+                <Link href="https://app.datadoghq.eu/logs">Datadog</Link>
               </Item>
             </SubMenu>
             <SubMenu

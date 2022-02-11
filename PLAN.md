@@ -59,7 +59,7 @@ Status:
 ## Step 6 : Non-regression 🚧
 
 - Add test stack (pupeteer + test one of each logics) 🚧
-- Add monitoring stack 🚧
+- Add basic monitoring stack (datadog) ✅
 
 ## Step 7 : Compatibility check
 
@@ -75,7 +75,6 @@ Status:
 - cleanup
 - docker setup
 - manage DB migrations
-
 
 ## Step 10
 
