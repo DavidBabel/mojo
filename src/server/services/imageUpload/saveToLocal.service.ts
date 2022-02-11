@@ -2,6 +2,8 @@ import { createWriteStream } from "fs";
 import { FileUpload } from "graphql-upload";
 import path from "path";
 
+import { logger } from "~/server/services/logger";
+
 export async function saveToLocal(video: FileUpload) {
   const { createReadStream, filename } = video;
 
@@ -11,7 +13,7 @@ export async function saveToLocal(video: FileUpload) {
     createReadStream()
       .on("close", () => resolve(`/localBucket/${filename}`))
       .on("error", error => {
-        console.error(error);
+        logger.error(error?.message, error);
         reject(error);
       })
       .pipe(createWriteStream(filePath)),

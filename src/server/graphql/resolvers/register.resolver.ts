@@ -13,6 +13,7 @@ import { OrmError, RegisterError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
 import { isEmailGuard, passwordFormatGuard } from "~/server/graphql/guards";
 import { hashPassword } from "~/server/services/hash-password";
+import { logger } from "~/server/services/logger";
 
 @Resolver()
 export class RegisterResolver {
@@ -46,8 +47,8 @@ export class RegisterResolver {
           role: UserRole.USER,
         },
       });
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      logger.error(error?.message, error);
       throw new OrmError("unable-to-register-user");
     }
 

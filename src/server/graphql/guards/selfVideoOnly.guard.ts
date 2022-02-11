@@ -8,6 +8,7 @@ import {
   extractRequestedId,
   isCurrentRequestedVideoOwner,
 } from "~/server/graphql/guards/helpers/guard.helpers";
+import { logger } from "~/server/services/logger";
 
 export const selfVideoOnlyGuard: MiddlewareFn<Context> = async (
   { context, args },
@@ -24,7 +25,7 @@ export const selfVideoOnlyGuard: MiddlewareFn<Context> = async (
   try {
     video = await prisma.video.findUnique({ where: { id: videoId } });
   } catch (error) {
-    console.error("Prisma error", error);
+    logger.error("Prisma error", error);
     throw error;
   }
 

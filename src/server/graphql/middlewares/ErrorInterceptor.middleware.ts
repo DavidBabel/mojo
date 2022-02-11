@@ -2,6 +2,7 @@ import { MiddlewareFn } from "type-graphql";
 
 import { VideoUploadError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
+import { logger } from "~/server/services/logger";
 
 export const ErrorInterceptorMiddleware: MiddlewareFn<Context> = async (
   action,
@@ -10,9 +11,8 @@ export const ErrorInterceptorMiddleware: MiddlewareFn<Context> = async (
   try {
     return await next();
   } catch (err: any) {
-    // handle logger here
     if (err?.message) {
-      console.log(err.message);
+      logger.error(err.message, err);
     }
 
     if (err?.message?.startsWith("File truncated as it exceeds")) {

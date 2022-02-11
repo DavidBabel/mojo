@@ -77,7 +77,7 @@ type Mutation {
   deleteManyVideo(where: VideoWhereInput): AffectedRowsOutput!
   deleteUser(where: UserWhereUniqueInput!): User
   deleteVideo(where: VideoWhereUniqueInput!): Video
-  registerNewUser(email: String!, name: String!, password: String!): String!
+  registerNewUser(email: String!, name: String, password: String!): String!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): AffectedRowsOutput!
   updateManyVideo(data: VideoUpdateManyMutationInput!, where: VideoWhereInput): AffectedRowsOutput!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User

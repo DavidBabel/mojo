@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
   EmailInput,
   Form,
-  FormContentWrapper,
+  FormContent,
   PasswordInput,
   SubmitButton,
   UserInput,
@@ -32,32 +33,35 @@ const RegisterPage: NextPage = () => {
   const [registerNewUser, { loadingRegisterNewUser }] =
     useRegisterNewUserMutation();
 
-  const onFinish = (values: FormValues) => {
-    registerNewUser(values)
-      .then(() => {
-        openSuccessNotification(t("pages.register.success"));
-        router.push("/auth/success-register?email=" + values.email);
-      })
-      .catch(openErrorNotification);
-  };
+  const onRegister = useCallback(
+    function handleRegister(values: FormValues) {
+      registerNewUser(values)
+        .then(() => {
+          openSuccessNotification(t("pages.register.success"));
+          router.push("/auth/success-register?email=" + values.email);
+        })
+        .catch(openErrorNotification);
+    },
+    [registerNewUser, router, t],
+  );
 
   return (
     <>
       <Title>{t("pages.register.title")}</Title>
       <GitHubSignIn mode="register" />
 
-      <Form name="register" onFinish={onFinish}>
+      <Form name="register" onFinish={onRegister}>
         <UserInput />
         <EmailInput />
         <PasswordInput />
-        <FormContentWrapper>
+        <FormContent>
           <ButtonLink disabled={loadingRegisterNewUser} href="/auth/signin">
             {t("pages.register.already-have-account")}
           </ButtonLink>
           <SubmitButton loading={loadingRegisterNewUser}>
             {t("pages.register.register-with-credentials")}
           </SubmitButton>
-        </FormContentWrapper>
+        </FormContent>
       </Form>
     </>
   );

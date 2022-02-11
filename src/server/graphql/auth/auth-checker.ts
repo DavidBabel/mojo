@@ -6,6 +6,7 @@ import { CONFIG } from "~/iso/config";
 import { UserRole } from "~/iso/enums";
 import { AuthError } from "~/iso/errors/customErrors";
 import { Context } from "~/server/graphql/graphql-context";
+import { logger } from "~/server/services/logger";
 
 /**
  * Used with buildin typegraphql decorator @Authorized()
@@ -20,10 +21,10 @@ export const customAuthChecker: AuthChecker<Context, UserRole> = async (
   const { user } = context;
 
   if (!user?.role) {
-    console.warn("Unauthorized request to graphql");
+    logger.warn("Unauthorized request to graphql");
     throw new AuthError("unauthorized-action");
   }
 
-  console.log("authorizing ", user.role, "=>", roles);
+  logger.info(`authorizing ${user.role} => ${roles}`);
   return roles.includes(user.role);
 };

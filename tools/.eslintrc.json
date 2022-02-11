@@ -89,6 +89,7 @@
               "~/front/lib/notifications/**/*.notifications*",
               "~/front/lib/exports/**/*.export*",
               "~/iso/enums/**/*.enum*",
+              "~/server/services/**/*.transport*",
               "~/server/services/**/*.service*",
               "~/server/graphql/guards/**/*.guard*",
               "~/server/graphql/middlewares/**/*.middleware*",
