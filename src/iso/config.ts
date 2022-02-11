@@ -2,16 +2,20 @@
 import { ENV } from "~/iso/env";
 
 export const CONFIG = {
+  DD_API_KEY: toString(ENV("DD_API_KEY")),
+  DD_SERVICE: toString(ENV("DD_SERVICE")),
   DEMO_VIDEO_ID: toString(ENV("DEMO_VIDEO_ID")),
+  FORCE_DATADOG_IN_DEV: toBool(ENV("FORCE_DATADOG_IN_DEV")),
   GITHUB_ID: toString(ENV("GITHUB_ID")),
   GITHUB_SECRET: toString(ENV("GITHUB_SECRET")),
   GQL_DISABLE_AUTH_DECORATORS: toBool(ENV("GQL_DISABLE_AUTH_DECORATORS")),
   GRAPHQL_ENDPOINT: toString(ENV("GRAPHQL_ENDPOINT")),
   HOSTNAME: stripProtocol(toString(ENV("HOSTNAME"))),
+  LOG_LEVEL: toString<LogLevel>(ENV("LOG_LEVEL")),
   MAX_FILE_SIZE_MB: toNumber(ENV("MAX_FILE_SIZE_MB")),
   NEXTAUTH_SECRET: toString(ENV("NEXTAUTH_SECRET")),
   NEXTAUTH_URL: toString(ENV("NEXTAUTH_URL")),
-  NODE_ENV: toString<typeof process.env.NODE_ENV>(ENV("NODE_ENV")),
+  NODE_ENV: toString<NodeEnvType>(ENV("NODE_ENV")),
   NOTIFICATION_POSITION: "bottomRight",
   PASSWORD_SALT: "this is a salted mojo",
   PORT: toNumber(ENV("PORT")),

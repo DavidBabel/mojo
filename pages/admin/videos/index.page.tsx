@@ -1,12 +1,3 @@
-import { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { Redirect } from "@/PageRedirect";
 
-const Redirect: NextPage = () => {
-  const router = useRouter();
-  useEffect(() => {
-    router.push("/admin/videos");
-  }, [router]);
-  return <></>;
-};
-export default Redirect;
+export default Redirect({ to: "/admin/videos" });

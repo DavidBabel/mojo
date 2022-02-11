@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 
-import { Form, FormContentWrapper, FormItem, SubmitButton } from "@/_form";
+import { Form, FormContent, FormItem, SubmitButton } from "@/_form";
 import { VideoUploadInput } from "@/_form/_inputs/VideoUploadInput";
 import { Title } from "@/_layout/Title";
 import { ButtonLink } from "@/ButtonLink";
@@ -47,11 +47,11 @@ const UploadVideoPage: NextPage = () => {
         name="video-upload"
         onFinish={onFinish}
       >
-        <FormContentWrapper>
+        <FormContent>
           <ButtonLink download={"cat-example.mp4"} href={"/cat-example.mp4"}>
             {t("pages.videos.download-example")}
           </ButtonLink>
-        </FormContentWrapper>
+        </FormContent>
         <VideoUploadInput />
         <FormItem name="title" />
         <FormItem name="description">
@@ -65,12 +65,12 @@ const UploadVideoPage: NextPage = () => {
             <Switch />
           </FormItem>
         )}
-        <FormContentWrapper>
+        <FormContent>
           <SubmitButton loading={loadingVideoCreate}>
             <SendOutlined />
             {t("pages.videos-upload.submit")}
           </SubmitButton>
-        </FormContentWrapper>
+        </FormContent>
       </Form>
     </>
   );

@@ -2,6 +2,7 @@ import { SessionHandler } from "~/@types/next-auth";
 import { AuthProviders, UserRole } from "~/iso/enums";
 import { AuthError } from "~/iso/errors/customErrors";
 import { PrismaClient } from "~/server/prisma/singleton";
+import { logger } from "~/server/services/logger";
 
 export const githubSessionHandler: SessionHandler = async ({
   session,
@@ -13,7 +14,7 @@ export const githubSessionHandler: SessionHandler = async ({
     });
 
     if (!user) {
-      console.log("user not found, creating");
+      logger.info("user not found, creating");
       user = await PrismaClient.user.create({
         data: {
           image: token.picture,
@@ -28,8 +29,8 @@ export const githubSessionHandler: SessionHandler = async ({
     session.provider = AuthProviders.Github;
 
     return session;
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    logger.error(error?.message, error);
     throw new AuthError("authentication-failed");
   }
 };

@@ -7,6 +7,7 @@ import { getCors } from "~/iso/cors";
 import { Mb } from "~/iso/numbers/size";
 import { schema } from "~/server/graphql/buildSchema";
 import { context } from "~/server/graphql/graphql-context";
+import { logger } from "~/server/services/logger";
 
 const apolloServer = new ApolloServer({
   context,
@@ -14,7 +15,7 @@ const apolloServer = new ApolloServer({
     console.log(JSON.stringify(error.message, null, 2));
     return error;
   },
-  logger: console,
+  logger,
   schema,
 });
 

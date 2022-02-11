@@ -40,7 +40,7 @@ export function VideoCardActionWrapper({
 
   const title = maybeTitle ?? t("pages.videos.no-title");
 
-  const handleTogglePublic = useCallback(() => {
+  const handleToggleVideoPublic = useCallback(() => {
     if (loading) return;
     setLoading(true);
     setVideoPublished(id, !published)
@@ -55,7 +55,7 @@ export function VideoCardActionWrapper({
       });
   }, [loading, setVideoPublished, id, published, onAction, title]);
 
-  const handleDelete = useCallback(() => {
+  const handleVideoDelete = useCallback(() => {
     if (loading) return;
     setLoading(true);
     ifConfirmDeleteModal(
@@ -74,9 +74,9 @@ export function VideoCardActionWrapper({
   }, [deleteVideo, id, loading, onAction, title, t]);
 
   const actions = [
-    <VideoCardAction action={handleDelete} key="delete" name="delete" />,
+    <VideoCardAction action={handleVideoDelete} key="delete" name="delete" />,
     <VideoCardAction
-      action={handleTogglePublic}
+      action={handleToggleVideoPublic}
       key="publish"
       name={published ? "publish" : "lock"}
     />,

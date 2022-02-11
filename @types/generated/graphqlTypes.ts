@@ -133,7 +133,7 @@ export type MutationDeleteVideoArgs = {
 
 export type MutationRegisterNewUserArgs = {
   email: Scalars['String'];
-  name: Scalars['String'];
+  name?: InputMaybe<Scalars['String']>;
   password: Scalars['String'];
 };
 

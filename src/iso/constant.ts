@@ -6,7 +6,7 @@ export const passwordMinLength = 8;
 export const passwordMaxLength = 128;
 export const nameMinLength = 4;
 export const nameMaxLength = 32;
-export const nameRequired = true;
+export const nameRequired = false;
 
 // video upload
 export const videoTitleMinLength = 0;
