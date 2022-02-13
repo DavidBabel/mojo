@@ -1,3 +1,4 @@
+// note: you cannot import anything here
 /* eslint-disable node/no-process-env -- only exception in the project */
 const isoEnv = {
   DEMO_VIDEO_ID: process.env.NEXT_PUBLIC_DEMO_VIDEO_ID ?? "demo-video",

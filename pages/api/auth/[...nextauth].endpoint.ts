@@ -3,8 +3,8 @@
 import NextAuth from "next-auth";
 
 import { AuthProviders } from "~/iso/enums";
-import { AuthError } from "~/iso/errors/customErrors";
 import { min } from "~/iso/numbers/time";
+import { AuthError } from "~/server/errors";
 import {
   credentialProvider,
   credentialSessionHandler,

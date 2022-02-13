@@ -3,7 +3,7 @@ import { Input } from "antd";
 
 import { type FormItemProps, FormItem } from "@/_form/FormItem";
 
-interface EmailInputProps extends FormItemProps {
+export interface EmailInputProps extends FormItemProps {
   disabled?: boolean;
 }
 
