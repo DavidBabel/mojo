@@ -1,7 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { AuthProviders } from "~/iso/enums";
-import { AuthError } from "~/iso/errors/customErrors";
+import { AuthError } from "~/server/errors";
 import { PrismaClient } from "~/server/prisma/singleton";
 import { checkPassword } from "~/server/services/hash-password";
 

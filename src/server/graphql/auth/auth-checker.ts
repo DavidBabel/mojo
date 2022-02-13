@@ -4,7 +4,7 @@ import { AuthChecker } from "type-graphql";
 
 import { CONFIG } from "~/iso/config";
 import { UserRole } from "~/iso/enums";
-import { AuthError } from "~/iso/errors/customErrors";
+import { AuthError } from "~/server/errors";
 import { Context } from "~/server/graphql/graphql-context";
 import { logger } from "~/server/services/logger";
 

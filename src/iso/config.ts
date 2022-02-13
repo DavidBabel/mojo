@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-restricted-imports -- only exception in the project
+// note: you cannot import anything here
+// eslint-disable-next-line -- only exception in the project
 import { ENV } from "~/iso/env";
 
 export const CONFIG = {

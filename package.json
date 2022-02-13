@@ -16,14 +16,16 @@
     "start:local": "NEXTAUTH_URL=http://localhost:3000 NODE_ENV=production node ./dist/src/server/boot/index.js",
     "build:next": "next build",
     "build:server": "rimraf ./dist || true && tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./ -o ./dist",
+    "build:storybook": "build-storybook -s public",
     "lint": "eslint . --report-unused-disable-directives --rule '@typescript-eslint/no-unused-vars:2' --rule 'no-console:1'",
     "test": "jest --config=./tools/jest.config.js",
     "script": "ts-node -r tsconfig-paths/register",
     "types": "graphql-codegen --config ./tools/graphql-gen-types-config.yml",
     "studio": "prisma studio --browser=none",
+    "gql": "open https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:3000/graphql",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "i18n": "bash ./tools/scripts/i18n-check-keys.sh",
     "cloc": "cloc . --exclude-dir=node_modules,.next,dist,david",
-    "gql": "open https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:3000/graphql",
     "postinstall": "prisma generate && bash ./tools/scripts/utils/mute-react-dom.sh",
     "docker:build": "docker build . -t mojo-app:latest -f ./Dockerfile",
     "docker:start": "docker stop mojo || true && docker rm mojo || true && docker run --name mojo -p 3000:3000 mojo-app"
@@ -77,12 +79,18 @@
     "**/graphql": "^15.3.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^6.0.0-alpha.5",
+    "@faker-js/faker": "^6.0.0-alpha.6",
     "@graphql-codegen/cli": "^2.6.1",
     "@graphql-codegen/introspection": "^2.1.1",
     "@graphql-codegen/typescript": "^2.4.3",
     "@graphql-codegen/typescript-operations": "^2.3.0",
     "@graphql-codegen/typescript-react-apollo": "^3.2.5",
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-links": "^6.4.18",
+    "@storybook/builder-webpack5": "^6.4.18",
+    "@storybook/manager-webpack5": "^6.4.18",
+    "@storybook/react": "^6.4.18",
     "@types/apollo-upload-client": "^17.0.0",
     "@types/compression": "^1.7.2",
     "@types/cookie-parser": "^1.4.2",
@@ -110,8 +118,10 @@
     "ts-jest": "^27.1.3",
     "ts-node": "^10.5.0",
     "tsconfig-paths": "^3.12.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
     "tscpaths": "^0.0.9",
-    "typescript": "4.5.5"
+    "typescript": "4.5.5",
+    "webpack": "^5.68.0"
   },
   "eslintConfig": {
     "extends": [

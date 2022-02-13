@@ -12,8 +12,8 @@ import {
 import { videoTitleRequired } from "~/iso/constant";
 import { UserRole } from "~/iso/enums";
 import { isProd } from "~/iso/env";
-import { OrmError, VideoUploadError } from "~/iso/errors/customErrors";
 import { getExtension } from "~/iso/string";
+import { OrmError, VideoUploadError } from "~/server/errors";
 import { Context, EnsuredUser } from "~/server/graphql/graphql-context";
 import { LoggedIn, videoMimeTypeGuard } from "~/server/graphql/guards";
 import { saveToBucket, saveToLocal } from "~/server/services/imageUpload";

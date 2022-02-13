@@ -9,7 +9,7 @@ import {
 
 import { nameRequired } from "~/iso/constant";
 import { UserRole } from "~/iso/enums";
-import { OrmError, RegisterError } from "~/iso/errors/customErrors";
+import { OrmError, RegisterError } from "~/server/errors";
 import { Context } from "~/server/graphql/graphql-context";
 import { isEmailGuard, passwordFormatGuard } from "~/server/graphql/guards";
 import { hashPassword } from "~/server/services/hash-password";

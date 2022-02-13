@@ -34,4 +34,5 @@ export async function startApolloServer(expressServer: Express) {
     path: CONFIG.GRAPHQL_ENDPOINT,
     ...getCors("apolloServerCors"),
   });
+  logger.info("Apollo server ready");
 }
