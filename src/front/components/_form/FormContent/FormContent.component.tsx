@@ -1,4 +1,4 @@
-import { type FormItemProps, Form } from "antd";
+import { Form, FormItemProps } from "antd";
 
 export function FormContent({ children }: FormItemProps) {
   const xs = { offset: 0, span: 24 };

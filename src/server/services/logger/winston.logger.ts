@@ -33,4 +33,7 @@ const consumersNames = enabledLogsConsumers
 logger.info(
   `Logger initialized on ${enabledLogsConsumers.length} transports "${consumersNames}"`,
 );
+
+logger.warning = logger.warn;
+
 export { logger };

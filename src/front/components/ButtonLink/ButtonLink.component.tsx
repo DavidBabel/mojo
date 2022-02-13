@@ -1,4 +1,4 @@
-import { type ButtonProps, Button } from "antd";
+import { Button, ButtonProps } from "antd";
 import Link from "next/link";
 
 export interface ButtonLinkProps extends ButtonProps {

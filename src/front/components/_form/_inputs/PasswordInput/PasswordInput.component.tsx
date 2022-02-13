@@ -1,7 +1,7 @@
 import { LockOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 
-import { type FormItemProps, FormItem } from "@/_form/FormItem";
+import { FormItem, FormItemProps } from "@/_form/FormItem";
 
 interface PasswordInputProps extends FormItemProps {
   disabled?: boolean;

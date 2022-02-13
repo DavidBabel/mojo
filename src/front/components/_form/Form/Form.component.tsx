@@ -1,4 +1,4 @@
-import { type FormProps as AntFormProps, Form as AntForm } from "antd";
+import { Form as AntForm, FormProps as AntFormProps } from "antd";
 
 import { FormName } from "~/@types/forms";
 import { FormContextProvider } from "~/front/contexts";

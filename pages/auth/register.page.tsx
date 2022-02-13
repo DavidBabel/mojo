@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -29,6 +29,7 @@ interface FormValues {
 const RegisterPage: NextPage = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const [alreadyTakenEmail, setAlreadyTakenEmail] = useState(false);
 
   const [registerNewUser, { loadingRegisterNewUser }] =
     useRegisterNewUserMutation();
@@ -40,7 +41,12 @@ const RegisterPage: NextPage = () => {
           openSuccessNotification(t("pages.register.success"));
           router.push("/auth/success-register?email=" + values.email);
         })
-        .catch(openErrorNotification);
+        .catch(error => {
+          openErrorNotification(error);
+          if (error.message === "email-already-taken") {
+            setAlreadyTakenEmail(true);
+          }
+        });
     },
     [registerNewUser, router, t],
   );
@@ -50,9 +56,13 @@ const RegisterPage: NextPage = () => {
       <Title>{t("pages.register.title")}</Title>
       <GitHubSignIn mode="register" />
 
-      <Form name="register" onFinish={onRegister}>
+      <Form
+        name="register"
+        onChange={() => setAlreadyTakenEmail(false)}
+        onFinish={onRegister}
+      >
         <UserInput />
-        <EmailInput />
+        <EmailInput alreadyTaken={alreadyTakenEmail} />
         <PasswordInput />
         <FormContent>
           <ButtonLink disabled={loadingRegisterNewUser} href="/auth/signin">
