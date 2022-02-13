@@ -1,6 +1,6 @@
 import { Layout } from "antd";
 import Head from "next/head";
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { type ButtonLinkProps, ButtonLink } from "@/ButtonLink";
+import { ButtonLink, ButtonLinkProps } from "@/ButtonLink";
 
 type Props = Omit<ButtonLinkProps, "href"> & {
   href?: string;

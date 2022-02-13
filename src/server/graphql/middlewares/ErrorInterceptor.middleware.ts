@@ -14,6 +14,6 @@ export const ErrorInterceptorMiddleware: MiddlewareFn<Context> = async (
       throw new VideoUploadError("file-too-large");
     }
 
-    throw new UnknownError(err);
+    throw err;
   }
 };

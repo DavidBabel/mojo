@@ -12,7 +12,7 @@ import { logger } from "~/server/services/logger";
 const apolloServer = new ApolloServer({
   context,
   formatError: error => {
-    console.log(JSON.stringify(error.message, null, 2));
+    // console.log(JSON.stringify(error.message, null, 2));
     return error;
   },
   logger,

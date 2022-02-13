@@ -1,4 +1,4 @@
-import { type FormItemProps as AntFormItemProps, Form, Input } from "antd";
+import { Form, FormItemProps as AntFormItemProps, Input } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { FormFieldName } from "~/@types/forms";

@@ -44,6 +44,9 @@
         "signin": "Success to signin with your GitHub account"
       }
     },
+    "EmailInput": {
+      "already-taken": "Email already taken"
+    },
     "LanguageSwitcher": {
       "switch-to": "Mettre en Français"
     },
