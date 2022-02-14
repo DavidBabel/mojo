@@ -16,7 +16,7 @@ describe("Mojo auth workflow", () => {
   });
 
   it("should execute the auth workflow correctly", async () => {
-    const timeout = 10000;
+    const timeout = 20000;
 
     {
       await page.setViewport({ height: 819, width: 1290 });
