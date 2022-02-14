@@ -1,6 +1,6 @@
 import { MiddlewareFn } from "type-graphql";
 
-import { UnknownError, VideoUploadError } from "~/server/errors";
+import { VideoUploadError } from "~/server/errors";
 import { Context } from "~/server/graphql/graphql-context";
 
 export const ErrorInterceptorMiddleware: MiddlewareFn<Context> = async (
