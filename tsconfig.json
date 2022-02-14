@@ -22,8 +22,11 @@
       "@/*": ["src/front/components/*"],
       "~/@types/*": ["@types/*"],
       "~/pages/*": ["pages/*"],
+      "~/tools/*": ["tools/*"],
+      "~/e2e/*": ["e2e/*"],
       "~/*": ["src/*"]
-    }
+    },
+    "types": ["puppeteer", "jest-environment-puppeteer", "expect-puppeteer"]
   },
   "include": ["@types", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],

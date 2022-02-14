@@ -1,7 +1,7 @@
 import "reflect-metadata";
 
 import { CONFIG } from "~/iso/config";
-import { isProd } from "~/iso/env";
+import { isDev } from "~/iso/env";
 import { startApolloServer } from "~/server/boot/apolloServer.boot";
 import { expressServer } from "~/server/boot/express.boot";
 import { startNextJs } from "~/server/boot/nextjs.boot";
@@ -13,7 +13,7 @@ export async function bootstrapApp() {
   await startApolloServer(expressServer);
 
   // only launch nextjs on same port in production
-  if (isProd()) {
+  if (!isDev()) {
     const nextRequestHandler = await startNextJs();
     expressServer.get("*", nextRequestHandler);
     expressServer.post("*", nextRequestHandler);
@@ -26,7 +26,7 @@ export async function bootstrapApp() {
   }
 
   expressServer.listen(port, () => {
-    const url = `http://localhost:${isProd() ? port : 4000}`;
+    const url = `http://localhost:${isDev() ? 4000 : port}`;
     const graphql = `http://localhost:${port}${CONFIG.GRAPHQL_ENDPOINT}`;
     const prismaStudio = `http://localhost:5555`;
     console.log(
@@ -35,4 +35,6 @@ export async function bootstrapApp() {
       `🔺 Prisma studio should be available at ${prismaStudio}`,
     );
   });
+
+  return expressServer;
 }

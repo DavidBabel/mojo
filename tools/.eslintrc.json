@@ -34,10 +34,6 @@
             "from": "./**/*"
           },
           {
-            "target": "./src/server/boot/index.ts",
-            "from": "./**/*"
-          },
-          {
             "target": "./src/server",
             "from": "./src/front"
           },

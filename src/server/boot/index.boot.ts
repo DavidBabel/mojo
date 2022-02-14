@@ -12,14 +12,11 @@ export async function initEnvsAndStartServer() {
   const { logger } = await import("~/server/services/logger");
   const { bootstrapApp } = await import("~/server/boot/server.boot");
 
-  await bootstrapApp()
-    .then(() => {
-      logger.info("Server started");
-    })
-    .catch((error: unknown) => {
-      logger.error("Server failed to start", error);
-    });
+  try {
+    const server = await bootstrapApp();
+    logger.info("Server started");
+    return server;
+  } catch (error) {
+    logger.error("Server failed to start", error);
+  }
 }
-
-// entrypoint
-initEnvsAndStartServer();

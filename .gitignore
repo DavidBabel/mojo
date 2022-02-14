@@ -41,7 +41,7 @@ log
 *.tsbuildinfo
 
 # vscode
-.vscode
+.vscode/settings.json
 
 # sqlite
 sqlite.db
