@@ -4,14 +4,14 @@ WORKDIR /app
 RUN export NODE_ENV=production
 
 COPY package.json yarn.lock ./
-RUN SKIP_POSTINSTALL=1 yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile || true
 
 COPY . .
 RUN yarn setup
 RUN yarn build
 
 RUN cp -R node_modules prisma_node_modules
-RUN SKIP_POSTINSTALL=1 npm prune --production
+RUN npm prune --production || true
 
 RUN rm -rf node_modules/@generated
 RUN cp -R prisma_node_modules/@generated node_modules

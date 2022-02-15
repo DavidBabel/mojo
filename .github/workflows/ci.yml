@@ -21,12 +21,12 @@ jobs:
         run: yarn setup
       - name: Checking lint
         run: yarn lint
-      - name: Build nextjss
+      - name: Running tests
+        run: yarn test
+      - name: Build nextjs
         run: yarn build:next
       - name: Build server
         run: yarn build:server
-      - name: Running tests
-        run: yarn test
       - name: Check outdated packages
         run: yarn outdated
         continue-on-error: true

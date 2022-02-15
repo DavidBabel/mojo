@@ -10,8 +10,8 @@ And here is an [architecture proposal](./tools/ressources/images/archi-proposal.
 
 ```bash
 # if needed install last LTS
-nvm install 16
-nvm use 16
+nvm install 16.13
+nvm use 16.13
 npm install -g yarn
 
 # setup local
