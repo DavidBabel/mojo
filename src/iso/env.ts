@@ -13,7 +13,7 @@ const defaultEnv = {
   GITHUB_ID: process.env.GITHUB_ID ?? "",
   GITHUB_SECRET: process.env.GITHUB_SECRET ?? "",
   GQL_DISABLE_AUTH_DECORATORS: process.env.GQL_DISABLE_AUTH_DECORATORS ?? false,
-  HOSTNAME: process.env.NEXTAUTH_URL ?? "",
+  HOSTNAME: extractHostname(process.env.NEXTAUTH_URL) ?? "",
   LOG_LEVEL: process.env.LOG_LEVEL ?? "info",
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET ?? "",
   NEXTAUTH_URL: process.env.NEXTAUTH_URL ?? "",
@@ -30,6 +30,14 @@ export function isProd() {
   return ENV("NODE_ENV") === "production";
 }
 
+export function isTests() {
+  return ENV("NODE_ENV") === "test";
+}
+
 export function isDev() {
-  return !isProd();
+  return !isProd() && !isTests();
+}
+
+function extractHostname(env: any = "") {
+  return env.replace(/^https?:\/\//, "").split(":")[0];
 }

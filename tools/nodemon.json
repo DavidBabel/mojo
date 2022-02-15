@@ -7,5 +7,5 @@
     "tools/nodemon.json"
   ],
   "ext": ".ts",
-  "exec": "yarn types & yarn script ./src/server/boot/index.ts"
+  "exec": "yarn types & yarn script ./src/server/boot/start.ts"
 }
