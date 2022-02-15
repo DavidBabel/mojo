@@ -1,7 +1,7 @@
 import { Video } from "@prisma/client";
 import { createMethodDecorator, MiddlewareFn } from "type-graphql";
 
-import { NotFoundError, RightsError } from "~/iso/errors/customErrors";
+import { NotFoundError, RightsError } from "~/server/errors";
 import { Context } from "~/server/graphql/graphql-context";
 import {
   adminByPass,

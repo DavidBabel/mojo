@@ -3,7 +3,7 @@ import { Session } from "next-auth";
 import { ArgsDictionary } from "type-graphql";
 
 import { UserRole } from "~/iso/enums";
-import { GraphQLCustomError } from "~/iso/errors/customErrors";
+import { GraphQLCustomError } from "~/server/errors";
 
 type ExpectedUserObject = Maybe<Session["user"]>;
 

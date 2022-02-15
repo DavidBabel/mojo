@@ -7,9 +7,11 @@ const jestConfig = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/",
   }),
-  preset: "ts-jest",
+  preset: "./tools/jest.preset.js",
   rootDir: "..",
   testEnvironment: "node",
+  testTimeout: 10000,
+  verbose: true,
 };
 
 module.exports = jestConfig;

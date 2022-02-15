@@ -1,6 +1,6 @@
 import { createMethodDecorator, MiddlewareFn } from "type-graphql";
 
-import { RightsError } from "~/iso/errors/customErrors";
+import { RightsError } from "~/server/errors";
 import { Context } from "~/server/graphql/graphql-context";
 import {
   adminByPass,

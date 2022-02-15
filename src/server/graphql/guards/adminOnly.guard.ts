@@ -1,7 +1,7 @@
 import { MiddlewareFn } from "type-graphql";
 
 import { UserRole } from "~/iso/enums";
-import { RightsError } from "~/iso/errors/customErrors";
+import { RightsError } from "~/server/errors";
 import { Context } from "~/server/graphql/graphql-context";
 
 export const adminOnlyGuard: MiddlewareFn<Context> = async ({ root }, next) => {

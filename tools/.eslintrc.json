@@ -26,6 +26,14 @@
       {
         "zones": [
           {
+            "target": "./src/iso/config.ts",
+            "from": "./**/*"
+          },
+          {
+            "target": "./src/iso/env.ts",
+            "from": "./**/*"
+          },
+          {
             "target": "./src/server",
             "from": "./src/front"
           },
@@ -48,7 +56,7 @@
           {
             "target": "./pages",
             "from": "./src/server",
-            "except": ["./next-auth"]
+            "except": ["./next-auth", "./errors"]
           }
         ]
       }

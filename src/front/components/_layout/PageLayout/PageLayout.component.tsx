@@ -1,6 +1,6 @@
 import { Layout } from "antd";
 import Head from "next/head";
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AutoBreadcrumb } from "@/_layout/Breadcrumb";
@@ -57,7 +57,7 @@ export function PageLayout({ children }: Props) {
         >
           <Header />
           <Content
-            style={{ margin: "0 16px", maxHeight: "85vh", overflow: "auto" }}
+            style={{ margin: "0 16px", maxHeight: "88vh", overflow: "auto" }}
           >
             <AutoBreadcrumb />
             <div

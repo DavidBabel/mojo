@@ -5,10 +5,11 @@ import express from "express";
 
 import { CONFIG } from "~/iso/config";
 import { getCors } from "~/iso/cors";
-import { isDev } from "~/iso/env";
+import { isProd } from "~/iso/env";
+import { logger } from "~/server/services/logger";
 
 const expressServer = express();
-if (isDev()) {
+if (!isProd()) {
   expressServer.use(cors(getCors("expressServerCors")));
 }
 expressServer.use(compression());
@@ -18,4 +19,8 @@ expressServer.use(
 );
 expressServer.use(express.urlencoded({ extended: true }));
 
-export { expressServer };
+logger.info("Express server ready");
+
+const staticDir = express.static;
+
+export { expressServer, staticDir };

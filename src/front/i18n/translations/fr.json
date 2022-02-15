@@ -47,6 +47,9 @@
     "LanguageSwitcher": {
       "switch-to": "Turn into English"
     },
+    "EmailInput": {
+      "already-taken": "Email déjà pris"
+    },
     "LoadingOrError": {
       "hide-error": "Masquer le détail des erreurs",
       "show-error": "Voir le détail des erreurs",

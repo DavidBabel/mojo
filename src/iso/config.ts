@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-restricted-imports -- only exception in the project
+// note: you cannot import anything here
+// eslint-disable-next-line -- only exception in the project
 import { ENV } from "~/iso/env";
 
 export const CONFIG = {
@@ -10,7 +11,7 @@ export const CONFIG = {
   GITHUB_SECRET: toString(ENV("GITHUB_SECRET")),
   GQL_DISABLE_AUTH_DECORATORS: toBool(ENV("GQL_DISABLE_AUTH_DECORATORS")),
   GRAPHQL_ENDPOINT: toString(ENV("GRAPHQL_ENDPOINT")),
-  HOSTNAME: stripProtocol(toString(ENV("HOSTNAME"))),
+  HOSTNAME: toString(ENV("HOSTNAME")),
   LOG_LEVEL: toString<LogLevel>(ENV("LOG_LEVEL")),
   MAX_FILE_SIZE_MB: toNumber(ENV("MAX_FILE_SIZE_MB")),
   NEXTAUTH_SECRET: toString(ENV("NEXTAUTH_SECRET")),
@@ -31,8 +32,4 @@ function toNumber(config: any) {
 
 function toString<RealType = string>(config: any) {
   return (String(config) ?? "") as unknown as RealType;
-}
-
-function stripProtocol(config: string) {
-  return config.replace(/^https?:\/\//, "");
 }
