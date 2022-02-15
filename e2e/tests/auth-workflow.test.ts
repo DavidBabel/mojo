@@ -5,7 +5,7 @@
 import { cleanUpDBUser } from "../utils/db-utils";
 import { waitForSelectors } from "../utils/generated/puppeteer-chrome-utils";
 
-jest.setTimeout(40000);
+jest.setTimeout(60000);
 
 describe("Mojo auth workflow", () => {
   beforeAll(async () => {
@@ -16,7 +16,7 @@ describe("Mojo auth workflow", () => {
   });
 
   it("should execute the auth workflow correctly", async () => {
-    const timeout = 20000;
+    const timeout = 25000;
 
     {
       await page.setViewport({ height: 819, width: 1290 });
