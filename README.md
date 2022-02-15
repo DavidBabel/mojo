@@ -19,6 +19,9 @@ yarn setup
 
 # start dev env
 yarn dev
+
+# run test
+yarn test
 ```
 
 We use 2 endpoints for livereload front/back performances:
@@ -35,6 +38,7 @@ I will not add git hooks yet ^^
 
 - `@types` custom and enhanced types
   - `generated` contains [generated](https://www.graphql-code-generator.com/) typescripts types from schema.gql
+- `e2e/` contains [puppeteer](https://pptr.dev/) non-regression tests
 - `pages/` all front endpoints ([nextjs path](https://nextjs.org/docs/basic-features/pages))
   - `api` api endpoints ([nextjs path](https://nextjs.org/docs/api-routes/introduction))
 - `public` public assets like images ([nextjs path](https://nextjs.org/docs/basic-features/static-file-serving))
