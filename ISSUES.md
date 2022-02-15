@@ -15,3 +15,5 @@ But it's not a big deal since users usually never do so
 - database migrations are not handled yet
 
 - only canary version of nextjs has working middleware with env vars
+
+- only MP4 files are handled for now in the app
