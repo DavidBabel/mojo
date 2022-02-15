@@ -11,6 +11,7 @@
     "setup": "bash ./tools/scripts/setup-or-reset-env.sh",
     "dev": "yarn studio & PORT=4000 next dev & nodemon --config ./tools/nodemon.json",
     "heroku-prebuild": "yarn setup && rm .env",
+    "heroku-postbuild": "yarn build:storybook",
     "build": "yarn build:next && yarn build:server",
     "start": "prisma generate && NODE_ENV=production node --optimize_for_size --max_old_space_size=2560 ./dist/src/server/boot/start.js",
     "start:local": "NEXTAUTH_URL=http://localhost:3000 NODE_ENV=production node ./dist/src/server/boot/start.js",

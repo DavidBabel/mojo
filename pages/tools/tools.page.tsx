@@ -176,6 +176,28 @@ const ToolsPage: NextPage = () => {
             </Card>
           </LinkNewTab>
         </Col>
+        <Col {...colProps}>
+          <LinkNewTab href={`${serverBaseUrl}/storybook`}>
+            <Card
+              cover={
+                <div style={{ padding: 20, textAlign: "center" }}>
+                  <Image
+                    alt="Storybook"
+                    height={200}
+                    src="/tools/storybook.png"
+                    width={250}
+                  />
+                </div>
+              }
+              hoverable
+            >
+              <Card.Meta
+                description="Check the components storybook"
+                title="Open storybook"
+              />
+            </Card>
+          </LinkNewTab>
+        </Col>
       </Row>
     </>
   );

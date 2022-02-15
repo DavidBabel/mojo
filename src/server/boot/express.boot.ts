@@ -21,4 +21,6 @@ expressServer.use(express.urlencoded({ extended: true }));
 
 logger.info("Express server ready");
 
-export { expressServer };
+const staticDir = express.static;
+
+export { expressServer, staticDir };
